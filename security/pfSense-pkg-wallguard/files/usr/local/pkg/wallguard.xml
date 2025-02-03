@@ -3,20 +3,47 @@
 <?xml-stylesheet type "text/xsl" href="../xsl/package.xsl"?>
 <packagegui>
 	<copyright>
-		<![CDATA[]]>
+	    <![CDATA[
+	/*
+	 * wallguard.xml
+	 *
+	 * part of pfSense (https://www.pfsense.org)
+	 * Copyright (c) 2015-2025 Rubicon Communications, LLC (Netgate)
+	 * Copyright (c) 2025 Nullnet.ai
+	 * All rights reserved.
+	 *
+	 * Permission is hereby granted, free of charge, to any person obtaining a copy
+	 * of this software and associated documentation files (the "Software"), to deal
+	 * in the Software without restriction, including without limitation the rights
+	 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	 * copies of the Software, and to permit persons to whom the Software is
+	 * furnished to do so, subject to the following conditions:
+	 *
+	 * The above copyright notice and this permission notice shall be included in all
+	 * copies or substantial portions of the Software.
+	 *
+	 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	 * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	 * SOFTWARE.
+	 */
+	    ]]>
 	</copyright>
-	<name>WallGuard</name>
+	<name>wallguard</name>
 	<version>%%PKGVERSION%%</version>
 	<title>Services: WallGuard</title>
 	<menu>
-		<name>WallGuard</name>
+		<name>wallguard</name>
 		<section>Services</section>
 		<configfile>wallguard.xml</configfile>
 		<url>/pkg_edit.php?xml=wallguard.xml</url>
 	</menu>
 	<service>
 		<name>wallguard</name>
-		<rcfile>wallguard.sh</name>
+		<rcfile>wallguard.sh</rcfile>
 		<executable>wallguard</executable>
 		<description>Firewall monitoring daemon</description>
 	</service>
@@ -34,7 +61,6 @@
 			<type>input</type>
 			<required/>
 			<default_value>wallguard.nullnetqa.net</default_value>
-			<combinefields>begin</combinefields>
 		</field>
 		<field>
 			<fieldname>server_port</fieldname>
@@ -43,7 +69,36 @@
 			<type>input</type>
 			<required/>
 			<default_value>50051</default_value>
-			<combinefields>end</combinefields>
+		</field>
+		<field>
+			<fieldname>app_id</fieldname>
+			<fielddescr>APP ID</fielddescr>
+			<description>Application ID issued by the WallGuard system</description>
+			<type>input</type>
+			<required/>
+		</field>
+		<field>
+			<fieldname>app_secret</fieldname>
+			<fielddescr>APP Secret</fielddescr>
+			<description>Application Secret issues by the WallGuard system</description>
+			<type>password</type>
+			<required/>
 		</field>
 	</fields>
+	<custom_php_install_command>
+		require_once("/usr/local/pkg/wallguard.inc");
+		wallguard_install();
+	</custom_php_install_command>
+	<custom_php_deinstall_command>
+		require_once("/usr/local/pkg/wallguard.inc");
+		wallguard_deinstall();
+	</custom_php_deinstall_command>
+	<custom_php_resync_config_command>
+		require_once("/usr/local/pkg/wallguard.inc");
+		wallguard_save();
+	</custom_php_resync_config_command>
+	<custom_php_validation_command>
+		require_once("/usr/local/pkg/wallguard.inc");
+		wallguard_validate_input($_POST, $input_errors);
+	</custom_php_validation_command>
 </packagegui>

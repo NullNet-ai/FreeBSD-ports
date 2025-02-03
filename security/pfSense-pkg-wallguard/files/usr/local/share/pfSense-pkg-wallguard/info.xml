@@ -1,6 +1,6 @@
 <pfsensepkgs>
 	<package>
-		<name>WallGuard</name>
+		<name>wallguard</name>
 		<website>https://github.com/NullNet-ai/wallguard</website>
 		<descr><![CDATA[WallGuard - Centralized Firewall configuration and monitoring.]]></descr>
 		<version>$$PKGVERSION%%</version>

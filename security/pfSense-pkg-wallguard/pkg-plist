@@ -3,7 +3,7 @@ pkg/wallguard.inc
 
 %%DATADIR%%/info.xml
 
-/bin/wallguard
+/usr/local/bin/wallguard
 
 /etc/inc/priv/wallguard.priv.inc
 @dir /etc/inc/priv
