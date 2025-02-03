@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE packagegui SYSTEM "../schema.packages.dtd">
+<?xml-stylesheet type "text/xsl" href="../xsl/package.xsl"?>
+<packagegui>
+	<copyright>
+		<![CDATA[]]>
+	</copyright>
+	<name>WallGuard</name>
+	<version>%%PKGVERSION%%</version>
+	<title>Services: WallGuard</title>
+	<menu>
+		<name>WallGuard</name>
+		<section>Services</section>
+		<configfile>wallguard.xml</configfile>
+		<url>/pkg_edit.php?xml=wallguard.xml</url>
+	</menu>
+	<service>
+		<name>wallguard</name>
+		<rcfile>wallguard.sh</name>
+		<executable>wallguard</executable>
+		<description>Firewall monitoring daemon</description>
+	</service>
+	<fields>
+		<field>
+			<fieldname>enable</fieldname>
+			<fielddescr>Enable</fielddescr>
+			<description>Enable WallGuard service</description>
+			<type>checkbox</type>
+		</field>
+		<field>
+			<fieldname>server_addr</fieldname>
+			<fielddescr>Server Address</fielddescr>
+			<description>WallGuard server address or hostname</description>
+			<type>input</type>
+			<required/>
+			<default_value>wallguard.nullnetqa.net</default_value>
+			<combinefields>begin</combinefields>
+		</field>
+		<field>
+			<fieldname>server_port</fieldname>
+			<fielddescr>Server Port</fielddescr>
+			<description>WallGuard server port</description>
+			<type>input</type>
+			<required/>
+			<default_value>50051</default_value>
+			<combinefields>end</combinefields>
+		</field>
+	</fields>
+</packagegui>

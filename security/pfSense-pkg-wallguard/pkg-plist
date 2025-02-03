@@ -1,0 +1,10 @@
+pkg/wallguard.xml
+pkg/wallguard.inc
+
+%%DATADIR%%/info.xml
+
+/bin/wallguard
+
+/etc/inc/priv/wallguard.priv.inc
+@dir /etc/inc/priv
+@dir /etc/inc
