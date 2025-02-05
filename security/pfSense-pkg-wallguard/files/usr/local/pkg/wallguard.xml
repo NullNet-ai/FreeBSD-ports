@@ -35,6 +35,7 @@
 	<name>wallguard</name>
 	<version>%%PKGVERSION%%</version>
 	<title>Services: WallGuard</title>
+	<include_file>/usr/local/pkg/wallguard.inc</include_file>
 	<menu>
 		<name>wallguard</name>
 		<section>Services</section>
@@ -86,19 +87,15 @@
 		</field>
 	</fields>
 	<custom_php_install_command>
-		require_once("/usr/local/pkg/wallguard.inc");
 		wallguard_install();
 	</custom_php_install_command>
 	<custom_php_deinstall_command>
-		require_once("/usr/local/pkg/wallguard.inc");
 		wallguard_deinstall();
 	</custom_php_deinstall_command>
 	<custom_php_resync_config_command>
-		require_once("/usr/local/pkg/wallguard.inc");
 		wallguard_save();
 	</custom_php_resync_config_command>
 	<custom_php_validation_command>
-		require_once("/usr/local/pkg/wallguard.inc");
 		wallguard_validate_input($_POST, $input_errors);
 	</custom_php_validation_command>
 </packagegui>
