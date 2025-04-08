@@ -268,6 +268,7 @@
     SUBDIR += noattach
     SUBDIR += nocc
     SUBDIR += normalizemime
+    SUBDIR += notimail
     SUBDIR += notmuch
     SUBDIR += notmuch-emacs
     SUBDIR += notmuch-mutt
@@ -290,6 +291,7 @@
     SUBDIR += opensmtpd-extras-table-sqlite
     SUBDIR += opensmtpd-filter-rspamd
     SUBDIR += opensmtpd-filter-senderscore
+    SUBDIR += opensmtpd-table-sqlite
     SUBDIR += osbf-lua
     SUBDIR += ovs
     SUBDIR += p5-CGP-CLI
@@ -563,7 +565,6 @@
     SUBDIR += qmhandle
     SUBDIR += qpopper
     SUBDIR += qsf
-    SUBDIR += queue-fix
     SUBDIR += queue-repair
     SUBDIR += rainloop
     SUBDIR += ratelimit-policyd
@@ -640,6 +641,7 @@
     SUBDIR += rubygem-roadie-rails-rails4
     SUBDIR += rubygem-roadie-rails-rails52
     SUBDIR += rubygem-roadie-rails-rails61
+    SUBDIR += rubygem-roadie-rails-rails72
     SUBDIR += rubygem-roadie3
     SUBDIR += rubygem-ruby-qmail
     SUBDIR += rubygem-valid_email
@@ -734,6 +736,7 @@
     SUBDIR += textmail
     SUBDIR += thunderbird
     SUBDIR += thunderbird-dictionaries
+    SUBDIR += thunderbird-esr
     SUBDIR += tlb
     SUBDIR += tmpmail
     SUBDIR += tpop3d

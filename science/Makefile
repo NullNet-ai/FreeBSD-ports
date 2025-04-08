@@ -168,6 +168,7 @@
     SUBDIR += libxc
     SUBDIR += liggghts
     SUBDIR += linearelasticity
+    SUBDIR += linux-ai-ml-env
     SUBDIR += linux-zotero
     SUBDIR += luscus
     SUBDIR += m-aneos
@@ -251,6 +252,7 @@
     SUBDIR += p5-Chemistry-MidasPattern
     SUBDIR += p5-Chemistry-Mok
     SUBDIR += p5-Chemistry-Mol
+    SUBDIR += p5-Chemistry-OpenSMILES
     SUBDIR += p5-Chemistry-Pattern
     SUBDIR += p5-Chemistry-Reaction
     SUBDIR += p5-Chemistry-Ring
@@ -348,10 +350,12 @@
     SUBDIR += py-gpaw
     SUBDIR += py-gsd
     SUBDIR += py-h5json
+    SUBDIR += py-h5netcdf
     SUBDIR += py-h5py
     SUBDIR += py-h5pyd
     SUBDIR += py-hiphive
     SUBDIR += py-hoomd-blue
+    SUBDIR += py-icet
     SUBDIR += py-inequality
     SUBDIR += py-ipygany
     SUBDIR += py-jupyter_jsmol
@@ -370,7 +374,6 @@
     SUBDIR += py-mmcif
     SUBDIR += py-mmtf-python
     SUBDIR += py-molmod
-    SUBDIR += py-moltemplate
     SUBDIR += py-mp-api
     SUBDIR += py-mpcontribs-client
     SUBDIR += py-mplhep
@@ -393,6 +396,7 @@
     SUBDIR += py-periodictable
     SUBDIR += py-phono3py
     SUBDIR += py-phonopy
+    SUBDIR += py-pnetcdf
     SUBDIR += py-pupynere
     SUBDIR += py-py3Dmol
     SUBDIR += py-pyaixi
@@ -430,6 +434,7 @@
     SUBDIR += py-scipy
     SUBDIR += py-scoria
     SUBDIR += py-sdf
+    SUBDIR += py-seekpath
     SUBDIR += py-segregation
     SUBDIR += py-segyio
     SUBDIR += py-signac
@@ -495,6 +500,7 @@
     SUBDIR += spglib
     SUBDIR += spheral
     SUBDIR += step
+    SUBDIR += sz3
     SUBDIR += tblite
     SUBDIR += teem
     SUBDIR += tfel

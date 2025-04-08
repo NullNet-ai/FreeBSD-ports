@@ -1,5 +1,5 @@
 PORTNAME=	rust
-PORTVERSION?=	1.83.0
+PORTVERSION?=	1.85.1
 PORTREVISION?=	0
 CATEGORIES=	lang
 MASTER_SITES=	https://static.rust-lang.org/dist/:src \
@@ -38,7 +38,7 @@ MAKE_ENV=	DESTDIR=${STAGEDIR} \
 TEST_ENV=	${MAKE_ENV} \
 		ALLOW_NONZERO_RLIMIT_CORE=1
 
-CONFLICTS_INSTALL?=	rust-nightly rust182
+CONFLICTS_INSTALL?=	rust-nightly
 
 # rustc stashes intermediary files in TMPDIR (default /tmp) which
 # might cause issues for users that for some reason space limit
@@ -47,7 +47,7 @@ CONFLICTS_INSTALL?=	rust-nightly rust182
 TMPDIR?=	${WRKDIR}
 
 OPTIONS_DEFINE=		DOCS GDB LTO PORT_LLVM SOURCES WASM
-OPTIONS_DEFAULT=	SOURCES WASM
+OPTIONS_DEFAULT=	DOCS SOURCES WASM
 OPTIONS_DEFINE_i386=	SSE2
 OPTIONS_DEFAULT_i386=	SSE2
 
@@ -64,7 +64,7 @@ DOCS_VARS=		_RUST_BUILD_DOCS=true \
 			_RUST_TOOLS+=rustdoc
 DOCS_VARS_OFF=		_RUST_BUILD_DOCS=false
 GDB_RUN_DEPENDS=	${LOCALBASE}/bin/gdb:devel/gdb
-PORT_LLVM_USES=		llvm:min=18,lib,noexport
+PORT_LLVM_USES=		llvm:min=18,max=19,lib,noexport
 PORT_LLVM_MAKE_ENV=	RUSTFLAGS="-Lnative=${LOCALBASE}/lib"
 SOURCES_VARS=		_COMPONENTS+=rust-src-${_PACKAGE_VERS} \
 			_RUST_TOOLS+=src
@@ -72,8 +72,8 @@ WASM_VARS=		_COMPONENTS+="rust-analysis-${_PACKAGE_VERS}-wasm32-unknown-unknown 
 			_RUST_TARGETS+=wasm32-unknown-unknown
 
 # See WRKSRC/src/stage0 for the date and version values
-BOOTSTRAPS_DATE?=		2024-10-17
-RUST_BOOTSTRAP_VERSION?=	1.82.0
+BOOTSTRAPS_DATE?=		2025-01-09
+RUST_BOOTSTRAP_VERSION?=	1.84.0
 
 CARGO_VENDOR_DIR?=		${WRKSRC}/vendor
 
@@ -83,7 +83,7 @@ _RUST_ARCH_i386=	i686
 _RUST_ARCH_riscv64=	riscv64gc
 _RUST_TARGET=		${_RUST_ARCH_${ARCH}:U${ARCH}}-unknown-${OPSYS:tl}
 _RUST_TARGETS=		${_RUST_TARGET}
-_RUST_TOOLS=		analysis cargo clippy rust-analyzer rustdoc rustfmt
+_RUST_TOOLS=		analysis cargo clippy rust-analyzer rustfmt
 
 _RUSTC_BOOTSTRAP=	${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/rustc-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${_RUST_TARGET}
 _RUST_STD_BOOTSTRAP=	${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/rust-std-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${_RUST_TARGET}
@@ -188,6 +188,7 @@ do-configure:
 	@${ECHO_CMD} 'default-linker="${CC}"' >> ${WRKSRC}/config.toml
 	@${ECHO_CMD} 'deny-warnings=false' >> ${WRKSRC}/config.toml
 	@${ECHO_CMD} 'verbose-tests=true' >> ${WRKSRC}/config.toml
+	@${ECHO_CMD} 'download-rustc=false' >> ${WRKSRC}/config.toml
 .if ${PORT_OPTIONS:MWASM} && !${PORT_OPTIONS:MPORT_LLVM}
 	@${ECHO_CMD} 'lld=true' >> ${WRKSRC}/config.toml
 .else

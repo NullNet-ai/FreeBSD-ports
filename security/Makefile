@@ -68,7 +68,6 @@
     SUBDIR += caesarcipher
     SUBDIR += caldera
     SUBDIR += caldera-ot
-    SUBDIR += caldera4
     SUBDIR += calife
     SUBDIR += cardpeek
     SUBDIR += cargo-audit
@@ -168,6 +167,7 @@
     SUBDIR += fwanalog
     SUBDIR += fwknop
     SUBDIR += fwlogwatch
+    SUBDIR += gauth
     SUBDIR += gcr
     SUBDIR += gcr3
     SUBDIR += gef
@@ -180,7 +180,6 @@
     SUBDIR += gitjacker
     SUBDIR += globalprotect-openconnect
     SUBDIR += gnome-keyring
-    SUBDIR += gnome-keyring-sharp
     SUBDIR += gnupg
     SUBDIR += gnupg-pkcs11-scd
     SUBDIR += gnupg1
@@ -215,7 +214,6 @@
     SUBDIR += heaan
     SUBDIR += headscale
     SUBDIR += heimdal
-    SUBDIR += heimdal-devel
     SUBDIR += helib
     SUBDIR += hexl
     SUBDIR += hidden-lake
@@ -286,6 +284,7 @@
     SUBDIR += libcryptui
     SUBDIR += libdecaf
     SUBDIR += libecc
+    SUBDIR += libfcrypto
     SUBDIR += libfido2
     SUBDIR += libfprint
     SUBDIR += libgcrypt
@@ -454,6 +453,7 @@
     SUBDIR += openssl32
     SUBDIR += openssl33
     SUBDIR += openssl34
+    SUBDIR += openssl35
     SUBDIR += openvas
     SUBDIR += openvpn
     SUBDIR += openvpn-admin
@@ -853,9 +853,6 @@
     SUBDIR += pkcs11-tools
     SUBDIR += pkesh
     SUBDIR += pks
-    SUBDIR += plasma5-kscreenlocker
-    SUBDIR += plasma5-ksshaskpass
-    SUBDIR += plasma5-kwallet-pam
     SUBDIR += plasma6-kscreenlocker
     SUBDIR += plasma6-ksshaskpass
     SUBDIR += plasma6-kwallet-pam
@@ -1037,7 +1034,6 @@
     SUBDIR += py-python-cas
     SUBDIR += py-python-gnupg
     SUBDIR += py-python-gvm
-    SUBDIR += py-python-jose
     SUBDIR += py-python-nss
     SUBDIR += py-python-openid
     SUBDIR += py-python-pam
@@ -1091,6 +1087,7 @@
     SUBDIR += py-yara
     SUBDIR += py-yara-python-dex
     SUBDIR += py-yubikey-manager
+    SUBDIR += py-zaproxy
     SUBDIR += py-zkg
     SUBDIR += py-zxcvbn
     SUBDIR += pygost
@@ -1147,6 +1144,7 @@
     SUBDIR += rubygem-encryptor
     SUBDIR += rubygem-ezcrypto
     SUBDIR += rubygem-gitlab-cloud-connector
+    SUBDIR += rubygem-gitlab-secret_detection
     SUBDIR += rubygem-googleauth
     SUBDIR += rubygem-googleauth-gitlab
     SUBDIR += rubygem-gpgme

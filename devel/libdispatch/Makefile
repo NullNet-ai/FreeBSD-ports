@@ -1,5 +1,5 @@
 PORTNAME=	libdispatch
-DISTVERSION=	5.10.1
+DISTVERSION=	6.0.3
 PORTEPOCH=	1
 CATEGORIES=	devel
 
@@ -18,15 +18,6 @@ GH_PROJECT=	swift-corelibs-libdispatch
 GH_TAGNAME=	swift-${DISTVERSION}-RELEASE
 
 .include <bsd.port.options.mk>
-
-#.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1400000 && ${OSVERSION} < 1400079
-#USES+=	llvm:max=17,build
-#USES:=	${USES:Ncompiler\:*} # XXX avoid warnings
-#CC=	${_LLVM_MK_PREFIX}/bin/clang
-#CPP=	${_LLVM_MK_PREFIX}/bin/clang-cpp
-#CXX=	${_LLVM_MK_PREFIX}/bin/clang++
-#LD?=	${_LLVM_MK_PREFIX}/bin/ld
-#.endif
 
 .if ${OPSYS} == FreeBSD && (${ARCH} == armv7 || ${ARCH} == i386 || ${ARCH} == powerpc)
 CFLAGS+=	-Wno-incompatible-function-pointer-types

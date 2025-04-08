@@ -55,6 +55,7 @@ include/snort/framework/ips_action.h
 include/snort/framework/ips_option.h
 include/snort/framework/logger.h
 include/snort/framework/module.h
+include/snort/framework/mp_data_bus.h
 include/snort/framework/mpse.h
 include/snort/framework/mpse_batch.h
 include/snort/framework/parameter.h
@@ -104,6 +105,7 @@ include/snort/main/analyzer_command.h
 include/snort/main/policy.h
 include/snort/main/reload_tracker.h
 include/snort/main/reload_tuner.h
+include/snort/main/snort.h
 include/snort/main/snort_config.h
 include/snort/main/snort_types.h
 include/snort/main/thread.h
@@ -128,6 +130,7 @@ include/snort/network_inspectors/appid/application_ids.h
 include/snort/network_inspectors/appid/tp_appid_module_api.h
 include/snort/network_inspectors/appid/tp_appid_session_api.h
 include/snort/network_inspectors/appid/tp_appid_types.h
+include/snort/network_inspectors/extractor/extractor_enums.h
 include/snort/network_inspectors/reputation/reputation_common.h
 include/snort/network_inspectors/rna/rna_cpe_os.h
 include/snort/network_inspectors/rna/rna_fingerprint.h
@@ -188,6 +191,8 @@ include/snort/pub_sub/cip_events.h
 include/snort/pub_sub/daq_message_event.h
 include/snort/pub_sub/data_decrypt_event.h
 include/snort/pub_sub/dcerpc_events.h
+include/snort/pub_sub/detection_events.h
+include/snort/pub_sub/domain_fronting.h
 include/snort/pub_sub/dhcp_events.h
 include/snort/pub_sub/dns_events.h
 include/snort/pub_sub/eve_process_event.h
@@ -205,6 +210,7 @@ include/snort/pub_sub/opportunistic_tls_event.h
 include/snort/pub_sub/packet_events.h
 include/snort/pub_sub/reputation_events.h
 include/snort/pub_sub/rna_events.h
+include/snort/pub_sub/shadowtraffic_aggregator.h
 include/snort/pub_sub/sip_events.h
 include/snort/pub_sub/smb_events.h
 include/snort/pub_sub/ssh_events.h

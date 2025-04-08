@@ -90,7 +90,6 @@
     SUBDIR += gom
     SUBDIR += goose
     SUBDIR += gqlplus
-    SUBDIR += grass7
     SUBDIR += grass8
     SUBDIR += greptimedb
     SUBDIR += hashtypes
@@ -106,7 +105,6 @@
     SUBDIR += ipa_sdb
     SUBDIR += iplike
     SUBDIR += jdb
-    SUBDIR += jdbc-oracle11g
     SUBDIR += jetbrains-datagrip
     SUBDIR += jlog
     SUBDIR += jrobin
@@ -119,6 +117,7 @@
     SUBDIR += kyototycoon
     SUBDIR += ldb25
     SUBDIR += ldb28
+    SUBDIR += ldb29
     SUBDIR += leo_center
     SUBDIR += leofs
     SUBDIR += leveldb
@@ -201,8 +200,6 @@
     SUBDIR += mysql80-server
     SUBDIR += mysql84-client
     SUBDIR += mysql84-server
-    SUBDIR += mysql90-client
-    SUBDIR += mysql90-server
     SUBDIR += mysql91-client
     SUBDIR += mysql91-server
     SUBDIR += mysqlbackup
@@ -559,6 +556,7 @@
     SUBDIR += pg_repack
     SUBDIR += pg_similarity
     SUBDIR += pg_stat_kcache
+    SUBDIR += pg_store_plans
     SUBDIR += pg_tileserv
     SUBDIR += pgaccess
     SUBDIR += pgadmin3
@@ -568,7 +566,6 @@
     SUBDIR += pgbarman
     SUBDIR += pgbouncer
     SUBDIR += pgdbf
-    SUBDIR += pgfouine
     SUBDIR += pgloader3
     SUBDIR += pglogical
     SUBDIR += pgmetrics
@@ -577,6 +574,7 @@
     SUBDIR += pgpool-II-43
     SUBDIR += pgpool-II-44
     SUBDIR += pgpool-II-45
+    SUBDIR += pgpool-II-46
     SUBDIR += pgreplay
     SUBDIR += pgroonga
     SUBDIR += pgrouting
@@ -644,7 +642,6 @@
     SUBDIR += plpgsql_check
     SUBDIR += pointcloud
     SUBDIR += postgis-jdbc
-    SUBDIR += postgis31
     SUBDIR += postgis33
     SUBDIR += postgis34
     SUBDIR += postgis35
@@ -793,7 +790,6 @@
     SUBDIR += py-pglite
     SUBDIR += py-pgmigrate
     SUBDIR += py-pgspecial
-    SUBDIR += py-pgxnclient
     SUBDIR += py-pickledb
     SUBDIR += py-pickleshare
     SUBDIR += py-pony
@@ -838,6 +834,7 @@
     SUBDIR += py-sqlalchemy14
     SUBDIR += py-sqlalchemy20
     SUBDIR += py-sqlcipher3
+    SUBDIR += py-sqlframe
     SUBDIR += py-sqlglot
     SUBDIR += py-sqlglotrs
     SUBDIR += py-sqlite-anyio
@@ -877,7 +874,6 @@
     SUBDIR += redis
     SUBDIR += redis-devel
     SUBDIR += redis62
-    SUBDIR += redis70
     SUBDIR += redis72
     SUBDIR += redis_exporter
     SUBDIR += redisdesktopmanager
@@ -896,7 +892,6 @@
     SUBDIR += ruby-tokyocabinet
     SUBDIR += ruby-xapian
     SUBDIR += rubygem-active_model_serializers
-    SUBDIR += rubygem-active_model_serializers61
     SUBDIR += rubygem-active_record_query_trace
     SUBDIR += rubygem-activemodel-serializers-xml
     SUBDIR += rubygem-activemodel4
@@ -1014,6 +1009,7 @@
     SUBDIR += rubygem-rbase
     SUBDIR += rubygem-red-arrow
     SUBDIR += rubygem-red-arrow-dataset
+    SUBDIR += rubygem-red-arrow-flight
     SUBDIR += rubygem-red-gandiva
     SUBDIR += rubygem-red-parquet
     SUBDIR += rubygem-redis
@@ -1081,11 +1077,11 @@
     SUBDIR += symphytum
     SUBDIR += tarantool
     SUBDIR += tarantool-c
-    SUBDIR += tarantool2
     SUBDIR += tcl-Mysql
     SUBDIR += tcl-lmdb
     SUBDIR += tcl-sqlite3
     SUBDIR += tdb
+    SUBDIR += tdb1410
     SUBDIR += tdbc
     SUBDIR += tile38
     SUBDIR += tiledb
@@ -1110,7 +1106,6 @@
     SUBDIR += xls2txt
     SUBDIR += xrootd
     SUBDIR += xtrabackup80
-    SUBDIR += xtrabackup81
     SUBDIR += xtrabackup84
     SUBDIR += zodb
 

@@ -1,6 +1,7 @@
 PORTNAME=	terraform-switcher
 DISTVERSIONPREFIX=	v
 DISTVERSION=	1.2.4
+PORTREVISION=	3
 CATEGORIES=	sysutils
 
 MAINTAINER=	dutra@FreeBSD.org

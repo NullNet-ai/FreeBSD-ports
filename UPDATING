@@ -5,6 +5,213 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20250327:
+  AFFECTS: users of thunderbird
+  AUTHOR: cmt@FreeBSD.org
+
+  The mail/thunderbird port switched to Thunderbird's new release train,
+  with frequent major releases (ca. 4-weeks-cycle). Users wanting to
+  stay with the 128-releases for now and the ESR releases in general
+  should switch to the mail/thunderbird-esr port.
+
+20250325:
+  AFFECTS: users of TeX*
+  AUTHOR: bofh@FreeBSD.org
+
+  TeX system has been updated to 2025 from 2024. Normal pkg upgrade or
+  portmaster -a should handle all the upgrade properly. In case not please
+  create a ticket or send a mail to tex@FreeBSD.org
+
+  Previously users have reported to delete texlive-texmf prior to
+  starting update, or pkg-static will indicate there is a conflict
+  during the upgrade of texlive-base :
+
+  # pkg remove texlive-texmf
+
+20250321:
+  AFFECTS: users of mail/oama
+  AUTHOR: nivit@FreeBSD.org
+
+  Starting from version 0.15, when the GPG backend is used the encrypted
+  credentials are stored in the $XDG_STATE_HOME/oama directory.
+  If the XDG_STATE_HOME environment variable is not set then it defaults to
+  $HOME/.local/state.
+
+  That is a breaking change! If you use the GPG backend you need to manually
+  move your credential ~/.local/var/oama/*.oama files into the new directory.
+
+20250316:
+  AFFECTS: users of graphics/gdk-pixbuf2
+  AUTHOR: vishwin@FreeBSD.org
+
+  Loaders for ANI, BMP, ICNS, ICO, PNM, QTIF, TGA, XBM and XPM have
+  been moved to a separate graphics/gdk-pixbuf-extra port. Install
+  the aforementioned port if artefacts in those formats no longer
+  load or otherwise cause errors, and report them so that
+  USE_GNOME=gdkpixbufextra can be declared. Most should only need
+  USE_GNOME=gdkpixbufextra:run, but for those also needing these
+  loaders for build, leave out the :run.
+
+20250315:
+  AFFECTS: users of sysutils/snmp_exporter
+  AUTHOR: lexi@hemlock.eden.le-fay.org
+
+  BREAKING CHANGE: The new version of sysutils/snmp_exporter (0.28.0)
+  introduces several breaking changes.  If you don't want to migrate yet,
+  switch to the new port sysutils/snmp_exporter20 which contains the previous
+  version (0.20.0).
+
+  1. The exporter uses a new configuration file format for SNMP authentication,
+  and configurations from the previous version will no longer work.  This
+  applies regardless of whether you use the configuration generator or write
+  the configuration by hand.
+
+  For migration instructions, see:
+    https://github.com/prometheus/snmp_exporter/blob/main/auth-split-migration.md
+
+  2. Breaking changes were made affecting the 'synology', 'ddwrt' and
+  'kemp_loadmaster' modules.  For migration instructions, see:
+    https://github.com/prometheus/snmp_exporter/releases/tag/v0.27.0
+
+  3. The sysUpTime metric has been removed from the if_mib module.  For
+  migration instructions, see:
+    https://github.com/prometheus/snmp_exporter/releases/tag/v0.28.0
+
+  4. (FreeBSD-specific) The port no longer patches the generator to hardcode
+  ${PREFIX}/etc in the paths used by snmp_exporter_generator.  If you were
+  relying on this behaviour, you should update your scripts to specify the full
+  pathname.
+
+20250312:
+  AFFECTS: users of net/samba4{19,20}
+  AUTHOR: michaelo@FreeBSD.org
+
+  The MANDOC option has been renamed to MANPAGES to match the option
+  name with other ports and the description from Mk/bsd.options.desc.mk.
+
+20250311:
+  AFFECTS: users of databases/mongodb80
+  AUTHOR: ronald@FreeBSD.org
+
+  Added flavor mongodb80-armv80a.
+  See item 20250217 for the rationale.
+
+20250310:
+  AFFECTS: users of www/wget2
+  AUTHOR: michaelo@FreeBSD.org
+
+  The default NGHTTP2 option has been renamed to HTTP2 to match the option
+  name in ftp/curl and the description from Mk/bsd.options.desc.mk.
+
+20250219:
+  AFFECTS: users of comms/ser2net
+  AUTHOR: rodrigo@FreeBSD.org
+
+  ser2net 4.6.4 doesn't support 3.5.1 configuration who has to be
+  converted over to use new YAML syntax.
+
+  Please see the examples on ser2net.yaml sample configuration and
+  read the ser2net.yaml manpage on how to configure the new version.
+  Additional links and resources have been provided on the pkg-message.
+
+20250217:
+  AFFECTS: users of databases/mongodb70
+  AUTHOR: ronald@FreeBSD.org
+
+  MongoDB on non-LSE ARM CPUs like Raspberry Pi 4 works but is
+  unsupported upstream and can give corruption on high concurrency.
+  Please read https://jira.mongodb.org/browse/SERVER-71772 for details.
+
+  Port mongodb70 is flavored to create two packages:
+    mongodb70 and mongodb70-armv80a
+
+  Please install mongodb70-armv80a on RPI4 or similar ARM systems as pkg
+  mongodb70 will fail on runtime with unsupported instruction error.
+
+20250208:
+  AFFECTS: users of net-mgmt/netbox
+  AUTHOR: kai@FreeBSD.org
+
+  1. Please make sure that the PostgreSQL server for the NetBox instance is
+     running version 13 or higher.  This is because PostgreSQL 12 reached
+     its End of Life (EOL) on November 14, 2024 and was also removed from
+     the ports tree at the beginning of 2025.
+
+  2. Please also check the pkg-message and the changelogs for further info.
+
+20250205:
+  AFFECTS: users of www/gitlab
+  AUTHOR: mfechner@FreeBSD.org
+
+  Make sure you compare your /usr/local/www/gitlab/config/puma.rb with
+  /usr/local/www/gitlab/config/puma.rb.sample and make sure you have the:
+  require "logger"
+  line in your puma.rb.
+  This fixes an error:
+  /usr/local/lib/ruby/gems/3.2/gems/activesupport-7.0.8.7/lib/active_support/logger_thread_safe_level.rb:12:in `<module:LoggerThreadSafeLevel>': uninitialized constant ActiveSupport::LoggerThreadSafeLevel::Logger (NameError)
+
+    Logger::Severity.constants.each do |severity|
+
+20250203:
+  AFFECTS: users of x11/kde5 and x11/kde6
+  AUTHOR: arrowd@FreeBSD.org
+
+  All KDE ports were fully switched to Qt6/KF6. Plasma 5 ports were removed.
+  KDE Applications were updated to 24.12.
+
+  If you installed KDE via kde5 or kde6 packages, the upgrade path is
+
+  # pkg remove -f kde[56] && pkg install kde
+
+  If you installed KDE via the plasma5-plasma metapackage, the upgrade path
+
+  # pkg remove -f plasma5-plasma && pkg install plasma6-plasma
+
+  Running "pkg autoremove" after the upgrade would clean unused dependencies.
+
+  For the uncommon cases of building on the host with synth, portmaster, etc.
+  the idea stays roughly the same - replace every plasma5 package with its
+  plasma6 counterpart.
+
+20250131:
+  AFFECTS: users of security/easy-rsa
+  AUTHOR: mandree@FreeBSD.org
+
+  easy-rsa (easyrsa) versions between 3.0.5 and 3.1.7 inclusively
+  may have chosen the wrong, a weak, cipher (des-ede3-cbc) when
+  encrypting the CA private keys with the build-ca command, when
+  running on a system where openssl was OpenSSL 3.
+
+  Such CA private keys should be re-encrypted with a stronger cipher
+  in order to protect them better, after upgrading EasyRSA to 3.2.1.
+  To that end, the   easyrsa set-pass ca    command can be used.
+
+  Details: https://community.openvpn.net/openvpn/wiki/CVE-2024-13454
+
+20250125:
+  AFFECTS: users of www/apache24
+  AUTHOR: brnrd@FreeBSD.org
+
+  Apache 2.4.63 removed the (experimental, non-default) mod_tls module due
+  to rustls-ffi API instability and it was moved to a standalone module.
+
+  Users of the TLS option can use the new www/mod_tls port as a replacement.
+
+  # pkg install ap24-mod_tls
+
+20250111:
+  AFFECTS: users of net/onedrive
+  AUTHOR: hiroo.ono+freebsd@gmail.com
+
+  The version 2.5.x introduces significant changes regarding how the
+  integrity and validation of your data is determined and is not backwards
+  compatible with v2.4.x.
+  OneDrive Business Shared Folder Sync has been 100% re-written in v2.5.0.
+  If you are using this feature, please read the new documentation
+  carefully.
+  The application function --download-only no longer automatically deletes
+  local files. Please read the new documentation regarding this feature.
+
 20250109:
   AFFECTS: users of www/kiwix-tools and devel/libkiwix
   AUTHOR: olce@FreeBSD.org
@@ -141,7 +348,7 @@ you update your ports collection, before attempting any port upgrades.
   results in a non-compatible database format.
 
   After upgrading, you must rebuild all BerkeleyDB databases used by
-  apr-util (example: Apache databases created with `httxt2dbm -F db` 
+  apr-util (example: Apache databases created with `httxt2dbm -F db`
 
 20241109:
   AFFECTS: all users of i386
@@ -1105,8 +1312,7 @@ you update your ports collection, before attempting any port upgrades.
   ATTENTION:
   1) The default user changed from "pgsql" to "postgres" in 11. The migration steps above now assume
      the "postgres" database user and FreeBSD user.
-  2) See the updating entry 20190829 if you are updating from a release prior to 11.
-  3) If you use non-default initdb options, you have to adjust the initdb-command accordingly
+  2) If you use non-default initdb options, you have to adjust the initdb-command accordingly
 
 20230906:
   AUTHOR: jrm@FreeBSD.org
@@ -1504,7 +1710,7 @@ you update your ports collection, before attempting any port upgrades.
   If you use pkg, simply upgrade:
   # pkg upgrade
 
-  If you do not use pkg, please check entry 20190420.
+  If you do not use pkg, please check entry 20220421.
   The description there should also work for this version.
 
 20230314:
@@ -2422,8 +2628,35 @@ you update your ports collection, before attempting any port upgrades.
   If you use pkg, simply upgrade:
   # pkg upgrade
 
-  If you do not use pkg, please check entry 20190420.
-  The description there should also work for this version.
+  If you do not use pkg, please use an adapted version of the below:
+
+  If you compile your own ports you may keep 2.4 as the default version by
+  adding the following lines to your /etc/make.conf file:
+
+  #
+  # Keep ruby 2.4 as default version
+  #
+  DEFAULT_VERSIONS+=ruby=2.4
+
+  If you wish to update to the new default version, you need to first stop any
+  software that uses ruby. Then, you will need to follow these steps, depending
+  upon how you manage your system.
+
+  If you use pkgng, simply upgrade:
+  # pkg upgrade
+
+  If you use portmaster, install new ruby, then rebuild all ports that depend
+  on ruby:
+  # portmaster -o lang/ruby25 lang/ruby24
+  # portmaster -R -r ruby-2.5
+
+  If you use portupgrade, install new ruby, then rebuild all ports that depend
+  on ruby:
+
+  # pkg delete -f ruby portupgrade
+  # make -C /usr/ports/ports-mgmt/portupgrade install clean
+  # pkg set -o lang/ruby24:lang/ruby25
+  # portupgrade -x ruby-2.5.\* -fr lang/ruby25
 
 20220413:
   AFFECTS: users of net-im/py-matrix-synapse
@@ -2840,9 +3073,7 @@ you update your ports collection, before attempting any port upgrades.
   | magit-emacs29             | magit-emacs_devel           |
   -----------------------------------------------------------
 
-  To handle these final package name changes, follow a similar procedure
-  as the one described in the 20200811 entry.  That is, simply running
-  `pkg upgrade` will not upgrade, e.g., foo-emacs27_nox to
+  Simply running `pkg upgrade` will not upgrade, e.g., foo-emacs27_nox to
   foo-emacs_nox.
 
   Binary package users:
@@ -3026,8 +3257,7 @@ you update your ports collection, before attempting any port upgrades.
   ATTENTION:
   1) The default user changed from "pgsql" to "postgres" in 11. The migration steps above now assume
      the "postgres" database user and FreeBSD user.
-  2) See the updating entry 20190829 if you are updating from a release prior to 11.
-  3) If you use non-default initdb options, you have to adjust the initdb-command accordingly
+  2) If you use non-default initdb options, you have to adjust the initdb-command accordingly
 
 20211023:
   AFFECTS: users of www/node

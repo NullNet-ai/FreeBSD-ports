@@ -1,6 +1,6 @@
 PORTNAME=	opencv
 DISTVERSION=	4.9.0
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	graphics
 
 MAINTAINER=	desktop@FreeBSD.org
@@ -120,7 +120,7 @@ TESSERACT_CMAKE_BOOL=	WITH_TESSERACT
 ###
 
 # GUI group options (GTK3 VTK)
-GTK3_USE=		gnome=gtk30,cairo,gdkpixbuf2
+GTK3_USE=		gnome=gtk30,cairo,gdkpixbuf
 GTK3_CMAKE_BOOL=	WITH_GTK
 
 VTK_DESC=		Include VTK library support (build opencv_viz module)

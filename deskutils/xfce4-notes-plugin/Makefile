@@ -1,5 +1,5 @@
 PORTNAME=	xfce4-notes-plugin
-PORTVERSION=	1.11.1
+PORTVERSION=	1.11.2
 CATEGORIES=	deskutils xfce
 MASTER_SITES=	XFCE/panel-plugins
 DIST_SUBDIR=	xfce4
@@ -14,7 +14,7 @@ LIB_DEPENDS=	libharfbuzz.so:print/harfbuzz
 
 USES=		compiler:c11 gettext-tools gmake gnome libtool pkgconfig \
 		tar:bzip2 xfce xorg
-USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 gtksourceview4
+USE_GNOME=	cairo gdkpixbuf glib20 gtk30 gtksourceview4
 USE_XFCE=	libmenu panel xfconf
 USE_XORG=	ice sm x11
 

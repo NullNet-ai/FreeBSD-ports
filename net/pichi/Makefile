@@ -1,6 +1,6 @@
 PORTNAME=	pichi
 DISTVERSION=	1.5.1
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	net
 
 MAINTAINER=	pichi@elude.in
@@ -9,6 +9,9 @@ WWW=		https://github.com/pichi-router/pichi
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
+
+DEPRECATED=	Depends on expired security/mbedtls2
+EXPIRATION_DATE=2025-06-01
 
 BUILD_DEPENDS=	rapidjson>=1.1.0:devel/rapidjson
 

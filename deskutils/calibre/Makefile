@@ -1,5 +1,5 @@
 PORTNAME=	calibre
-PORTVERSION=	7.24.0
+PORTVERSION=	8.1.1
 CATEGORIES=	deskutils python
 MASTER_SITES=	https://download.calibre-ebook.com/${PORTVERSION}/:DEFAULT \
 		https://raw.githubusercontent.com/rhasspy/piper/${PIPER_VOICES_HASH}/:piper
@@ -68,8 +68,8 @@ USES=		desktop-file-utils gettext-runtime:build gl localbase:ldflags \
 		pkgconfig pyqt:6 python:3.11+ qt:6 shared-mime-info shebangfix sqlite ssl \
 		tar:xz xorg
 USE_GITHUB=	nodefault
-GH_TUPLE=	kovidgoyal:calibre-translations:58ab5d7:translations \
-		LibreOffice:dictionaries:5b8116e:hypenation
+GH_TUPLE=	kovidgoyal:calibre-translations:b74d31a:translations \
+		LibreOffice:dictionaries:1b8d1d5:hypenation
 PIPER_VOICES_HASH=	c0670df63daf07070c9be36b5c4bed270ad72383
 USE_GL=		opengl
 USE_PYQT=	pyqt6 pysip webengine qtbuilder:build sip:build

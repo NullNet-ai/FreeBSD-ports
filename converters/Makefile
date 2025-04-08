@@ -46,7 +46,6 @@
     SUBDIR += libb64
     SUBDIR += libiconv
     SUBDIR += libticonv
-    SUBDIR += libutf-8
     SUBDIR += linux-c7-fribidi
     SUBDIR += linux-rl9-fribidi
     SUBDIR += lua-iconv
@@ -130,6 +129,7 @@
     SUBDIR += p5-Unicode-RecursiveDowngrade
     SUBDIR += p5-Unicode-String
     SUBDIR += p5-Unicode-Stringprep
+    SUBDIR += p5-Unicode-UTF8
     SUBDIR += p5-Unicode-UTF8simple
     SUBDIR += p5-WAP-wbxml
     SUBDIR += p5-XML-WBXML

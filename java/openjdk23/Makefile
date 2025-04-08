@@ -3,6 +3,7 @@ DISTVERSIONPREFIX=	jdk-
 DISTVERSION=	${JDK_MAJOR_VERSION}.${JDK_MINOR_VERSION}.${JDK_PATCH_VERSION}+${JDK_BUILD_NUMBER}-${BSD_JDK_VERSION}
 CATEGORIES=	java devel
 PKGNAMESUFFIX?=	${JDK_MAJOR_VERSION}
+PORTREVISION=	1
 
 MAINTAINER=	java@FreeBSD.org
 COMMENT=	Java Development Kit ${JDK_MAJOR_VERSION}
@@ -15,6 +16,7 @@ ONLY_FOR_ARCHS=	aarch64 amd64 i386 powerpc64 powerpc64le
 # On FreeBSD 14 and 15 the i386 build fails with a segfault in java during the
 # buildtools_create_symbols_javac__the.COMPILE_CREATE_SYMBOLS_batch build step.
 #
+BROKEN_FreeBSD_13_i386=	Build failed for target 'images' in configuration 'bsd-x86-server-release'
 BROKEN_FreeBSD_14_i386=	Build failed for target 'images' in configuration 'bsd-x86-server-release'
 BROKEN_FreeBSD_15_i386=	Build failed for target 'images' in configuration 'bsd-x86-server-release'
 
@@ -43,8 +45,7 @@ GH_PROJECT=	jdk23u
 
 NO_CCACHE=	yes
 
-_MAKE_JOBS=	#
-USE_LOCALE="C"
+MAKE_JOBS_UNSAFE=	yes
 MAKE_ENV=	CLASSPATH="" \
 		JAVA_HOME="" \
 		LD_LIBRARY_PATH="" \
@@ -63,8 +64,8 @@ NOPRECIOUSMAKEVARS=	yes
 
 JDK_MAJOR_VERSION=	23
 JDK_MINOR_VERSION=	0
-JDK_PATCH_VERSION=	1
-JDK_BUILD_NUMBER=	11
+JDK_PATCH_VERSION=	2
+JDK_BUILD_NUMBER=	7
 BSD_JDK_VERSION=	1
 
 JDK_BUG_URL=	https://bugs.freebsd.org/bugzilla/enter_bug.cgi?product=Ports%20%26%20Packages&component=Individual%20Port(s)&short_desc=java/${PORTNAME}${JDK_MAJOR_VERSION}%3A%20

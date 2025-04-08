@@ -1,8 +1,8 @@
 PORTNAME=	openssl
-PORTVERSION=	3.3.2
-PORTREVISION=	1
+PORTVERSION=	3.3.3
 CATEGORIES=	security devel
 PKGNAMESUFFIX=	33
+MASTER_SITES=	https://github.com/openssl/openssl/releases/download/${DISTNAME}/
 
 MAINTAINER=	brnrd@FreeBSD.org
 COMMENT=	TLSv1.3 capable SSL and crypto library
@@ -11,7 +11,7 @@ WWW=		https://www.openssl.org/
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-CONFLICTS_INSTALL=	boringssl libressl libressl-devel openssl openssl111 openssl3[124] openssl*-quictls
+CONFLICTS_INSTALL=	boringssl libressl libressl-devel openssl openssl111 openssl3[1245] openssl*-quictls
 
 HAS_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	config
@@ -21,8 +21,6 @@ CONFIGURE_ARGS=	--openssldir=${OPENSSLDIR} \
 
 USES=		cpe perl5
 USE_PERL5=	build
-USE_GITHUB=	yes
-GH_TAGNAME=	${PORTNAME}-${PORTVERSION}
 TEST_TARGET=	test
 
 LDFLAGS_i386=	-Wl,-znotext

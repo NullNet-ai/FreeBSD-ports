@@ -175,7 +175,7 @@ GNUTLS_LIB_DEPENDS=		libgnutls.so:security/gnutls
 GNUTLS_CONFIGURE_OFF=		--disable-gnutls
 GTK3_LIB_DEPENDS=		libxkbcommon.so:x11/libxkbcommon
 GTK3_USES=			gettext gl
-GTK3_USE=			GNOME=gdkpixbuf2,gtk30,vte3 \
+GTK3_USE=			GNOME=gdkpixbuf,gtk30,vte3 \
 				XORG=x11,xext
 GTK3_CONFIGURE_OFF=		--disable-gtk \
 				--disable-vte
@@ -205,7 +205,7 @@ USBREDIR_CONFIGURE_OFF=		--disable-usb-redir
 VDE_LIB_DEPENDS=		libvdeplug.so:net/vde2
 VDE_CONFIGURE_OFF=		--disable-vde
 X11_USES=			sdl
-X11_USE=			GNOME=gdkpixbuf2 \
+X11_USE=			GNOME=gdkpixbuf \
 				SDL=sdl2 \
 				XORG=x11,xext
 X11_CONFIGURE_ENABLE=		sdl
@@ -220,7 +220,7 @@ X86_TARGETS_CONFIGURE_ON=	--target-list='i386-softmmu i386-bsd-user x86_64-softm
 .include <bsd.port.options.mk>
 
 .if ${FLAVOR:U} == tools || ${FLAVOR:U} == guestagent
-.if ${ARCH} == "i386"
+.if ${ARCH} == "i386" || ${ARCH} == "powerpc"
 PLIST_SUB+=	NO_I386="@comment "
 .else
 PLIST_SUB+=	NO_I386=""

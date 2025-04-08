@@ -1,7 +1,6 @@
     COMMENT = X11 toolkits
 
     SUBDIR += SoXt
-    SUBDIR += Xaw3d
     SUBDIR += Xmt
     SUBDIR += amtk
     SUBDIR += aquamarine
@@ -50,6 +49,7 @@
     SUBDIR += gtksourceview5
     SUBDIR += gtksourceviewmm3
     SUBDIR += guile-gnome-platform
+    SUBDIR += hyprland-qt-support
     SUBDIR += imgui
     SUBDIR += irrlicht
     SUBDIR += itk
@@ -76,11 +76,12 @@
     SUBDIR += kf6-ktextwidgets
     SUBDIR += kf6-kwidgetsaddons
     SUBDIR += kf6-kxmlgui
-    SUBDIR += kirigami-addons
-    SUBDIR += kirigami-addons-devel
+    SUBDIR += kirigami-addons-qt5
+    SUBDIR += kirigami-addons-qt6
     SUBDIR += kproperty
     SUBDIR += lesstif
     SUBDIR += libXaw
+    SUBDIR += libXaw3d
     SUBDIR += libXmu
     SUBDIR += libXt
     SUBDIR += libadwaita
@@ -167,7 +168,6 @@
     SUBDIR += pangolin
     SUBDIR += pangomm
     SUBDIR += pangox-compat
-    SUBDIR += plasma5-kdeplasma-addons
     SUBDIR += plasma6-kdeplasma-addons
     SUBDIR += plib
     SUBDIR += py-AnyQt
@@ -236,11 +236,10 @@
     SUBDIR += rubygem-uh
     SUBDIR += rubygem-vte3
     SUBDIR += rubygem-vte4
-    SUBDIR += scenefx
+    SUBDIR += scenefx02
     SUBDIR += scintilla
     SUBDIR += sdl2_pango
     SUBDIR += sdl_pango
-    SUBDIR += shared-desktop-ontologies
     SUBDIR += skinlf
     SUBDIR += soqt
     SUBDIR += swt
@@ -249,7 +248,6 @@
     SUBDIR += tix
     SUBDIR += tk-wrapper
     SUBDIR += tk86
-    SUBDIR += tk87
     SUBDIR += tk90
     SUBDIR += tkdnd
     SUBDIR += tkshape
@@ -260,9 +258,9 @@
     SUBDIR += viewklass
     SUBDIR += vte
     SUBDIR += vte3
-    SUBDIR += wlroots
     SUBDIR += wlroots015
     SUBDIR += wlroots017
+    SUBDIR += wlroots018
     SUBDIR += wmapp
     SUBDIR += wxgtk30
     SUBDIR += wxgtk32

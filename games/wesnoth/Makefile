@@ -1,11 +1,12 @@
 PORTNAME=	wesnoth
-PORTVERSION=	1.18.3
-PORTREVISION=	1
+PORTVERSION=	1.18.4
 PORTEPOCH=	1
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-${PORTVERSION:R}/${PORTNAME}-${PORTVERSION} \
 		http://files.wesnoth.org/ \
 		http://ports.toco-domains.de/
+
+#PATCH_SITES+=	https://github.com/wesnoth/wesnoth/commit/
 
 MAINTAINER=	fluffy@FreeBSD.org
 COMMENT=	Fantasy turn-based strategy game
@@ -121,10 +122,6 @@ NOTIFY_CMAKE_OFF=-DENABLE_NOTIFICATIONS=off
 SERVER_DESC=	Server
 SERVER_CMAKE_OFF=-DENABLE_SERVER=off
 TEST_CMAKE_ON=	-DENABLE_TESTS=on
-
-post-patch:
-	@${REINPLACE_CMD} -e "s,def = NULL,def = 0," \
-		${WRKSRC}/src/utils/config_filters.hpp
 
 #post-install:
 #	${FIND} ${STAGEDIR}${PREFIX}/man -type d -empty -delete

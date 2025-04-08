@@ -1,5 +1,5 @@
 PORTNAME=	sra-tools
-DISTVERSION=	3.1.1
+DISTVERSION=	3.2.1
 CATEGORIES=	biology java
 
 MAINTAINER=	jwb@FreeBSD.org
@@ -36,6 +36,8 @@ GH_TUPLE+=	ncbi:ncbi-vdb:${DISTVERSION}:vdb/ncbi-vdb
 
 CMAKE_ARGS+=	-DVDB_LIBDIR:STRING=${WRKSRC}/ncbi-vdb/build/lib
 
+PLIST_SUB=	PORTVERSION=${PORTVERSION}
+
 pre-configure:
 	# Reinplaces may follow static patches.  Run "make clean patch"
 	# before updating those patches so reinplaces do not get added to them.
@@ -53,12 +55,6 @@ pre-configure:
 post-stage:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*.${DISTVERSION}
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib64/*.${DISTVERSION}
-	${MV} ${STAGEDIR}${PREFIX}/share/examples ${STAGEDIR}${PREFIX}/share/examples-sratools
-	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	${MV} ${STAGEDIR}${PREFIX}/share/examples-sratools/* ${STAGEDIR}${EXAMPLESDIR}
-	${RMDIR} ${STAGEDIR}${PREFIX}/share/examples-sratools
-	${MV} ${STAGEDIR}${PREFIX}/share/examples-java ${STAGEDIR}${EXAMPLESDIR}/java
-	${MV} ${STAGEDIR}${PREFIX}/share/examples-python ${STAGEDIR}${EXAMPLESDIR}/python
 	${MV} ${STAGEDIR}${JAVASHAREDIR}doc/ngs-doc/script-dir/jquery-[0-9]*.min.js \
 		${STAGEDIR}${JAVASHAREDIR}doc/ngs-doc/script-dir/jquery.min.js
 

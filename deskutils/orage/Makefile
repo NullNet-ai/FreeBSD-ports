@@ -1,5 +1,5 @@
 PORTNAME=	orage
-PORTVERSION=	4.20.0
+PORTVERSION=	4.20.1
 CATEGORIES=	deskutils xfce
 MASTER_SITES=	XFCE/apps
 DIST_SUBDIR=	xfce4
@@ -16,7 +16,7 @@ LIB_DEPENDS=	libical.so:devel/libical \
 
 USES=		compiler:c++11-lang desktop-file-utils gettext gmake gnome \
 		libtool pkgconfig tar:bzip2 xfce xorg
-USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30
+USE_GNOME=	cairo gdkpixbuf glib20 gtk30
 USE_XFCE=	libmenu
 USE_XORG=	ice sm x11
 
@@ -25,14 +25,18 @@ INSTALL_TARGET=	install-strip
 
 PORTSCOUT=	limitw:1,even
 
-OPTIONS_DEFINE=		NLS NOTIFY
+OPTIONS_DEFINE=		NLS NOTIFY TRAY
 OPTIONS_DEFAULT=	NOTIFY
 OPTIONS_SUB=		yes
+
+TRAY_DESC=		Enable Tray Icon Support (incompatible with wayland)
 
 NLS_CONFIGURE_ENABLE=	nls
 NLS_USES=		gettext-runtime
 
 NOTIFY_LIB_DEPENDS=	libnotify.so:devel/libnotify
 NOTIFY_CONFIGURE_ENABLE=libnotify
+
+TRAY_CONFIGURE_ENABLE=	x11-tray-icon
 
 .include <bsd.port.mk>

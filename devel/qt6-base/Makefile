@@ -3,9 +3,6 @@ DISTVERSION=	${QT6_VERSION}
 CATEGORIES=	devel
 PKGNAMEPREFIX=	qt6-
 
-PATCH_SITES=	https://github.com/qt/qtbase/commit/
-PATCHFILES+=	df30953228f0e364e9a3915d97f522efd8e67489.patch:-p1 # Fix configure of sqldrivers
-
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Qt base (core, gui, widgets, network,...)
 
@@ -15,6 +12,7 @@ BUILD_DEPENDS=	xml:textproc/xmlstarlet \
 LIB_DEPENDS=	libatk-1.0.so:accessibility/at-spi2-core \
 		libatk-bridge-2.0.so:accessibility/at-spi2-core \
 		libatspi.so:accessibility/at-spi2-core \
+		libb2.so:devel/libb2 \
 		libbrotlidec.so:archivers/brotli \
 		libdbus-1.so:devel/dbus \
 		libdouble-conversion.so:devel/double-conversion \
@@ -40,14 +38,13 @@ LIB_DEPENDS=	libatk-1.0.so:accessibility/at-spi2-core \
 USES=		cmake compiler:c++17-lang gl gnome jpeg perl5 pkgconfig python \
 		qt-dist:6 shebangfix ssl
 USE_GL=		egl opengl
-USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 pango
+USE_GNOME=	cairo gdkpixbuf glib20 gtk30 pango
 USE_LDCONFIG=	${PREFIX}/${QT_LIBDIR_REL}
 USE_LOCALE=	C.UTF-8
 
 SHEBANG_FILES=	${WRKSRC}/libexec/qt-android-runner.py \
 		${WRKSRC}/mkspecs/features/uikit/device_destinations.sh \
 		${WRKSRC}/mkspecs/features/uikit/devices.py \
-		${WRKSRC}/mkspecs/features/data/mac/objc_namespace.sh \
 		${WRKSRC}/util/testrunner/qt-testrunner.py \
 		${WRKSRC}/util/testrunner/sanitizer-testrunner.py
 
@@ -103,15 +100,12 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|%%OPENSSLLIB%%|${OPENSSLLIB}|g' \
 		${WRKSRC}/src/plugins/tls/openssl/qsslsocket_openssl_symbols.cpp
 
-# TODO: do this cleaner -- somewhere cmake/qmake still creates empty directories
-# for the cmake files in INSTALL_PREFIX/lib/cmake
 post-install:
-	${RM} -vr ${STAGEDIR}${PREFIX}/${QT_LIBDIR_REL}/cmake
-	# Install symlinks for user-facing tools
-	${REINPLACE_CMD} -e "s#^#${STAGEDIR}#" -e "s# # ${STAGEDIR}#" \
-		${WRKDIR}/.build/user_facing_tool_links.txt
-	while read t; do \
-		${RLN} $$t; \
-	done <${WRKDIR}/.build/user_facing_tool_links.txt
+# Install symlinks for user-facing tools
+	while read line; do \
+		source="$$(${ECHO_CMD} $${line} | ${AWK} '{print $$1}')"; \
+		target="${STAGEDIR}${PREFIX}/$$(${ECHO_CMD} $${line} | ${AWK} '{print $$2}')"; \
+		${RLN} $${source} $${target}; \
+	done <${BUILD_WRKSRC}/user_facing_tool_links.txt
 
 .include <bsd.port.post.mk>

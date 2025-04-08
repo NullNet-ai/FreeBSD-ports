@@ -1,5 +1,6 @@
 PORTNAME=	telegram-desktop
-DISTVERSION=	5.10.3
+DISTVERSION=	5.13.1
+PORTREVISION=	1
 CATEGORIES=	net-im
 MASTER_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/releases/download/v${DISTVERSION}/
 DISTNAME=	tdesktop-${DISTVERSION}-full
@@ -32,6 +33,8 @@ LIB_DEPENDS=	libabsl_base.so:devel/abseil \
 		libdbus-1.so:devel/dbus \
 		libdispatch.so:devel/libdispatch \
 		libfmt.so:devel/libfmt \
+		libgeoclue-2.so:net/geoclue \
+		libgeocode-glib-2.so:net/geocode-glib2 \
 		libhunspell-1.7.so:textproc/hunspell \
 		liblz4.so:archivers/liblz4 \
 		libopenh264.so:multimedia/openh264 \
@@ -99,14 +102,6 @@ X11_LIB_DEPENDS=	libxcb-keysyms.so:x11/xcb-util-keysyms \
 # Telegram asks each custom build to have its own API ID and hash.
 TELEGRAM_API_HASH=	20a3432aab43f24bb4460fceac5ba38d
 TELEGRAM_API_ID=	601761
-
-.include <bsd.port.options.mk>
-
-.if ${OPSYS} == FreeBSD && defined(WITH_CCACHE_BUILD) && !defined(NO_CCACHE)
-CMAKE_ARGS+=	-DCMAKE_CC_COMPILER_LAUNCHER="${LOCALBASE}/bin/ccache" \
-		-DCMAKE_CPP_COMPILER_LAUNCHER="${LOCALBASE}/bin/ccache" \
-		-DCMAKE_CXX_COMPILER_LAUNCHER="${LOCALBASE}/bin/ccache"
-.endif
 
 post-extract:
 	# Some of the third-party components already built, and

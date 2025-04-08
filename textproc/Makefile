@@ -3,6 +3,7 @@
     SUBDIR += 2bsd-diff
     SUBDIR += CLDR
     SUBDIR += R-cran-DT
+    SUBDIR += R-cran-R.rsp
     SUBDIR += R-cran-R2HTML
     SUBDIR += R-cran-XML
     SUBDIR += R-cran-bibtex
@@ -15,6 +16,7 @@
     SUBDIR += R-cran-htmlTable
     SUBDIR += R-cran-htmltools
     SUBDIR += R-cran-hunspell
+    SUBDIR += R-cran-litedown
     SUBDIR += R-cran-markdown
     SUBDIR += R-cran-openxlsx
     SUBDIR += R-cran-pystr
@@ -73,6 +75,7 @@
     SUBDIR += az-aspell
     SUBDIR += bar
     SUBDIR += bat
+    SUBDIR += bat-extras
     SUBDIR += bbe
     SUBDIR += be-aspell
     SUBDIR += belr
@@ -170,7 +173,6 @@
     SUBDIR += docbookrx
     SUBDIR += docproj
     SUBDIR += docproj-fonts-cjk
-    SUBDIR += docproj-legacy
     SUBDIR += dom4j
     SUBDIR += domc
     SUBDIR += dsssl-docbook-modular
@@ -470,7 +472,6 @@
     SUBDIR += lucene5
     SUBDIR += luceneplusplus
     SUBDIR += lv-aspell
-    SUBDIR += m17n-im-config
     SUBDIR += makefaq
     SUBDIR += makepatch
     SUBDIR += man2html
@@ -486,6 +487,7 @@
     SUBDIR += mdbook
     SUBDIR += mdbook-linkcheck
     SUBDIR += mdbook-mermaid
+    SUBDIR += mdq
     SUBDIR += meilisearch
     SUBDIR += meld
     SUBDIR += metauml
@@ -537,9 +539,11 @@
     SUBDIR += opensearch-dashboards
     SUBDIR += opensearch-dashboards210
     SUBDIR += opensearch-dashboards213
+    SUBDIR += opensearch-dashboards216
     SUBDIR += opensearch13
     SUBDIR += opensearch210
     SUBDIR += opensearch213
+    SUBDIR += opensearch216
     SUBDIR += opensp
     SUBDIR += openvanilla-framework
     SUBDIR += or-aspell
@@ -611,7 +615,6 @@
     SUBDIR += p5-HTML-SuperForm
     SUBDIR += p5-HTML-T5
     SUBDIR += p5-HTML-TagFilter
-    SUBDIR += p5-HTML-Tidy
     SUBDIR += p5-HTML-Tidy5
     SUBDIR += p5-HTML-Tiny
     SUBDIR += p5-HTML-Truncate
@@ -702,7 +705,6 @@
     SUBDIR += p5-PDF-Reuse
     SUBDIR += p5-PDF-Table
     SUBDIR += p5-PDF-Tiny
-    SUBDIR += p5-PDF-WebKit
     SUBDIR += p5-PDF-Writer
     SUBDIR += p5-POD2-Base
     SUBDIR += p5-POE-Filter-XML
@@ -1335,6 +1337,7 @@
     SUBDIR += py-asonic
     SUBDIR += py-autopep8
     SUBDIR += py-awesome-slugify
+    SUBDIR += py-backrefs
     SUBDIR += py-bibtexparser
     SUBDIR += py-bracex
     SUBDIR += py-cchardet
@@ -1343,7 +1346,6 @@
     SUBDIR += py-charset-normalizer
     SUBDIR += py-chevron
     SUBDIR += py-citeproc-py
-    SUBDIR += py-citeproc-py-styles
     SUBDIR += py-cjkwrap
     SUBDIR += py-cloud_sptheme
     SUBDIR += py-cmarkgfm
@@ -1359,8 +1361,8 @@
     SUBDIR += py-dict2xml
     SUBDIR += py-diff-match-patch
     SUBDIR += py-docrepr
-    SUBDIR += py-docstring-parser
     SUBDIR += py-docstring-to-markdown
+    SUBDIR += py-docstring_parser
     SUBDIR += py-docutils
     SUBDIR += py-docx-generator
     SUBDIR += py-docx2txt
@@ -1401,6 +1403,7 @@
     SUBDIR += py-gensim
     SUBDIR += py-gi-docgen
     SUBDIR += py-grapheme
+    SUBDIR += py-graphemeu
     SUBDIR += py-grep-ast
     SUBDIR += py-griffe
     SUBDIR += py-grimoire-elk
@@ -1541,7 +1544,6 @@
     SUBDIR += py-pygments
     SUBDIR += py-pygtail
     SUBDIR += py-pyhamcrest
-    SUBDIR += py-pyjade
     SUBDIR += py-pykwalify
     SUBDIR += py-pylons-sphinx-themes
     SUBDIR += py-pyls-spyder
@@ -1570,7 +1572,6 @@
     SUBDIR += py-python-xmp-toolkit
     SUBDIR += py-pytidylib
     SUBDIR += py-pytkdocs
-    SUBDIR += py-pytoml
     SUBDIR += py-pytomlpp
     SUBDIR += py-pyx12
     SUBDIR += py-pyxlsb2
@@ -1590,6 +1591,7 @@
     SUBDIR += py-rich-cli
     SUBDIR += py-rich-rst
     SUBDIR += py-rnc2rng
+    SUBDIR += py-roman-numerals-py
     SUBDIR += py-rst2ansi
     SUBDIR += py-rst2html5
     SUBDIR += py-scour
@@ -1672,6 +1674,7 @@
     SUBDIR += py-textract
     SUBDIR += py-texttable
     SUBDIR += py-textual
+    SUBDIR += py-textual-autocomplete
     SUBDIR += py-textwrap3
     SUBDIR += py-three-merge
     SUBDIR += py-tika-client
@@ -1685,8 +1688,6 @@
     SUBDIR += py-tomlkit
     SUBDIR += py-toronado
     SUBDIR += py-towncrier
-    SUBDIR += py-towncrier23
-    SUBDIR += py-trans
     SUBDIR += py-translationstring
     SUBDIR += py-transpopy
     SUBDIR += py-ttp
@@ -1707,7 +1708,6 @@
     SUBDIR += py-wordcloud
     SUBDIR += py-wordnet
     SUBDIR += py-wordninja
-    SUBDIR += py-wstools
     SUBDIR += py-wtf-peewee
     SUBDIR += py-wtforms
     SUBDIR += py-xhtml2pdf
@@ -1776,6 +1776,7 @@
     SUBDIR += rubygem-actionpack-xml_parser-rails5
     SUBDIR += rubygem-actionpack-xml_parser-rails52
     SUBDIR += rubygem-actionpack-xml_parser-rails61
+    SUBDIR += rubygem-actionpack-xml_parser-rails72
     SUBDIR += rubygem-actiontext60
     SUBDIR += rubygem-actiontext61
     SUBDIR += rubygem-actiontext70
@@ -1801,6 +1802,7 @@
     SUBDIR += rubygem-case_transform61
     SUBDIR += rubygem-character_set
     SUBDIR += rubygem-charlock_holmes
+    SUBDIR += rubygem-chef-gyoku
     SUBDIR += rubygem-chewy
     SUBDIR += rubygem-citrus
     SUBDIR += rubygem-cld3
@@ -1815,7 +1817,7 @@
     SUBDIR += rubygem-cssmin
     SUBDIR += rubygem-cucumber-gherkin
     SUBDIR += rubygem-cucumber-gherkin27
-    SUBDIR += rubygem-cucumber-gherkin29
+    SUBDIR += rubygem-cucumber-gherkin30
     SUBDIR += rubygem-cucumber-html-formatter
     SUBDIR += rubygem-dartsass
     SUBDIR += rubygem-diff-lcs
@@ -1903,8 +1905,8 @@
     SUBDIR += rubygem-multi_xml
     SUBDIR += rubygem-nokogiri
     SUBDIR += rubygem-nokogiri-diff
-    SUBDIR += rubygem-nokogumbo
     SUBDIR += rubygem-octopress-escape-code
+    SUBDIR += rubygem-opensearch-ruby-gitlab
     SUBDIR += rubygem-opml
     SUBDIR += rubygem-org-ruby
     SUBDIR += rubygem-ox
@@ -1940,7 +1942,6 @@
     SUBDIR += rubygem-representable
     SUBDIR += rubygem-reverse_markdown
     SUBDIR += rubygem-rexml
-    SUBDIR += rubygem-rexml-gitlab
     SUBDIR += rubygem-ri_cal
     SUBDIR += rubygem-rly
     SUBDIR += rubygem-rmmseg-cpp
@@ -2084,6 +2085,7 @@
     SUBDIR += te-aspell
     SUBDIR += te-hunspell
     SUBDIR += teckit
+    SUBDIR += television
     SUBDIR += termshot
     SUBDIR += tet-aspell
     SUBDIR += texi2db
@@ -2094,7 +2096,6 @@
     SUBDIR += textql
     SUBDIR += the_silver_searcher
     SUBDIR += ti-hunspell
-    SUBDIR += tidyp
     SUBDIR += tinyxml
     SUBDIR += tinyxml2
     SUBDIR += tk-aspell
@@ -2108,6 +2109,7 @@
     SUBDIR += tokay
     SUBDIR += tokyodystopia
     SUBDIR += toml-f
+    SUBDIR += tomlq
     SUBDIR += tr-aspell
     SUBDIR += trang
     SUBDIR += translate-shell
@@ -2129,14 +2131,16 @@
     SUBDIR += ugrep
     SUBDIR += uim
     SUBDIR += uim-el
-    SUBDIR += uim-gtk
+    SUBDIR += uim-gtk2
     SUBDIR += uim-gtk3
     SUBDIR += uim-m17nlib
     SUBDIR += uim-qt5
+    SUBDIR += uim-qt6
     SUBDIR += uml2svg
     SUBDIR += uncle
     SUBDIR += uncrustify
     SUBDIR += uni
+    SUBDIR += uni-algo
     SUBDIR += uni2ascii
     SUBDIR += unoconv
     SUBDIR += unroff
@@ -2218,7 +2222,6 @@
     SUBDIR += ytt
     SUBDIR += zed
     SUBDIR += zenxml
-    SUBDIR += zorba
     SUBDIR += zq
     SUBDIR += zu-aspell
     SUBDIR += zu-hunspell

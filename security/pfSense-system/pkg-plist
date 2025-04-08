@@ -120,7 +120,6 @@
 @(,,755) /etc/rc.dumpon
 @(,,755) /etc/rc.dyndns.update
 @(,,755) /etc/rc.ecl
-@(,,755) /etc/rc.embedded
 @(,,755) /etc/rc.expireaccounts
 @(,,755) /etc/rc.filter_configure
 @(,,755) /etc/rc.filter_configure_sync
@@ -188,6 +187,10 @@ bin/dhcpd_gather_stats.php
 bin/iftop_parse.awk
 @(,,755) bin/iftop_parser.sh
 @(,,755) bin/ipsec_keepalive.php
+@(,,755) bin/kea_run4
+@(,,755) bin/kea_run6
+@(,,755) bin/kea2fib6
+@(,,755) bin/kea2unbound
 @(,,755) bin/mail.php
 @(,,755) bin/notify_monitor.php
 @(,,755) bin/parser_dhcpv6_leases_tester.php
@@ -254,6 +257,7 @@ sbin/openvpn_connect_async.php
 @(,,755) sbin/ppp-linkup
 @(,,755) sbin/ppp-log-uptime.sh
 @(,,755) sbin/ppp-uptime.sh
+@(,,755) sbin/pppoe-handler
 sbin/prefixes.php
 @(,,755) sbin/read_global_var
 @(,,755) sbin/read_xml_tag.sh
@@ -378,6 +382,7 @@ share/locale/zh_Hant_TW/LC_MESSAGES/pfSense.mo
 share/locale/zh_Hant_TW/LC_MESSAGES/pfSense.po
 share/locale/zh_TW/LC_MESSAGES/pfSense.mo
 share/locale/zh_TW/LC_MESSAGES/pfSense.po
+share/pfSense/radius/dictionary.pfsense
 %%DATADIR%%/ascii-art/pfsense-logo-small.txt
 %%DATADIR%%/fix_for_SA-19-10.ufs
 %%DATADIR%%/iso_3166-1_list_en.xml
@@ -860,8 +865,8 @@ www/wizards/traffic_shaper_wizard_dedicated.xml
 www/wizards/traffic_shaper_wizard_multi_all.inc
 www/wizards/traffic_shaper_wizard_multi_all.xml
 www/xmlrpc.php
-@dir /cf
 @dir /cf/conf
+@dir /cf
 @dir /etc/inc/priv
 @dir /etc/inc
 @dir /etc/phpshellsessions

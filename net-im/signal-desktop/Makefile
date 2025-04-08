@@ -1,6 +1,6 @@
 PORTNAME=	signal-desktop
 DISTVERSIONPREFIX=	v
-DISTVERSION=	7.36.1
+DISTVERSION=	7.48.0
 CATEGORIES=	net-im
 MASTER_SITES=	LOCAL/mikael/signal-desktop/:npm \
 		https://build-artifacts.signal.org/desktop/:sqlcipher
@@ -18,16 +18,11 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 ONLY_FOR_ARCHS=	aarch64 amd64
 
-EXTRACT_DEPENDS=jq:textproc/jq \
-		npm:www/npm-node20
-BUILD_DEPENDS=	${LOCALBASE}/lib/libcrypto.a:security/openssl \
-		${LOCALBASE}/lib/libringrtc.so:multimedia/ringrtc \
+BUILD_DEPENDS=	${LOCALBASE}/lib/libringrtc.so:multimedia/ringrtc \
 		${LOCALBASE}/lib/libsignal_node.so:net-im/libsignal-node \
 		${LOCALBASE}/lib/libsignal_sqlcipher_extension.a:devel/signal-sqlcipher-extension \
 		app-builder>0:devel/app-builder \
 		electron${ELECTRON_VER_MAJOR}:devel/electron${ELECTRON_VER_MAJOR} \
-		esbuild:devel/esbuild \
-		jq:textproc/jq \
 		npm:www/npm-node20
 LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 		libatk-bridge-2.0.so:accessibility/at-spi2-core \
@@ -51,18 +46,19 @@ LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 		libpci.so:devel/libpci \
 		libpng16.so:graphics/png \
 		libsnappy.so:archivers/snappy \
+		libsndio.so:audio/sndio \
 		libwayland-client.so:graphics/wayland \
 		libwebp.so:graphics/webp \
 		libxkbcommon.so:x11/libxkbcommon \
 		libxshmfence.so:x11/libxshmfence
 
-USES=		desktop-file-utils gettext-runtime gl gnome jpeg xorg
+USES=		desktop-file-utils gettext-runtime gl gnome jpeg pkgconfig ssl xorg
 USE_GITHUB=	yes
 GH_ACCOUNT=	signalapp
 GH_PROJECT=	Signal-Desktop
 
 USE_GL=		gbm gl
-USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk30 libxml2 libxslt pango
+USE_GNOME=	atk cairo gdkpixbuf glib20 gtk30 libxml2 libxslt pango
 USE_XORG=	x11 xcb xcomposite xdamage xext xfixes xi xrandr xrender xtst
 
 PACKAGE_ENV=	SIGNAL_ENV=production \
@@ -82,22 +78,17 @@ MAKE_ENV+=	ELECTRON_SKIP_BINARY_DOWNLOAD=1
 # This is a workaround to avoid filesystem violations during poudriere build
 MAKE_ENV+=	PYTHONDONTWRITEBYTECODE=1
 
-MAKE_ENV+=	ESBUILD_BINARY_PATH=${LOCALBASE}/bin/esbuild
-
 _BUILD_DATE=	$$(date +'%s')
 
-ELECTRON_VER_MAJOR=	32
-ESBUILD_VERSION=	0.24.0
+ELECTRON_VER_MAJOR=	34
 
-SQLCIPHER=	sqlcipher-v2-4.6.1-signal-patch2--0.2.0-b0dbebe5b2d81879984bfa2318ba364fb4d436669ddc1668d2406eaaaee40b7e
+SQLCIPHER=	sqlcipher-v2-4.6.1-signal-patch2--0.2.1-asm2-6253f886c40e49bf892d5cdc92b2eb200b12cd8d80c48ce5b05967cfd01ee8c7
 
 NODE_ARCH=	${ARCH:S/aarch64/arm64/:S/amd64/x64/}
 APP_OUT_DIR=	linux-${ARCH:S/aarch64/arm64-/:S/amd64//}unpacked
 
 PLIST_SUB=	NODE_ARCH=${NODE_ARCH} \
 		SHARP_ARCH=${ARCH:S/aarch64/arm64v8/:S/amd64/x64/}
-
-NPM_TIMESTAMP=	1661146515
 
 .include <bsd.port.pre.mk>
 
@@ -107,31 +98,25 @@ PLIST_SUB+=	NOT_AARCH64="@comment "
 PLIST_SUB+=	NOT_AARCH64=""
 .endif
 
-post-extract:
-	# Update node engine
-	${PREFIX}/bin/jq '.engines.node = ""' ${WRKSRC}/package.json > ${WRKSRC}/package.json.tmp.1
-	${PREFIX}/bin/jq '.devDependencies.esbuild = "${ESBUILD_VERSION}"' ${WRKSRC}/package.json.tmp.1 > ${WRKSRC}/package.json.tmp.2
-	${MV} ${WRKSRC}/package.json.tmp.2 ${WRKSRC}/package.json
-	# remove mock-server as it doesn't build and is useless
-	${PREFIX}/bin/jq 'del(.devDependencies."@signalapp/mock-server")' ${WRKSRC}/package.json > ${WRKSRC}/package.json.tmp
-	${MV} ${WRKSRC}/package.json.tmp ${WRKSRC}/package.json
-
-#	# for online build
-#	cd ${WRKSRC} && \
-#		${SETENV} ${MAKE_ENV} npm install --ignore-optional --ignore-scripts || ${TRUE}
-
-	# for offline build
-	cd ${WRKSRC} && \
-		${SETENV} ${MAKE_ENV} npm install --ignore-optional --ignore-scripts --offline || ${TRUE}
-
 do-build:
-# electron-builder is stupid and tries to open ${LOCALBASE}/share/electron32/electron with WRITE priv
-# copy ${LOCALBASE}/share/electron32 in WRKDIR
+# electron-builder is stupid and tries to open ${LOCALBASE}/share/electron34/electron with WRITE priv
+# copy ${LOCALBASE}/share/electron34 in WRKDIR
 # it's needed for the do-install phase, it's here because of this issue
 # https://github.com/MikaelUrankar/signal-desktop/issues/6 (I don't know why it fails though)
 	@${RM} -r ${WRKDIR}/electron${ELECTRON_VER_MAJOR}
 	@${CP} -pR ${LOCALBASE}/share/electron${ELECTRON_VER_MAJOR} ${WRKDIR}/electron${ELECTRON_VER_MAJOR}
 	${CHMOD} -R a+w ${WRKDIR}/electron${ELECTRON_VER_MAJOR}
+
+	${ECHO_CMD} offline=true >> ${WRKSRC}/.npmrc
+	${ECHO_CMD} store-dir=true >> ${WRKSRC}/.pnpm-store
+
+	${CP} ${FILESDIR}/package-lock.json ${WRKSRC}
+	${CP} ${FILESDIR}/pnpm-lock.yaml ${WRKSRC}
+
+	cd ${WRKSRC} && \
+		${SETENV} ${MAKE_ENV} npm install --ignore-scripts pnpm@10.6.3
+	cd ${WRKSRC} && \
+		${SETENV} ${MAKE_ENV} npm_config_nodedir=${LOCALBASE}/share/electron${ELECTRON_VER_MAJOR}/node_headers pnpm install --ignore-scripts || ${TRUE}
 
 	# Install libsignal_node.so and libringrtc.so binaries in node_modules
 	${MKDIR} ${WRKSRC}/node_modules/@signalapp/libsignal-client/prebuilds/freebsd-${NODE_ARCH} \
@@ -144,23 +129,10 @@ do-build:
 	${CP} ${DISTDIR}/${SQLCIPHER}.tar.gz \
 		${WRKSRC}/node_modules/@signalapp/better-sqlite3/deps/sqlcipher.tar.gz
 
-	# patch-package can't patch sqlite3 on aarch64, patch the yarn cache instead
-	cd ${WRKSRC} && ${PATCH} -s -N -i ${FILESDIR}/sqlite3.gyp.diff
-
-	@${RM} -r ${WRKSRC}/node_modules/fs-xattr
-
-#	# online build
-#	cd ${WRKSRC} && \
-#		${SETENV} ${MAKE_ENV} npm_config_nodedir=${LOCALBASE}/share/electron${ELECTRON_VER_MAJOR}/node_headers npm install --ignore-optional
-#	cd ${WRKSRC} && \
-#		${SETENV} ${MAKE_ENV} npm run generate
-
-	# offline build
-	${ECHO_CMD} offline=true >> ${WRKSRC}/.npmrc
 	cd ${WRKSRC} && \
-		${SETENV} ${MAKE_ENV} npm_config_nodedir=${LOCALBASE}/share/electron${ELECTRON_VER_MAJOR}/node_headers npm install --ignore-optional --offline
+		${SETENV} ${MAKE_ENV} npm_config_nodedir=${LOCALBASE}/share/electron${ELECTRON_VER_MAJOR}/node_headers pnpm install
 	cd ${WRKSRC} && \
-		${SETENV} ${MAKE_ENV} npm run generate --offline
+		${SETENV} ${MAKE_ENV} pnpm run generate
 
 do-install:
 # taken from https://github.com/tagattie/FreeBSD-Electron/blob/master/Mk/Uses/electron.mk#L387
@@ -168,7 +140,6 @@ do-install:
 	cd ${WRKSRC} && \
 		${SETENV} ${MAKE_ENV} ${PACKAGE_ENV} npm run build:electron -- \
 			--linux --dir --config.npmRebuild=false \
-			--config.electronVersion=${ELECTRON_VER} \
 			--config.electronDist=${WRKDIR}/electron${ELECTRON_VER_MAJOR}
 
 	${MKDIR} ${STAGEDIR}${DATADIR}
@@ -189,15 +160,13 @@ do-install:
 	${RM} -r ${STAGEDIR}${DATADIR}/resources/completions
 	${RLN} ${STAGEDIR}${DATADIR}/signal-desktop ${STAGEDIR}${PREFIX}/bin
 
-# This seems to be only required for Windows:
-	${RM} -r ${STAGEDIR}${DATADIR}/resources/app.asar.unpacked/node_modules/@nodert-win10-rs4
-	${RM} -r ${STAGEDIR}${DATADIR}/resources/app.asar.unpacked/node_modules/@signalapp/windows-dummy-keystroke
+	${RM} -r ${STAGEDIR}${DATADIR}/resources/app.asar.unpacked/node_modules/pnpm
 
 create-caches-tarball:
 	# do some cleanup first
 	${RM} -r ${WRKDIR}/.npm/_logs ${WRKDIR}/.npm/_update-notifier-last-checked
 
 	cd ${WRKDIR} && \
-		${TAR} czf signal-desktop-${DISTVERSION}-npm-cache.tar.gz .npm
+		${TAR} czf signal-desktop-${DISTVERSION}-npm-cache.tar.gz .npm pnpm
 
 .include <bsd.port.post.mk>

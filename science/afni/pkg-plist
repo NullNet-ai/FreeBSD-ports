@@ -500,6 +500,7 @@ bin/adjunct_apqc_tsnr_general
 bin/adjunct_atlas_points_to_labeltable
 bin/adjunct_aw_tableize_roi_info.py
 bin/adjunct_calc_mont_dims.py
+bin/adjunct_cbar_out
 bin/adjunct_combine_str.py
 bin/adjunct_deob_around_origin
 bin/adjunct_is_label.py
@@ -546,7 +547,9 @@ bin/build_afni.py
 bin/byteorder
 bin/cat_matvec
 bin/ccalc
+bin/chauffeur_map_rois
 bin/cifti_tool
+bin/colorbar_tool.py
 bin/column_cat
 bin/compute_ROI_stats.tcsh
 bin/convert_cdiflist_to_grads.py
@@ -667,6 +670,7 @@ bin/slow_surf_clustsim.py
 bin/smooth.R
 bin/sswarper2
 bin/stimband
+bin/stouffer
 bin/strblast
 bin/suma
 bin/suma_change_spec
@@ -854,6 +858,7 @@ lib/afni/plug_zeropad.so
 %%PYTHON_SITELIBDIR%%/afnipy/lib_apqc_tcsh.py
 %%PYTHON_SITELIBDIR%%/afnipy/lib_b0_corr.py
 %%PYTHON_SITELIBDIR%%/afnipy/lib_cbar_pbar.py
+%%PYTHON_SITELIBDIR%%/afnipy/lib_cbar_tool.py
 %%PYTHON_SITELIBDIR%%/afnipy/lib_cdiflist.py
 %%PYTHON_SITELIBDIR%%/afnipy/lib_csv.py
 %%PYTHON_SITELIBDIR%%/afnipy/lib_decay_timing.py

@@ -1,6 +1,5 @@
 PORTNAME=	javaservicewrapper
-PORTVERSION=	3.5.53
-PORTREVISION=	1
+PORTVERSION=	3.5.60
 CATEGORIES=	sysutils java
 MASTER_SITES=	https://wrapper.tanukisoftware.com/download/${PORTVERSION}/
 DISTNAME=	wrapper_${PORTVERSION}_src
@@ -12,7 +11,7 @@ WWW=		https://wrapper.tanukisoftware.org/
 LICENSE=	GPLv2 GPLv3
 LICENSE_COMB=	dual
 
-ONLY_FOR_ARCHS=	aarch64 amd64 armv6 armv7 i386 powerpc64 powerpc64le
+ONLY_FOR_ARCHS=	aarch64 amd64 armv6 armv7 i386 powerpc powerpc64 powerpc64le
 
 USES=		gmake iconv java:ant,run
 
@@ -54,6 +53,8 @@ post-patch:
 		${WRKSRC}/src/c/Makefile-freebsd-ppcbe-64.gmake
 	@${CP} ${WRKSRC}/src/c/Makefile-freebsd-x86-64.gmake \
 		${WRKSRC}/src/c/Makefile-freebsd-ppcle-64.gmake
+	@${CP} ${WRKSRC}/src/c/Makefile-freebsd-x86-64.gmake \
+		${WRKSRC}/src/c/Makefile-freebsd-ppcbe-32.gmake
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}

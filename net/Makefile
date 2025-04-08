@@ -10,10 +10,10 @@
     SUBDIR += addrwatch
     SUBDIR += afpfs-ng
     SUBDIR += aget
+    SUBDIR += akhq
     SUBDIR += akonadi-calendar
     SUBDIR += akonadi-contacts
     SUBDIR += akonadi-mime
-    SUBDIR += akonadi-notes
     SUBDIR += akonadi-search
     SUBDIR += alligator
     SUBDIR += aluminum
@@ -35,6 +35,7 @@
     SUBDIR += asterisk-g72x
     SUBDIR += asterisk18
     SUBDIR += asterisk20
+    SUBDIR += asterisk22
     SUBDIR += astron
     SUBDIR += avahi
     SUBDIR += avahi-app
@@ -82,7 +83,6 @@
     SUBDIR += chrony-lite
     SUBDIR += citrix_ica
     SUBDIR += cjdns
-    SUBDIR += clash
     SUBDIR += cloud-init
     SUBDIR += cloud-init-devel
     SUBDIR += cloudflared
@@ -132,7 +132,6 @@
     SUBDIR += dpdk-22.11
     SUBDIR += dpinger
     SUBDIR += drawterm
-    SUBDIR += drive
     SUBDIR += dropbox-api-command
     SUBDIR += dropbox-uploader
     SUBDIR += dshell
@@ -183,6 +182,7 @@
     SUBDIR += fsplib
     SUBDIR += gamenetworkingsockets
     SUBDIR += gdrive
+    SUBDIR += gemget
     SUBDIR += gemserv
     SUBDIR += geoclue
     SUBDIR += geocode-glib
@@ -201,7 +201,6 @@
     SUBDIR += gnome-connections
     SUBDIR += gnome-nettool
     SUBDIR += gnome-online-accounts
-    SUBDIR += gnome-online-miners
     SUBDIR += gnu-radius
     SUBDIR += go-bapu
     SUBDIR += go-cs
@@ -266,6 +265,7 @@
     SUBDIR += httpry
     SUBDIR += icmpinfo
     SUBDIR += icpld
+    SUBDIR += if_pppoe-kmod
     SUBDIR += ifdepd
     SUBDIR += iffinder
     SUBDIR += ifstat
@@ -318,6 +318,7 @@
     SUBDIR += kdenetwork
     SUBDIR += kdenetwork-filesharing
     SUBDIR += kea
+    SUBDIR += kea-devel
     SUBDIR += keama
     SUBDIR += keycloak
     SUBDIR += kf5-kcalendarcore
@@ -375,6 +376,7 @@
     SUBDIR += libbgpdump
     SUBDIR += libcapn
     SUBDIR += libcharon
+    SUBDIR += libcloudproviders
     SUBDIR += libcmis
     SUBDIR += libcoap
     SUBDIR += libdaq
@@ -397,7 +399,6 @@
     SUBDIR += libmateweather
     SUBDIR += libmaxminddb
     SUBDIR += libmdf
-    SUBDIR += libmediawiki
     SUBDIR += libnatpmp
     SUBDIR += libndp
     SUBDIR += libnet
@@ -418,13 +419,6 @@
     SUBDIR += libpcapnav
     SUBDIR += libpfctl
     SUBDIR += libproxy
-    SUBDIR += libproxy-duktape
-    SUBDIR += libproxy-gnome3
-    SUBDIR += libproxy-kde
-    SUBDIR += libproxy-pacrunner
-    SUBDIR += libproxy-perl
-    SUBDIR += libproxy-python
-    SUBDIR += libproxy-webkit3
     SUBDIR += librdkafka
     SUBDIR += librespeed-cli
     SUBDIR += librespeed-go
@@ -455,6 +449,8 @@
     SUBDIR += linux-rl9-avahi-libs
     SUBDIR += linux-rl9-libproxy
     SUBDIR += linux-rl9-openldap
+    SUBDIR += linux-rl9-sdl2_net
+    SUBDIR += linux-rl9-sdl_net
     SUBDIR += linux-rl9-tcp_wrappers-libs
     SUBDIR += liveMedia
     SUBDIR += lla
@@ -480,6 +476,8 @@
     SUBDIR += micro_inetd
     SUBDIR += micro_proxy
     SUBDIR += microsocks
+    SUBDIR += mihomo
+    SUBDIR += mimetreeparser
     SUBDIR += minidlna
     SUBDIR += minissdpd
     SUBDIR += miniupnpc
@@ -502,6 +500,7 @@
     SUBDIR += mrouted
     SUBDIR += mrtparse
     SUBDIR += msend
+    SUBDIR += msgraph
     SUBDIR += msoak
     SUBDIR += mtr
     SUBDIR += multicat
@@ -526,6 +525,7 @@
     SUBDIR += nemesis
     SUBDIR += net6
     SUBDIR += netatalk3
+    SUBDIR += netatalk4
     SUBDIR += netcat
     SUBDIR += netdiscover
     SUBDIR += netembryo
@@ -553,7 +553,6 @@
     SUBDIR += nss-pam-ldapd
     SUBDIR += nss-pam-ldapd-sasl
     SUBDIR += nss_ldap
-    SUBDIR += nsscache
     SUBDIR += ntimed
     SUBDIR += ntopng
     SUBDIR += ntp
@@ -591,7 +590,6 @@
     SUBDIR += openpgm
     SUBDIR += openradius
     SUBDIR += openrsync
-    SUBDIR += opensips31
     SUBDIR += openslp
     SUBDIR += openvswitch
     SUBDIR += ortp
@@ -893,6 +891,7 @@
     SUBDIR += p5-Socket-Class
     SUBDIR += p5-Socket-GetAddrInfo
     SUBDIR += p5-Socket-Multicast6
+    SUBDIR += p5-Socket-Netlink
     SUBDIR += p5-Socket6
     SUBDIR += p5-Socks
     SUBDIR += p5-Sort-Key-IPv4
@@ -1059,7 +1058,6 @@
     SUBDIR += py-dpkt
     SUBDIR += py-duet
     SUBDIR += py-dugong
-    SUBDIR += py-ec2-cli-tools
     SUBDIR += py-ephemeral-port-reserve
     SUBDIR += py-err-backend-discord
     SUBDIR += py-err-backend-mattermost
@@ -1177,7 +1175,6 @@
     SUBDIR += py-sshuttle
     SUBDIR += py-stomp.py
     SUBDIR += py-suds
-    SUBDIR += py-tacacs_plus
     SUBDIR += py-terminado
     SUBDIR += py-tiny-proxy
     SUBDIR += py-tofu
@@ -1209,6 +1206,7 @@
     SUBDIR += qt5-network
     SUBDIR += qt5-networkauth
     SUBDIR += qt6-coap
+    SUBDIR += qt6-mqtt
     SUBDIR += qt6-networkauth
     SUBDIR += quagga
     SUBDIR += quiche
@@ -1216,6 +1214,7 @@
     SUBDIR += rabbiteer
     SUBDIR += rabbitmq
     SUBDIR += rabbitmq-c
+    SUBDIR += rabbitmqadmin
     SUBDIR += radcli
     SUBDIR += raddump
     SUBDIR += radiator
@@ -1369,6 +1368,7 @@
     SUBDIR += rubygem-google-cloud-trace-v2
     SUBDIR += rubygem-grpc
     SUBDIR += rubygem-grpc-tools
+    SUBDIR += rubygem-grpc_reflection
     SUBDIR += rubygem-hangouts-chat
     SUBDIR += rubygem-http-parser
     SUBDIR += rubygem-http_parser.rb
@@ -1469,6 +1469,7 @@
     SUBDIR += rubygem-twitter4r
     SUBDIR += rubygem-u2f
     SUBDIR += rubygem-uri
+    SUBDIR += rubygem-uri-gitlab
     SUBDIR += rubygem-uri-redis
     SUBDIR += rubygem-uri_template
     SUBDIR += rubygem-whois
@@ -1483,6 +1484,7 @@
     SUBDIR += sakisafecli
     SUBDIR += samba416
     SUBDIR += samba419
+    SUBDIR += samba420
     SUBDIR += samplicator
     SUBDIR += savvycan
     SUBDIR += sbm
@@ -1657,6 +1659,7 @@
     SUBDIR += waypipe
     SUBDIR += wayvnc
     SUBDIR += webalizer-geodb
+    SUBDIR += wgcf
     SUBDIR += whois
     SUBDIR += widentd
     SUBDIR += wifi-firmware-ath10k-kmod
@@ -1665,6 +1668,7 @@
     SUBDIR += wifi-firmware-iwlwifi-kmod
     SUBDIR += wifi-firmware-kmod
     SUBDIR += wifi-firmware-mt76-kmod
+    SUBDIR += wifi-firmware-mt7601u-kmod
     SUBDIR += wifi-firmware-rtw88-kmod
     SUBDIR += wifi-firmware-rtw89-kmod
     SUBDIR += wifibox

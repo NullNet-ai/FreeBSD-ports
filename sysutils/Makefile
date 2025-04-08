@@ -99,12 +99,6 @@
     SUBDIR += bareos-client
     SUBDIR += bareos-server
     SUBDIR += bareos-traymonitor
-    SUBDIR += bareos20-client
-    SUBDIR += bareos20-server
-    SUBDIR += bareos20-traymonitor
-    SUBDIR += bareos21-client
-    SUBDIR += bareos21-server
-    SUBDIR += bareos21-traymonitor
     SUBDIR += bareos22-client
     SUBDIR += bareos22-server
     SUBDIR += bareos22-traymonitor
@@ -148,6 +142,7 @@
     SUBDIR += bsdhwmon
     SUBDIR += bsdinfo
     SUBDIR += bsdisks
+    SUBDIR += bsdsensors
     SUBDIR += bsdstats
     SUBDIR += bstack
     SUBDIR += btop
@@ -241,6 +236,7 @@
     SUBDIR += coreos-ct
     SUBDIR += coreutils
     SUBDIR += cpdup
+    SUBDIR += cpdup-FreeBSD
     SUBDIR += cpu-microcode
     SUBDIR += cpu-microcode-amd
     SUBDIR += cpu-microcode-intel
@@ -270,6 +266,7 @@
     SUBDIR += daggy
     SUBDIR += damager
     SUBDIR += dar
+    SUBDIR += data-prepper
     SUBDIR += dateutils
     SUBDIR += dc3dd
     SUBDIR += dcfldd
@@ -282,6 +279,7 @@
     SUBDIR += debootstrap
     SUBDIR += deltarpm
     SUBDIR += deltup
+    SUBDIR += deskflow
     SUBDIR += desktop-installer
     SUBDIR += detox
     SUBDIR += devctl-jail-kmod
@@ -407,7 +405,6 @@
     SUBDIR += flog
     SUBDIR += flowgger
     SUBDIR += fluent-bit
-    SUBDIR += fluxengine
     SUBDIR += fonteditfs
     SUBDIR += foremost
     SUBDIR += fortunelock
@@ -591,6 +588,8 @@
     SUBDIR += kiconvtool
     SUBDIR += kldfind
     SUBDIR += kldpatch
+    SUBDIR += kleene-cli
+    SUBDIR += kleene-daemon
     SUBDIR += kopia
     SUBDIR += kops
     SUBDIR += kpmcore
@@ -645,6 +644,7 @@
     SUBDIR += lmon
     SUBDIR += lnav
     SUBDIR += loaders-update
+    SUBDIR += localsearch
     SUBDIR += lockfile-progs
     SUBDIR += loganalyzer
     SUBDIR += logrotate
@@ -721,6 +721,7 @@
     SUBDIR += modman
     SUBDIR += modules
     SUBDIR += mog
+    SUBDIR += mongodb_exporter
     SUBDIR += monit
     SUBDIR += monitord
     SUBDIR += monitorix
@@ -895,7 +896,6 @@
     SUBDIR += parkverbot
     SUBDIR += pass-coffin
     SUBDIR += pass-otp
-    SUBDIR += pass-secrets
     SUBDIR += pass-update
     SUBDIR += password-store
     SUBDIR += passwordsafe
@@ -905,7 +905,6 @@
     SUBDIR += pc-networkmanager
     SUBDIR += pcapfix
     SUBDIR += pciutils
-    SUBDIR += pcns
     SUBDIR += pcpustat
     SUBDIR += pdixtract
     SUBDIR += pdsh
@@ -943,19 +942,7 @@
     SUBDIR += pies
     SUBDIR += pipemeter
     SUBDIR += plasma-pass
-    SUBDIR += plasma5-discover
-    SUBDIR += plasma5-drkonqi
-    SUBDIR += plasma5-kde-cli-tools
-    SUBDIR += plasma5-kinfocenter
-    SUBDIR += plasma5-kmenuedit
-    SUBDIR += plasma5-ksysguard
-    SUBDIR += plasma5-ksystemstats
     SUBDIR += plasma5-libksysguard
-    SUBDIR += plasma5-plasma-disks
-    SUBDIR += plasma5-plasma-systemmonitor
-    SUBDIR += plasma5-polkit-kde-agent-1
-    SUBDIR += plasma5-powerdevil
-    SUBDIR += plasma5-systemsettings
     SUBDIR += plasma6-discover
     SUBDIR += plasma6-drkonqi
     SUBDIR += plasma6-kde-cli-tools
@@ -973,6 +960,7 @@
     SUBDIR += pmt
     SUBDIR += pnscan
     SUBDIR += podman
+    SUBDIR += podman-compose
     SUBDIR += podman-suite
     SUBDIR += polkit
     SUBDIR += polkit-gnome
@@ -986,7 +974,6 @@
     SUBDIR += powerman
     SUBDIR += powermon
     SUBDIR += pp
-    SUBDIR += pprotectd
     SUBDIR += prips
     SUBDIR += procenv
     SUBDIR += process-viewer
@@ -1041,7 +1028,6 @@
     SUBDIR += py-filelock
     SUBDIR += py-focker
     SUBDIR += py-glances
-    SUBDIR += py-google-compute-engine
     SUBDIR += py-hared
     SUBDIR += py-hcloud
     SUBDIR += py-honcho
@@ -1069,7 +1055,6 @@
     SUBDIR += py-pyinfra
     SUBDIR += py-python-bareos
     SUBDIR += py-python-consul
-    SUBDIR += py-python-consul2
     SUBDIR += py-python-crontab
     SUBDIR += py-python-nomad
     SUBDIR += py-pytsk
@@ -1168,6 +1153,8 @@
     SUBDIR += rubygem-chef-telemetry
     SUBDIR += rubygem-chef-utils
     SUBDIR += rubygem-chef-vault
+    SUBDIR += rubygem-chef-winrm
+    SUBDIR += rubygem-chef-winrm-elevated
     SUBDIR += rubygem-chef-zero
     SUBDIR += rubygem-choria-mcorpc-support
     SUBDIR += rubygem-facter
@@ -1289,7 +1276,6 @@
     SUBDIR += setcdboot
     SUBDIR += setsid
     SUBDIR += sg3_utils
-    SUBDIR += shim
     SUBDIR += shlock
     SUBDIR += shmcat
     SUBDIR += shuf
@@ -1298,6 +1284,7 @@
     SUBDIR += signon-plugin-oauth2
     SUBDIR += signon-ui
     SUBDIR += signond
+    SUBDIR += simplesnap
     SUBDIR += sispmctl
     SUBDIR += skopeo
     SUBDIR += slack
@@ -1313,6 +1300,7 @@
     SUBDIR += snapraid
     SUBDIR += sndy
     SUBDIR += snmp_exporter
+    SUBDIR += snmp_exporter20
     SUBDIR += snooze
     SUBDIR += sockaddr
     SUBDIR += socklog
@@ -1397,9 +1385,6 @@
     SUBDIR += toshctl
     SUBDIR += touchegg
     SUBDIR += toybox
-    SUBDIR += tracker
-    SUBDIR += tracker-miners
-    SUBDIR += tracker3
     SUBDIR += tree
     SUBDIR += triton
     SUBDIR += trueos-libqt5
@@ -1410,6 +1395,7 @@
     SUBDIR += tuckr
     SUBDIR += tuptime
     SUBDIR += turbostat
+    SUBDIR += tvterm
     SUBDIR += tw_cli
     SUBDIR += twa-kmod
     SUBDIR += twmn
@@ -1497,6 +1483,8 @@
     SUBDIR += upower
     SUBDIR += upsdaemon
     SUBDIR += uptimed
+    SUBDIR += usacloud
+    SUBDIR += usacloud-core
     SUBDIR += usb_modeswitch
     SUBDIR += usbhid-dump
     SUBDIR += usbtop
@@ -1524,12 +1512,14 @@
     SUBDIR += vivid
     SUBDIR += vm-bhyve
     SUBDIR += vm-bhyve-devel
+    SUBDIR += vm-bhyve-zcomp
     SUBDIR += vmdktool
     SUBDIR += vmstated
     SUBDIR += vmtouch
     SUBDIR += vobcopy
     SUBDIR += volman
     SUBDIR += vpnc-scripts
+    SUBDIR += vtm
     SUBDIR += vttest
     SUBDIR += wait_on
     SUBDIR += walk
