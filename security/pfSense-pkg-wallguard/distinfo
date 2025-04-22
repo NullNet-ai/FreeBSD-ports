@@ -1,4 +1,4 @@
-TIMESTAMP = 1744147843
+TIMESTAMP = 1745360575
 SHA256 (rust/crates/actix-0.13.5.crate) = de7fa236829ba0841304542f7614c42b80fca007455315c45c785ccfa873a85b
 SIZE (rust/crates/actix-0.13.5.crate) = 80964
 SHA256 (rust/crates/actix-codec-0.5.2.crate) = 5f7b0a21988c1bf877cf4759ef5ddaac04c1c9fe808c9142ecb78ba97d97a28a
@@ -695,5 +695,5 @@ SHA256 (rust/crates/zstd-safe-7.2.3.crate) = f3051792fbdc2e1e143244dc28c60f73d84
 SIZE (rust/crates/zstd-safe-7.2.3.crate) = 28995
 SHA256 (rust/crates/zstd-sys-2.0.14+zstd.1.5.7.crate) = 8fb060d4926e4ac3a3ad15d864e99ceb5f343c6b34f5bd6d81ae6ed417311be5
 SIZE (rust/crates/zstd-sys-2.0.14+zstd.1.5.7.crate) = 764660
-SHA256 (NullNet-ai-wallguard-v0.1.8_GH0.tar.gz) = 1ddc8ccdf32b578af2989b36945c6592332b18655f81ccfa1f193ddf03c85ea1
-SIZE (NullNet-ai-wallguard-v0.1.8_GH0.tar.gz) = 34712
+SHA256 (NullNet-ai-wallguard-v0.1.10_GH0.tar.gz) = 578167fb290e597c26476bcf256635413c4802ca908ab26a4c90acc3427fe2c9
+SIZE (NullNet-ai-wallguard-v0.1.10_GH0.tar.gz) = 34803

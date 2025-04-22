@@ -1,6 +1,6 @@
 PORTNAME=               pfSense-pkg-wallguard
 DISTVERSIONPREFIX=      v
-DISTVERSION=            0.1.8
+DISTVERSION=            0.1.10
 PORTREVISION=           1
 CATEGORIES=             security
 

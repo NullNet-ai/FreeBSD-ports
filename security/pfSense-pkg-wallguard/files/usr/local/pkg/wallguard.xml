@@ -72,6 +72,22 @@
 			<default_value>50051</default_value>
 		</field>
 		<field>
+			<fieldname>tunnel_addr</fieldname>
+			<fielddescr>Tunnel Address</fielddescr>
+			<description>Tunnel address or hostname</description>
+			<type>input</type>
+			<required/>
+			<default_value>wallguard.tunnel.nullnetqa.net</default_value>
+		</field>
+		<field>
+			<fieldname>tunnel_port</fieldname>
+			<fielddescr>Tunnel Port</fielddescr>
+			<description>Tunnel port</description>
+			<type>input</type>
+			<required/>
+			<default_value>9000</default_value>
+		</field>
+		<field>
 			<fieldname>app_id</fieldname>
 			<fielddescr>APP ID</fielddescr>
 			<description>Application ID issued by the WallGuard system</description>

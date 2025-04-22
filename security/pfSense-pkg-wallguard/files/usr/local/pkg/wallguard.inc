@@ -40,13 +40,16 @@ function wallguard_save() {
 	$appi = $wallguard_config["app_id"];
 	$apps = $wallguard_config["app_secret"];
 
+	$tunnel_addr = $wallguard_config["tunnel_addr"];
+	$tunnel_port = $wallguard_config["tunnel_port"];
+
 	$version = trim(shell_exec("cat /etc/version"));
 	$uuid = trim(shell_exec("dmidecode -s system-uuid"));
 
 	write_rcfile(array(
 		"file" => "wallguard.sh",
 		"stop" => "/bin/kill `/bin/cat {$pidfile}`",
-		"start" => "/usr/sbin/daemon -cP {$pidfile} /usr/local/bin/wallguard --addr={$addr} --port={$port} --app_id={$appi} --app_secret={$apps} --uuid={$uuid} --version={$version}"
+		"start" => "/usr/sbin/daemon -cP {$pidfile} /usr/local/bin/wallguard --addr={$addr} --port={$port} --app_id={$appi} --app_secret={$apps} --uuid={$uuid} --version={$version} --tunnel-addr={$tunnel_addr} --tunnel-port={$tunnel_port}"
 	));
 
 	if (is_service_running("wallguard")) {
