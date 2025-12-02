@@ -1,8 +1,12 @@
 PORTNAME=	mpv
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.40.0
+PORTREVISION=	5
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio
+
+PATCH_SITES=	https://github.com/mpv-player/mpv/commit/
+PATCHFILES=	26b29fba02a2782f68e2906f837d21201fc6f1b9.patch:-p1
 
 MAINTAINER=	multimedia@FreeBSD.org
 COMMENT=	Free and open-source general-purpose video player
@@ -28,7 +32,8 @@ GH_ACCOUNT=	mpv-player
 MESON_ARGS=	--auto-features=auto \
 		-Dshaderc=disabled
 
-OPTIONS_DEFINE=		ARCHIVE DOCS LCMS2 MANPAGES MUJS RUBBERBAND UCHARDET EXAMPLES ZIMG
+OPTIONS_DEFINE=		ARCHIVE DOCS EXAMPLES LCMS2 MANPAGES MUJS RUBBERBAND \
+			UCHARDET YTDLP ZIMG
 OPTIONS_DEFAULT=	ARCHIVE DRM DVDNAV LCMS2 LUAJIT MANPAGES NVDEC OPENGL UCHARDET \
 			V4L VAAPI VDPAU VULKAN WAYLAND X11 YTDLP
 OPTIONS_GROUP=		IN VO AO
@@ -49,6 +54,7 @@ SIXEL_DESC=		Sixel graphics support
 UCHARDET_DESC=		Guess subtitle encoding via uchardet
 VAPOURSYNTH_DESC=	VapourSynth filter bridge
 VULKAN_DESC=		Vulkan output support
+YTDLP_DESC=		Support ytdl protocol (installs yt-dlp)
 ZIMG_DESC=		High quality software scaling via "z" library
 IN_DESC=		Input
 VO_DESC=		Video Output
@@ -93,6 +99,8 @@ LUAJIT_USES=			luajit
 LUAJIT_MESON_ON=		-Dlua=luajit
 
 LUA_NONE_MESON_ON=		-Dlua=disabled
+LUA_NONE_PREVENTS=		YTDLP
+LUA_NONE_PREVENTS_MSG=		Lua scripting is required for YouTube playback
 
 MANPAGES_BUILD_DEPENDS=		rst2man:textproc/py-docutils
 MANPAGES_MESON_ENABLED=		manpage-build

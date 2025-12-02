@@ -2,12 +2,14 @@ PORTNAME=	hadolint
 DISTVERSION=	2.12.0
 CATEGORIES=	devel haskell
 
-MAINTAINER=	tiago.gasiba@gmail.com
+MAINTAINER=	tiga@FreeBSD.org
 COMMENT=	Dockerfile linter, validate inline bash, written in Haskell
 WWW=		https://github.com/hadolint/hadolint
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
+
+BUILD_DEPENDS=	ghc-9.6.7:lang/ghc96
 
 USES=		cabal
 USE_LOCALE=	en_US.UTF-8

@@ -1,10 +1,10 @@
 PORTNAME=	xsv
 DISTVERSION=	0.13.0
-PORTREVISION=	65
+PORTREVISION=	71
 CATEGORIES=	textproc
 PKGNAMESUFFIX=	-rs
 
-MAINTAINER=	mikael@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Fast CSV toolkit
 WWW=		https://github.com/BurntSushi/xsv
 
@@ -12,6 +12,9 @@ LICENSE=	MIT UNLICENSE
 LICENSE_COMB=	dual
 LICENSE_FILE_MIT=	${WRKSRC}/LICENSE-MIT
 LICENSE_FILE_UNLICENSE=	${WRKSRC}/UNLICENSE
+
+DEPRECATED=	Abandoned, repo archived on Apr 24, 2025. Consider migrating to textproc/xan or textproc/miller
+EXPIRATION_DATE=2025-12-31
 
 USES=		cargo
 USE_GITHUB=	yes

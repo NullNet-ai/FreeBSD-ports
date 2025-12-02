@@ -11,7 +11,6 @@
     SUBDIR += fastest_pkg
     SUBDIR += freebsd-bugzilla-cli
     SUBDIR += genpatch
-    SUBDIR += genplist
     SUBDIR += hs-cabal2tuple
     SUBDIR += hs-panopticum
     SUBDIR += jailaudit
@@ -83,5 +82,6 @@
     SUBDIR += submodules2tuple
     SUBDIR += synth
     SUBDIR += wanted-ports
+    SUBDIR += zig2tuple
 
 .include <bsd.port.subdir.mk>

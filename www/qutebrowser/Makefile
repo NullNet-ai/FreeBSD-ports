@@ -1,5 +1,5 @@
 PORTNAME=	qutebrowser
-DISTVERSION=	3.4.0
+DISTVERSION=	3.6.1
 CATEGORIES=	www
 MASTER_SITES=	PYPI
 
@@ -22,7 +22,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}colorama>=0:devel/py-colorama@${PY_FLAVOR} \
 FLAVORS=	qt6 qt5
 FLAVOR?=	${FLAVORS:[1]}
 
-USES=		cpe desktop-file-utils python:3.9+
+USES=		cpe desktop-file-utils python
 USE_PYQT=	webengine
 USE_PYTHON=	autoplist noflavors pep517
 
@@ -55,12 +55,6 @@ ADBLOCK_DESC=	Enable the newer adblocking support
 
 ADBLOCK_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}adblock>=0.4.2:www/py-adblock@${PY_FLAVOR}
 
-.include <bsd.port.pre.mk>
-
-.if ${PYTHON_REL} < 30900
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}importlib-resources>0:devel/py-importlib-resources@${PY_FLAVOR}
-.endif
-
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/misc/org.qutebrowser.qutebrowser.desktop \
 		${STAGEDIR}${PREFIX}/share/applications/${PORTNAME}-${PYTHON_VER}.desktop
@@ -68,4 +62,4 @@ post-install:
 	${INSTALL_MAN} ${WRKSRC}/doc/${PORTNAME}.1 \
 		${STAGEDIR}${PREFIX}/share/man/man1
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

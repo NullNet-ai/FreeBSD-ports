@@ -1,5 +1,5 @@
 PORTNAME=	mkdocs-material
-DISTVERSION=	9.6.9
+DISTVERSION=	9.6.23
 CATEGORIES=	textproc python
 MASTER_SITES=	PYPI
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -19,7 +19,7 @@ BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}hatchling>0:devel/py-hatchling@${PY_FLAVOR
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Babel>=2.10<3:devel/py-babel@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}backrefs>=5.7:textproc/py-backrefs@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}colorama>=0.4<1:devel/py-colorama@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}Jinja2>=3.0<4:devel/py-Jinja2@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}Jinja2>=3.1<4:devel/py-Jinja2@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}markdown>=3.2<4:textproc/py-markdown@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}mkdocs>=1.6<2:textproc/py-mkdocs@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}mkdocs-material-extensions>=1.3<2:textproc/py-mkdocs-material-extensions@${PY_FLAVOR} \
@@ -42,7 +42,7 @@ IMAGING_DESC=		Support for image processing
 RECOMMENDED_DESC=	Install a recommended set of MkDocs plugins
 
 IMAGING_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cairosvg>=2.6<3:graphics/py-cairosvg@${PY_FLAVOR} \
-			${PYTHON_PKGNAMEPREFIX}pillow>=10.2:graphics/py-pillow@${PY_FLAVOR}
+			${PYTHON_PKGNAMEPREFIX}pillow>=10.2<12.0:graphics/py-pillow@${PY_FLAVOR}
 
 RECOMMENDED_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}mkdocs-minify-plugin>=0.7<1:textproc/py-mkdocs-minify-plugin@${PY_FLAVOR} \
 				${PYTHON_PKGNAMEPREFIX}mkdocs-redirects>=1.2<2:textproc/py-mkdocs-redirects@${PY_FLAVOR} \

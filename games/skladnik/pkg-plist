@@ -8,6 +8,7 @@ share/icons/hicolor/48x48/apps/skladnik.png
 share/icons/hicolor/64x64/apps/skladnik.png
 share/locale/ar/LC_MESSAGES/skladnik.mo
 share/locale/ast/LC_MESSAGES/skladnik.mo
+share/locale/bg/LC_MESSAGES/skladnik.mo
 share/locale/bs/LC_MESSAGES/skladnik.mo
 share/locale/ca/LC_MESSAGES/skladnik.mo
 share/locale/ca@valencia/LC_MESSAGES/skladnik.mo
@@ -23,6 +24,7 @@ share/locale/fr/LC_MESSAGES/skladnik.mo
 share/locale/ga/LC_MESSAGES/skladnik.mo
 share/locale/gl/LC_MESSAGES/skladnik.mo
 share/locale/he/LC_MESSAGES/skladnik.mo
+share/locale/hi/LC_MESSAGES/skladnik.mo
 share/locale/hu/LC_MESSAGES/skladnik.mo
 share/locale/ia/LC_MESSAGES/skladnik.mo
 share/locale/it/LC_MESSAGES/skladnik.mo
@@ -38,6 +40,7 @@ share/locale/pl/LC_MESSAGES/skladnik.mo
 share/locale/pt/LC_MESSAGES/skladnik.mo
 share/locale/pt_BR/LC_MESSAGES/skladnik.mo
 share/locale/ru/LC_MESSAGES/skladnik.mo
+share/locale/sa/LC_MESSAGES/skladnik.mo
 share/locale/sk/LC_MESSAGES/skladnik.mo
 share/locale/sl/LC_MESSAGES/skladnik.mo
 share/locale/sv/LC_MESSAGES/skladnik.mo

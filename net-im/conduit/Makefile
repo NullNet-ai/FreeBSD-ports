@@ -1,7 +1,7 @@
 PORTNAME=	conduit
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.9.0
-PORTREVISION=	4
+DISTVERSION=	0.10.9
+PORTREVISION=	2
 CATEGORIES=	net-im
 PKGNAMEPREFIX=	matrix-
 
@@ -15,24 +15,23 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 BROKEN_i386=	fails to build
 
 BUILD_DEPENDS=	${LOCALBASE}/llvm${LLVM_DEFAULT}/lib/libclang.so:devel/llvm${LLVM_DEFAULT}
+LIB_DEPENDS=	librocksdb.so:databases/rocksdb
 RUN_DEPENDS=	${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss
 
 USES=		cargo gmake
 USE_RC_SUBR=	${PORTNAME}
 USERS=		${PORTNAME}
 GROUPS=		${USERS}
-SUBS=		DBDIR=${DBDIR} \
-		USERS=${USERS} \
-		GROUPS=${GROUPS} \
+SUBS=		DBDIR=${DBDIR} USERS=${USERS} GROUPS=${GROUPS} \
 		PORTNAME=${PORTNAME}
 PLIST_SUB=	${SUBS}
 SUB_LIST=	${SUBS}
-SUB_FILES=	pkg-message pkg-install
+SUB_FILES=	pkg-install pkg-message
 DBDIR=		/var/db/${PORTNAME}
 
 USE_GITLAB=	yes
 GL_ACCOUNT=	famedly
-GL_TAGNAME=	f8d7ef04e664580e882bac852877b68e7bd3ab1e
+GL_TAGNAME=	4624df0998e88aed5b752f097f619a77ffa77a8e
 
 .include <bsd.port.pre.mk>
 
@@ -44,7 +43,7 @@ CARGO_ENV+=	CARGO_PROFILE_RELEASE_LTO=false
 post-patch:
 	@${REINPLACE_CMD} -e 's,/etc/conduit.toml,${PREFIX}/etc/conduit.toml,' \
 		${WRKSRC}/src/main.rs
-	@${REINPLACE_CMD} -e 's,/var/lib/conduit,${DBDIR},' \
+	@${REINPLACE_CMD} -e 's,/var/lib/matrix-conduit,${DBDIR},' \
 		${WRKSRC}/conduit-example.toml
 
 post-install:

@@ -4,14 +4,18 @@
     SUBDIR += adapta-backgrounds
     SUBDIR += adapta-gtk-theme
     SUBDIR += adwaita-icon-theme
+    SUBDIR += adwaita-icon-theme-legacy
     SUBDIR += adwaita-qt5
     SUBDIR += adwaita-qt6
     SUBDIR += ant-dracula-theme
     SUBDIR += arc-gruvbox-theme
     SUBDIR += audacious-skins
+    SUBDIR += bibata-cursor-theme
     SUBDIR += budgie-backgrounds
     SUBDIR += canta-gtk-themes
     SUBDIR += canta-icon-theme
+    SUBDIR += catppuccin-cursor-theme
+    SUBDIR += catppuccin-gtk-theme
     SUBDIR += chicago95
     SUBDIR += classiclooks
     SUBDIR += claws-mail-themes
@@ -125,6 +129,7 @@
     SUBDIR += metacity-themes
     SUBDIR += mint-themes
     SUBDIR += mojave-gtk-themes
+    SUBDIR += morewaita-icon-theme
     SUBDIR += nordic-theme
     SUBDIR += numix-gtk-theme
     SUBDIR += numix-icon-theme
@@ -132,6 +137,7 @@
     SUBDIR += openbox-arc-theme
     SUBDIR += oxygen-icons
     SUBDIR += papirus-icon-theme
+    SUBDIR += plasma6-aurorae
     SUBDIR += plasma6-breeze
     SUBDIR += plasma6-breeze-gtk
     SUBDIR += plasma6-kde-gtk-config
@@ -145,6 +151,7 @@
     SUBDIR += qogir-gtk-themes
     SUBDIR += qogir-icon-themes
     SUBDIR += qt5-style-plugins
+    SUBDIR += qt6gtk2
     SUBDIR += qtcurve
     SUBDIR += qtcurve-gtk2
     SUBDIR += qtcurve-kf5

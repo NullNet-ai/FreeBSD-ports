@@ -1,6 +1,6 @@
---- components/gwp_asan/client/gwp_asan.cc.orig	2024-06-25 12:08:48 UTC
+--- components/gwp_asan/client/gwp_asan.cc.orig	2025-09-11 13:19:19 UTC
 +++ components/gwp_asan/client/gwp_asan.cc
-@@ -75,7 +75,7 @@ namespace {
+@@ -81,7 +81,7 @@ namespace {
  // ProcessSamplingBoost is the multiplier to increase the
  // ProcessSamplingProbability in scenarios where we want to perform additional
  // testing (e.g., on canary/dev builds).

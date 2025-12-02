@@ -126,7 +126,9 @@ bin/yosys-witness
 %%DATADIR%%/include/kernel/ffmerge.h
 %%DATADIR%%/include/kernel/fmt.h
 %%DATADIR%%/include/kernel/fstdata.h
+%%DATADIR%%/include/kernel/gzip.h
 %%DATADIR%%/include/kernel/hashlib.h
+%%DATADIR%%/include/kernel/io.h
 %%DATADIR%%/include/kernel/json.h
 %%DATADIR%%/include/kernel/log.h
 %%DATADIR%%/include/kernel/macc.h
@@ -139,6 +141,7 @@ bin/yosys-witness
 %%DATADIR%%/include/kernel/scopeinfo.h
 %%DATADIR%%/include/kernel/sexpr.h
 %%DATADIR%%/include/kernel/sigtools.h
+%%DATADIR%%/include/kernel/threading.h
 %%DATADIR%%/include/kernel/timinginfo.h
 %%DATADIR%%/include/kernel/utils.h
 %%DATADIR%%/include/kernel/yosys.h
@@ -150,6 +153,7 @@ bin/yosys-witness
 %%DATADIR%%/include/libs/json11/json11.hpp
 %%DATADIR%%/include/libs/sha1/sha1.h
 %%DATADIR%%/include/passes/fsm/fsmdata.h
+%%DATADIR%%/include/passes/techmap/libparse.h
 %%DATADIR%%/intel/common/altpll_bb.v
 %%DATADIR%%/intel/common/brams_m9k.txt
 %%DATADIR%%/intel/common/brams_map_m9k.v

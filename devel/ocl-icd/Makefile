@@ -1,6 +1,6 @@
 PORTNAME=	ocl-icd
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.3.2
+DISTVERSION=	2.3.4
 CATEGORIES=	devel
 
 MAINTAINER=	ohartmann@walstatt.org
@@ -14,14 +14,14 @@ BUILD_DEPENDS=	opencl>=3.0:devel/opencl
 
 USES=		autoreconf gmake libtool localbase:ldflags pathfix ruby:build
 
-USE_GITHUB=		yes
-GH_ACCOUNT=		OCL-dev
-USE_LDCONFIG=		yes
-GNU_CONFIGURE=		yes
-GNU_CONFIGURE_MANPREFIX=${PREFIX}/share
-CONFIGURE_ARGS+=	--enable-official-khronos-headers \
-			--enable-custom-vendordir \
-			--enable-pthread-once
+USE_GITHUB=	yes
+GH_ACCOUNT=	OCL-dev
+USE_LDCONFIG=	yes
+GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--disable-debug \
+		--enable-custom-layerdir=${LOCALBASE}/etc/OpenCL/layers \
+		--enable-custom-vendordir=${LOCALBASE}/etc/OpenCL/vendors \
+		--enable-pthread-once
 
 INSTALL_TARGET=	install-strip
 
@@ -37,12 +37,7 @@ MANPAGES_BUILD_DEPENDS=	asciidoc:textproc/asciidoc \
 .include <bsd.port.options.mk>
 
 post-patch:
-.if	${PORT_OPTIONS:MDOCS} || ${PORT_OPTIONS:MMANPAGES}
 	@${REINPLACE_CMD} -e 's|/etc/|${LOCALBASE}/etc/|g' \
 		${WRKSRC}/doc/libOpenCL.7.txt.in
-.else
-	@${REINPLACE_CMD} -e 's|doc tests|tests|g' \
-		${WRKSRC}/Makefile.am
-.endif
 
 .include <bsd.port.mk>

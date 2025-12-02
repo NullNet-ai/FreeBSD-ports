@@ -10,12 +10,12 @@ WWW=		https://minio.io/
 
 LICENSE=	AGPLv3
 
-USES=		compiler cpe go:1.23,modules
-GH_TAGNAME=	RELEASE.2025-03-12T18-04-18Z
+USES=		compiler cpe go:modules
+GH_TAGNAME=	RELEASE.2025-10-15T17-29-55Z
 CPE_VERSION=	${GH_TAGNAME}
 USE_RC_SUBR=	${PORTNAME}
 
-COMMIT_ID=	dbf31af6cb0d5ea33b277b6e461cfea98262778e
+COMMIT_ID=	9e49d5e7a648f00e26f2246f4dc28e6b07f8c84a
 
 GO_MODULE=	github.com/minio/minio@v0.0.0-${DISTVERSION:S/.//g}-${COMMIT_ID:C/^(.{12}).*/\1/}
 GO_BUILDFLAGS=	-ldflags=' \
@@ -37,9 +37,5 @@ PLIST_FILES=	bin/${PORTNAME}
 MINIO_USER?=	${PORTNAME}
 MINIO_GROUP?=	${PORTNAME}
 MINIO_DBDIR?=	/var/db/${PORTNAME}
-
-.if defined(MAINTAINER_MODE)
-GO_ENV+=    GOTOOLCHAIN=go1.22.6
-.endif
 
 .include <bsd.port.mk>

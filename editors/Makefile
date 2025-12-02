@@ -41,6 +41,7 @@
     SUBDIR += emacs
     SUBDIR += emacs-devel
     SUBDIR += encryptpad
+    SUBDIR += enter-tex
     SUBDIR += featherpad
     SUBDIR += fileobj
     SUBDIR += flim
@@ -51,7 +52,6 @@
     SUBDIR += ghex
     SUBDIR += ghostwriter
     SUBDIR += gmanedit
-    SUBDIR += gnome-latex
     SUBDIR += gnome-text-editor
     SUBDIR += gobby
     SUBDIR += gomate
@@ -81,6 +81,7 @@
     SUBDIR += lapce
     SUBDIR += lazarus
     SUBDIR += lazarus-devel
+    SUBDIR += lazarus-gtk3-devel
     SUBDIR += lazarus-qt5
     SUBDIR += lazarus-qt5-devel
     SUBDIR += lazarus-qt6
@@ -204,6 +205,7 @@
     SUBDIR += mg
     SUBDIR += mickey
     SUBDIR += micro
+    SUBDIR += microsoft-edit
     SUBDIR += mined
     SUBDIR += mle
     SUBDIR += mousepad
@@ -238,10 +240,10 @@
     SUBDIR += psgml
     SUBDIR += puff
     SUBDIR += py-babi
+    SUBDIR += py-editor
     SUBDIR += py-editorconfig
     SUBDIR += py-pynvim
     SUBDIR += py-vim-bridge
-    SUBDIR += quilter
     SUBDIR += rehex
     SUBDIR += retext
     SUBDIR += rubygem-neovim
@@ -257,7 +259,6 @@
     SUBDIR += sly-asdf
     SUBDIR += sly-named-readtables
     SUBDIR += sly-quicklisp
-    SUBDIR += ssed
     SUBDIR += sted
     SUBDIR += tamago
     SUBDIR += tea
@@ -286,7 +287,6 @@
     SUBDIR += vscode
     SUBDIR += web-mode
     SUBDIR += with-editor
-    SUBDIR += with-editor-devel
     SUBDIR += wordgrinder
     SUBDIR += wxhexeditor
     SUBDIR += xcoral
@@ -294,6 +294,7 @@
     SUBDIR += xmlcopyeditor
     SUBDIR += xvile
     SUBDIR += yudit
+    SUBDIR += zed
     SUBDIR += zile
 
 .include <bsd.port.subdir.mk>

@@ -1,6 +1,6 @@
---- ui/ozone/platform/wayland/common/wayland_util.cc.orig	2025-03-18 16:46:04 UTC
+--- ui/ozone/platform/wayland/common/wayland_util.cc.orig	2025-11-06 10:11:34 UTC
 +++ ui/ozone/platform/wayland/common/wayland_util.cc
-@@ -420,6 +420,7 @@ void RecordConnectionMetrics(wl_display* display) {
+@@ -419,6 +419,7 @@ void RecordConnectionMetrics(wl_display* display) {
          {"weston", WaylandCompositor::kWeston},
      };
  
@@ -8,7 +8,7 @@
      const int fd = wl_display_get_fd(display);
      if (fd == -1) {
        return WaylandCompositor::kUnknown;
-@@ -445,6 +446,7 @@ void RecordConnectionMetrics(wl_display* display) {
+@@ -444,6 +445,7 @@ void RecordConnectionMetrics(wl_display* display) {
          return compositor;
        }
      }

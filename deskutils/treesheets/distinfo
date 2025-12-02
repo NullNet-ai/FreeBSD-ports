@@ -1,3 +1,5 @@
-TIMESTAMP = 1743506280
-SHA256 (aardappel-treesheets-1.0.20250331-14182142290_GH0.tar.gz) = f110a52987bdda48c5f39bec2982fe058c514f9ccdc1c2ee308bde49c4661ed3
-SIZE (aardappel-treesheets-1.0.20250331-14182142290_GH0.tar.gz) = 3231890
+TIMESTAMP = 1762623583
+SHA256 (aardappel-treesheets-2732_GH0.tar.gz) = 8f51f9d4208fc3167225eece854251230c465f9139902b7cf51809a6bf9e2641
+SIZE (aardappel-treesheets-2732_GH0.tar.gz) = 2369063
+SHA256 (aardappel-lobster-v2025.3_GH0.tar.gz) = 8eef481d779f9c1d53e860341e582d54732cbec997b5a05c0f4628107fc1e12d
+SIZE (aardappel-lobster-v2025.3_GH0.tar.gz) = 26681905

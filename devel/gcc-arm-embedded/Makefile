@@ -1,6 +1,6 @@
 PORTNAME=	gcc-arm-embedded
 PORTVERSION=	${FULL_VERSION:S/.rel/r/}
-#PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	https://developer.arm.com/-/media/Files/downloads/gnu/${FULL_VERSION}/srcrel/:src
 DISTFILES=	arm-gnu-toolchain-src-snapshot-${FULL_VERSION}.tar.xz:src
@@ -71,6 +71,12 @@ PLIST_SUB+=	GCC_VERSION=${GCC_VERSION} FULL_VERSION=${FULL_VERSION} TARGET=${TAR
 
 .include <bsd.port.options.mk>
 
+.if ${ARCH:Mpowerpc64*}
+GMP_ABI=		ABI="mode64"
+.else
+GMP_ABI=
+.endif
+
 .if ${PORT_OPTIONS:MPYGDB}
 PYGDB_BUILD_OPT=	--enable-gdb-with-python=${PYTHON_CMD}
 .else
@@ -95,6 +101,8 @@ post-extract:
 	@${MV} ${WRKSRC}/gnu-devtools-for-arm-${GL_TAGNAME_tools} ${WRKSRC}/gnu-devtools-for-arm
 
 do-build:
+	${GMP_ABI}							\
+	CC="${CC}"							\
 	PATH=${WRKSRC}/gnu-devtools-for-arm:${PATH}			\
 	installdir=${WRKDIR}/${DIR_NAME}				\
 	LOCALBASE="${LOCALBASE}"					\

@@ -1,5 +1,5 @@
 PORTNAME=	openvpn
-DISTVERSION=	g20250212
+DISTVERSION=	g20251117
 PORTREVISION=	0  # leave in even if 0 to avoid accidental PORTEPOCH bumps
 PORTEPOCH=	1
 CATEGORIES=	security net net-vpn
@@ -21,7 +21,7 @@ LIB_DEPENDS+=	liblzo2.so:archivers/lzo2
 USES=		autoreconf cpe libtool pkgconfig python:build shebangfix tar:xz
 IGNORE_SSL=	libressl libressl-devel
 USE_GITLAB=	yes
-GL_TAGNAME=	9f4670fc718a8c16280d60c3e2d4ad29cffa04c4
+GL_TAGNAME=	d6ee27b4ff31e4469d699f3bfd7b9998ab167230
 USE_RC_SUBR=	openvpn
 
 SHEBANG_FILES=	sample/sample-scripts/auth-pam.pl \
@@ -45,8 +45,7 @@ CPPFLAGS+=	-I${WRKSRC}/include -I${LOCALBASE}/include \
 		-DCONFIGURE_GIT_FLAGS=
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-CONFLICTS_INSTALL?=	openvpn-2.[!4].* openvpn-[!2].* openvpn-beta \
-			openvpn-devel openvpn-mbedtls
+CONFLICTS_INSTALL?=	openvpn-2.*
 
 SUB_FILES=	openvpn-client pkg-message
 
@@ -64,7 +63,6 @@ OPTIONS_EXCLUDE_FreeBSD_13=	DCO # FreeBSD 14 only
 
 DCO_DESC=		Build with Data Channel Offload (ovpn(4)) support
 EASYRSA_DESC=		Install security/easy-rsa RSA helper package
-MBEDTLS_DESC=		SSL/TLS via mbedTLS (lacks TLS v1.3)
 PKCS11_DESC=		Use security/pkcs11-helper
 SMALL_DESC=		Build a smaller executable with fewer features
 X509ALTUSERNAME_DESC=	Enable --x509-username-field (OpenSSL only)
@@ -78,7 +76,7 @@ EASYRSA_RUN_DEPENDS=	easy-rsa>=0:security/easy-rsa
 LZ4_LIB_DEPENDS+=	liblz4.so:archivers/liblz4
 LZ4_CONFIGURE_OFF=	--disable-lz4
 
-MBEDTLS_LIB_DEPENDS=	libmbedtls.so:security/mbedtls2
+MBEDTLS_LIB_DEPENDS=	libmbedtls.so:security/mbedtls3
 MBEDTLS_CONFIGURE_ON=	--with-crypto-library=mbedtls
 
 OPENSSL_USES=		ssl
@@ -138,8 +136,6 @@ post-build:
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/openvpn/plugins/openvpn-plugin-auth-pam.so
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/openvpn/plugins/openvpn-plugin-down-root.so
-	${INSTALL_SCRIPT} ${WRKSRC}/contrib/pull-resolv-conf/client.up ${STAGEDIR}${PREFIX}/libexec/openvpn-client.up
-	${INSTALL_SCRIPT} ${WRKSRC}/contrib/pull-resolv-conf/client.down ${STAGEDIR}${PREFIX}/libexec/openvpn-client.down
 	${INSTALL_SCRIPT} ${WRKDIR}/openvpn-client ${STAGEDIR}${PREFIX}/sbin/openvpn-client
 	${MKDIR} ${STAGEDIR}${PREFIX}/include
 

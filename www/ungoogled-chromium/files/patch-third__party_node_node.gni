@@ -1,4 +1,4 @@
---- third_party/node/node.gni.orig	2024-08-26 14:40:28 UTC
+--- third_party/node/node.gni.orig	2025-09-10 13:22:16 UTC
 +++ third_party/node/node.gni
 @@ -22,7 +22,7 @@ template("node") {
  

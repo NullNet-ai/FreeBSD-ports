@@ -1,8 +1,8 @@
 PORTNAME=	bastille
-DISTVERSION=	0.13.20250126
+DISTVERSION=	1.1.0.251001
 CATEGORIES=	sysutils
-
-MAINTAINER=	christer.edwards@gmail.com
+MAINTAINER=	jdhurtado@orbiware.com
+# co-maintainer: snarfingcode666@gmail.com
 COMMENT=	Jail automation framework
 WWW=		https://bastillebsd.org
 
@@ -12,8 +12,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USE_GITHUB=	yes
 GH_ACCOUNT=	bastillebsd
 
-NO_BUILD=	yes
 NO_ARCH=	yes
+NO_BUILD=	yes
 
 post-patch:
 	@${REINPLACE_CMD} \
@@ -31,8 +31,8 @@ post-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}
 	(cd ${WRKSRC}/usr/local/share/bastille && \
 		${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR})
-	${INSTALL_MAN} ${WRKSRC}/usr/local/man/man8/bastille.8.gz \
-		${STAGEDIR}${PREFIX}/share/man/man8/${PORTNAME}.8.gz
+	${INSTALL_MAN} ${WRKSRC}/usr/local/share/man/man8/bastille.8 \
+		${STAGEDIR}${PREFIX}/share/man/man8/${PORTNAME}.8
 	${INSTALL_DATA} ${WRKSRC}/usr/local/etc/bastille/bastille.conf.sample \
 		${STAGEDIR}${ETCDIR}/${PORTNAME}.conf.sample
 

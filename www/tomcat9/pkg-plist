@@ -102,8 +102,14 @@
 %%DOCS%%%%T%%/webapps/docs/architecture/index.html
 %%DOCS%%%%T%%/webapps/docs/architecture/overview.html
 %%DOCS%%%%T%%/webapps/docs/architecture/requestProcess.html
-%%DOCS%%%%T%%/webapps/docs/architecture/requestProcess/authentication-process.png
-%%DOCS%%%%T%%/webapps/docs/architecture/requestProcess/request-process.png
+%%DOCS%%%%T%%/webapps/docs/architecture/requestProcess/11_nio.plantuml
+%%DOCS%%%%T%%/webapps/docs/architecture/requestProcess/11_nio.png
+%%DOCS%%%%T%%/webapps/docs/architecture/requestProcess/21_http11.plantuml
+%%DOCS%%%%T%%/webapps/docs/architecture/requestProcess/21_http11.png
+%%DOCS%%%%T%%/webapps/docs/architecture/requestProcess/31_synchronous.plantuml
+%%DOCS%%%%T%%/webapps/docs/architecture/requestProcess/31_synchronous.png
+%%DOCS%%%%T%%/webapps/docs/architecture/requestProcess/41_basic.plantuml
+%%DOCS%%%%T%%/webapps/docs/architecture/requestProcess/41_basic.png
 %%DOCS%%%%T%%/webapps/docs/architecture/startup.html
 %%DOCS%%%%T%%/webapps/docs/architecture/startup/1_overview.plantuml
 %%DOCS%%%%T%%/webapps/docs/architecture/startup/1_overview.png
@@ -159,6 +165,7 @@
 %%DOCS%%%%T%%/webapps/docs/config/manager.html
 %%DOCS%%%%T%%/webapps/docs/config/realm.html
 %%DOCS%%%%T%%/webapps/docs/config/resources.html
+%%DOCS%%%%T%%/webapps/docs/config/runtime-attributes.html
 %%DOCS%%%%T%%/webapps/docs/config/server.html
 %%DOCS%%%%T%%/webapps/docs/config/service.html
 %%DOCS%%%%T%%/webapps/docs/config/sessionidgenerator.html
@@ -601,6 +608,7 @@
 %%HOST_MANAGER%%@sample %%T%%/webapps/host-manager/WEB-INF/web.xml.sample
 %%HOST_MANAGER%%%%T%%/webapps/host-manager/css/manager.css
 %%HOST_MANAGER%%%%T%%/webapps/host-manager/images/asf-logo.svg
+%%HOST_MANAGER%%%%T%%/webapps/host-manager/images/favicon.ico
 %%HOST_MANAGER%%%%T%%/webapps/host-manager/images/tomcat.svg
 %%HOST_MANAGER%%%%T%%/webapps/host-manager/index.jsp
 %%MANAGER%%@sample %%T%%/webapps/manager/META-INF/context.xml.sample
@@ -615,6 +623,7 @@
 %%MANAGER%%@sample %%T%%/webapps/manager/WEB-INF/web.xml.sample
 %%MANAGER%%%%T%%/webapps/manager/css/manager.css
 %%MANAGER%%%%T%%/webapps/manager/images/asf-logo.svg
+%%MANAGER%%%%T%%/webapps/manager/images/favicon.ico
 %%MANAGER%%%%T%%/webapps/manager/images/tomcat.svg
 %%MANAGER%%%%T%%/webapps/manager/index.jsp
 %%MANAGER%%%%T%%/webapps/manager/status.xsd

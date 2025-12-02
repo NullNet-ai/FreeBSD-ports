@@ -1,6 +1,6 @@
 PORTNAME=	sirius
 DISTVERSIONPREFIX=	v
-DISTVERSION=	7.6.1
+DISTVERSION=	7.9.0
 CATEGORIES=	science
 PKGNAMESUFFIX=	-quantum-chemistry # other software also has the name "sirius"
 
@@ -10,8 +10,6 @@ WWW=		https://github.com/electronic-structure/SIRIUS/
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
-
-BROKEN_FreeBSD_15=	clang crashes, see https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=276196
 
 LIB_DEPENDS=	libcosta.so:math/costa \
 		libgsl.so:math/gsl \
@@ -47,5 +45,6 @@ OPENMPI_USES=		mpi:openmpi
 
 # pre-7.4.0: many tests fail, see https://github.com/electronic-structure/SIRIUS/issues/760
 # 7.6.0: several tests fail: Can't divide 1 ranks into groups of size 4
+# 7.7.0: tests fail to compile, see https://github.com/electronic-structure/SIRIUS/issues/1070
 
 .include <bsd.port.mk>

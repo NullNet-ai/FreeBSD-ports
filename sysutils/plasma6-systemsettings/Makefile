@@ -1,6 +1,5 @@
 PORTNAME=	systemsettings
 DISTVERSION=	${KDE_PLASMA_VERSION}
-PORTREVISION=	1
 CATEGORIES=	sysutils kde kde-plasma
 
 MAINTAINER=	kde@FreeBSD.org
@@ -13,7 +12,7 @@ USE_GL=		gl opengl
 USE_KDE=	activities auth colorscheme completion config configwidgets \
 		coreaddons crash dbusaddons doctools guiaddons i18n iconthemes \
 		itemmodels itemviews jobwidgets kcmutils kio kirigami2 \
-		notifications package plasma-workspace runner service solid \
+		package plasma-workspace runner service solid \
 		widgetsaddons windowsystem xmlgui \
 		ecm:build
 USE_QT=		base declarative

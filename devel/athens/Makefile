@@ -1,6 +1,6 @@
 PORTNAME=	athens
-DISTVERSION=	0.15.4
 DISTVERSIONPREFIX=	v
+DISTVERSION=	0.16.1
 PORTREVISION=	5
 CATEGORIES=	devel
 
@@ -11,16 +11,22 @@ WWW=		https://github.com/gomods/athens
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		go:1.22,modules
+USES=		go:modules
 USE_RC_SUBR=	${PORTNAME}
-
-BUILD_DATE=	2025-03-27-00:00:00-UTC
 
 GO_MODULE=	github.com/gomods/${PORTNAME}
 GO_TARGET=	./cmd/proxy
 GO_BUILDFLAGS=	-ldflags " \
 		-X github.com/gomods/${PORTNAME}/pkg/build.version=${DISTVERSION} \
 		-X github.com/gomods/${PORTNAME}/pkg/build.buildDate=${BUILD_DATE}"
+
+SUB_LIST=	ATHENS_USER=${USERS} \
+		ATHENS_GROUP=${GROUPS}
+
+USERS=		${PORTNAME}
+GROUPS=		${PORTNAME}
+
+BUILD_DATE=	2025-09-13-00:00:00-UTC
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/bin/proxy ${STAGEDIR}${PREFIX}/bin/${PORTNAME}

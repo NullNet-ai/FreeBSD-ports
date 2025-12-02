@@ -1,3 +1,3 @@
-TIMESTAMP = 1739962880
-SHA256 (rubygem/aws-sdk-iotjobsdataplane-1.66.0.gem) = 011d8b6fe07436c14f08762dbda762d0ba2be4b25ab98c8cbfbcb27553d3d4e6
-SIZE (rubygem/aws-sdk-iotjobsdataplane-1.66.0.gem) = 29184
+TIMESTAMP = 1761447206
+SHA256 (rubygem/aws-sdk-iotjobsdataplane-1.75.0.gem) = 298ff7af7878515a363d6d2e7dc3e3488509c2d218acb69c704faad74bbcff2a
+SIZE (rubygem/aws-sdk-iotjobsdataplane-1.75.0.gem) = 29696

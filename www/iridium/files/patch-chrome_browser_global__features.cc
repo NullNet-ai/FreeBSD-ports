@@ -1,7 +1,7 @@
---- chrome/browser/global_features.cc.orig	2025-03-18 16:46:04 UTC
+--- chrome/browser/global_features.cc.orig	2025-11-06 10:11:34 UTC
 +++ chrome/browser/global_features.cc
-@@ -21,7 +21,7 @@
- #include "chrome/browser/glic/launcher/glic_background_mode_manager.h"  // nogncheck
+@@ -25,7 +25,7 @@
+ #include "chrome/browser/glic/public/glic_enabling.h"               // nogncheck
  #endif
  
 -#if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
@@ -9,7 +9,7 @@
  // This causes a gn error on Android builds, because gn does not understand
  // buildflags, so we include it only on platforms where it is used.
  #include "chrome/browser/ui/webui/whats_new/whats_new_registrar.h"
-@@ -60,7 +60,7 @@ void GlobalFeatures::ReplaceGlobalFeaturesForTesting(
+@@ -71,7 +71,7 @@ void GlobalFeatures::ReplaceGlobalFeaturesForTesting(
  
  void GlobalFeatures::Init() {
    system_permissions_platform_handle_ = CreateSystemPermissionsPlatformHandle();
@@ -18,7 +18,7 @@
    whats_new_registry_ = CreateWhatsNewRegistry();
  #endif
  
-@@ -88,7 +88,7 @@ GlobalFeatures::CreateSystemPermissionsPlatformHandle(
+@@ -123,7 +123,7 @@ GlobalFeatures::CreateSystemPermissionsPlatformHandle(
    return system_permission_settings::PlatformHandle::Create();
  }
  

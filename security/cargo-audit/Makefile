@@ -1,11 +1,11 @@
 PORTNAME=	cargo-audit
 DISTVERSIONPREFIX=	${PORTNAME}/v
-DISTVERSION=	0.21.0
-PORTREVISION=	3
+DISTVERSION=	0.22.0
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	security
 
-MAINTAINER=	mikael@FreeBSD.org
+MAINTAINER=	bofh@FreeBSD.org
 COMMENT=	Audit Cargo.lock for crates with security vulnerabilities
 WWW=		https://rustsec.org/
 
@@ -23,11 +23,12 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	RustSec
 GH_PROJECT=	rustsec
 
-NO_TEST=	yes
-
-PLIST_FILES=	bin/cargo-audit
-
 CARGO_CARGOTOML=	${WRKSRC}/${PORTNAME}/Cargo.toml
 CARGO_INSTALL_PATH=	${PORTNAME}
+
+NO_TEST=	yes
+PORTSCOUT=	limit:^0\.
+
+PLIST_FILES=	bin/cargo-audit
 
 .include <bsd.port.mk>

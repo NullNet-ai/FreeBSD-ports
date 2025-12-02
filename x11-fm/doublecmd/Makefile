@@ -1,6 +1,7 @@
 PORTNAME=	doublecmd
-PORTVERSION=	1.1.22
+PORTVERSION=	1.1.28
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 CATEGORIES=	x11-fm
 PKGNAMESUFFIX=	${LAZARUS_PKGNAMESUFFIX}
 
@@ -23,8 +24,9 @@ GH_PROJECT=	doublecmd.github.io:help
 GH_TAGNAME=	${DISTVERSIONPREFIX}${DCHELP}:help
 USE_GNOME=	cairo glib20
 USE_XORG=	x11
+USE_BINUTILS=	yes
 
-DCHELP=		1.1.18
+DCHELP=		1.1.26
 
 LAZARUS_PROJECT_FILES=	components/chsdet/chsdet.lpk \
 			components/multithreadprocs/multithreadprocslaz.lpk \
@@ -37,8 +39,10 @@ LAZARUS_PROJECT_FILES=	components/chsdet/chsdet.lpk \
 			components/synunihighlighter/synuni.lpk \
 			components/virtualterminal/virtualterminal.lpk
 LAZBUILD_ARGS=		--pcp=${WRKSRC}/tmppcp -d
+LAZARUS_NO_FLAVORS=	gtk3
 
 MAKE_ENV+=	LDVER=ld.bfd # for DragonFly
+#MAKE_ENV+=	CPU_TARGET=x86_64
 
 PLIST=		${WRKDIR}/pkg-plist
 PORTDOCS=	*
@@ -325,7 +329,7 @@ do-install:
 
 .if ${PORT_OPTIONS:MWLX_MPLAYER}
 	@${MKDIR} ${STAGEDIR}${DATADIR}/plugins/wlx/wlxmplayer/
-	${INSTALL_LIB} ${WRKSRC}/plugins/wlx/WlxMplayer/lib/wlxmplayer.wlx ${STAGEDIR}${DATADIR}/plugins/wlx/wlxmplayer/
+	${INSTALL_LIB} ${WRKSRC}/plugins/wlx/WlxMplayer/wlxmplayer.wlx ${STAGEDIR}${DATADIR}/plugins/wlx/wlxmplayer/
 .endif
 
 .if ${PORT_OPTIONS:MDSX_LOCATE}

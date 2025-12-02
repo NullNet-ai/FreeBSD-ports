@@ -1,8 +1,7 @@
 PORTNAME=	kodi
-DISTVERSION=	21.0
-PORTREVISION=	11
+DISTVERSION=	21.3
 CATEGORIES=	multimedia java
-MASTER_SITES=	http://mirrors.kodi.tv/build-deps/sources/
+MASTER_SITES=	https://mirrors.kodi.tv/build-deps/sources/
 DISTFILES=	apache-groovy-binary-${GROOVY_VERSION}.zip \
 		commons-lang3-${COMMONS_LANG_VERSION}-bin.tar.gz \
 		commons-text-${COMMONS_TEXT_VERSION}-bin.tar.gz
@@ -46,7 +45,7 @@ LIB_DEPENDS=	libass.so:multimedia/libass \
 		libtinyxml.so:textproc/tinyxml \
 		libtinyxml2.so:textproc/tinyxml2 \
 		libudfread.so:multimedia/libudfread \
-		libuuid.so:misc/e2fsprogs-libuuid
+		libuuid.so:misc/libuuid
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR}
 
 USES=		autoreconf:build cmake:noninja compiler:c++17-lang cpe \
@@ -79,6 +78,7 @@ PLIST_SUB=	ARCH=${KODI_ARCH_${ARCH}}
 
 USE_LDCONFIG=	yes
 USE_GNOME=	libxml2
+JAVA_VERSION=	8 11
 CMAKE_ARGS=	-DGIT_VERSION="${DISTVERSION}-${KODI_CODENAME}" \
 		-DLIBDVDCSS_URL="${DISTDIR}/${PORTNAME}/xbmc-libdvdcss-${LIBDVDCSS_VERSION}_GH0.tar.gz" \
 		-DLIBDVDNAV_URL="${DISTDIR}/${PORTNAME}/xbmc-libdvdnav-${LIBDVDNAV_VERSION}_GH0.tar.gz" \

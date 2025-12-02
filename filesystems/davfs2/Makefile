@@ -1,5 +1,5 @@
 PORTNAME=	davfs2
-PORTVERSION=	1.7.1
+PORTVERSION=	1.7.2
 CATEGORIES=	filesystems www
 MASTER_SITES=	SAVANNAH \
 		https://github.com/alisarctl/davfs2/releases/download/rel-${PORTVERSION:S/./-/g}/
@@ -27,6 +27,9 @@ OPTIONS_SUB=	yes
 
 NLS_USES=	gettext-runtime
 NLS_CONFIGURE_OFF=	--disable-nls
+
+post-patch:
+	@${REINPLACE_CMD} -e 's, 36, ${:!seq 36 39!},' ${WRKSRC}/configure
 
 post-stage:
 	${CHMOD} -s ${STAGEDIR}${PREFIX}/sbin/mount.davfs

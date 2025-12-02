@@ -7,6 +7,7 @@ share/icons/hicolor/256x256/apps/picmi.png
 share/icons/hicolor/32x32/apps/picmi.png
 share/icons/hicolor/48x48/apps/picmi.png
 share/icons/hicolor/64x64/apps/picmi.png
+share/locale/ar/LC_MESSAGES/picmi.mo
 share/locale/ast/LC_MESSAGES/picmi.mo
 share/locale/bs/LC_MESSAGES/picmi.mo
 share/locale/ca/LC_MESSAGES/picmi.mo
@@ -25,6 +26,7 @@ share/locale/fr/LC_MESSAGES/picmi.mo
 share/locale/ga/LC_MESSAGES/picmi.mo
 share/locale/gl/LC_MESSAGES/picmi.mo
 share/locale/he/LC_MESSAGES/picmi.mo
+share/locale/hi/LC_MESSAGES/picmi.mo
 share/locale/hu/LC_MESSAGES/picmi.mo
 share/locale/ia/LC_MESSAGES/picmi.mo
 share/locale/it/LC_MESSAGES/picmi.mo
@@ -45,6 +47,7 @@ share/locale/pt/LC_MESSAGES/picmi.mo
 share/locale/pt_BR/LC_MESSAGES/picmi.mo
 share/locale/ro/LC_MESSAGES/picmi.mo
 share/locale/ru/LC_MESSAGES/picmi.mo
+share/locale/sa/LC_MESSAGES/picmi.mo
 share/locale/sk/LC_MESSAGES/picmi.mo
 share/locale/sl/LC_MESSAGES/picmi.mo
 share/locale/sr/LC_MESSAGES/picmi.mo

@@ -973,6 +973,11 @@ be_manual_verification_timeout()
 be_pkg_upgrade()
 {
 	local _mp
+	local _primarycache
+
+	if ! be_is_ufs_root; then
+		check_zfs_mem_free
+	fi
 
 	UPGRADE_BE="$(be_active_name)"
 
@@ -1082,9 +1087,22 @@ be_pkg_upgrade()
 		_exit 0
 	fi
 
+	if [ -n "${_primarycache}" ]; then
+		# Reset ZFS caching
+		/sbin/zfs inherit primarycache "$( be_get_root_pool )"
+	fi
+
 	do_reboot
 
 	_exit 0
+}
+
+check_zfs_mem_free() {
+	# If we have less than 1G of RAM free, limit ZFS caching during the upgrade process
+	if [ "$(( ( $(sysctl -n vm.stats.vm.v_free_count) + $(sysctl -n vm.stats.vm.v_inactive_count) ) * $(sysctl -n hw.pagesize) ))" -lt "$(( 1 * 1024 * 1024 * 1024 ))" ]; then
+		zfs_set_prop "$( be_get_root_pool )" primarycache metadata
+		_primarycache=1
+	fi
 }
 
 pkg_upgrade() {
@@ -1516,6 +1534,11 @@ pkg_upgrade() {
 			_force=" -f"
 		fi
 
+		local _primarycache
+		if ! be_is_ufs_root; then
+			check_zfs_mem_free
+		fi
+
 		if upgrade_available; then
 			delete_annotation=1
 
@@ -1594,6 +1617,11 @@ pkg_upgrade() {
 
 		pkg_unlock "${pkg_prefix}*"
 		unlock_additional_pkgs=""
+
+		if [ -n "${_primarycache}" ]; then
+			# Reset ZFS caching
+			/sbin/zfs inherit primarycache "$( be_get_root_pool )"
+		fi
 
 		# 2nd reboot during new major version upgrade
 		if [ -n "${is_pkg_locked}" ]; then
@@ -1778,7 +1806,7 @@ There are no new releases for the SG-1000."
 		local _rel_feat _rel_sup
 
 		# Get newest of meta or core packages as our baseline version
-		for _package in ${_meta_pkg} ${_core_pkgs}; do
+		for _package in ${_core_pkgs} ${_meta_pkg}; do
 			local _other_version=$(_pkg query %v ${_package})
 			if [ -z "${_installed_version}" ] || [ $(_pkg version -t ${_installed_version} ${_other_version}) ]; then
 				_installed_version=${_other_version}
@@ -1853,7 +1881,7 @@ There are no new releases for the SG-1000."
 			fi
 
 			local _pkg_args=""
-			local _pkgs="${_meta_pkg} ${_core_pkgs}"
+			local _pkgs="${_core_pkgs} ${_meta_pkg}"
 			if [ ${_is_configured_repo} -eq 0 ]; then
 				_pkgs="${product}-base"
 				_pkg_args="-C ${_repopath}/pkg.conf"
@@ -1873,7 +1901,7 @@ There are no new releases for the SG-1000."
 					_version_compare=$(compare_pkg_version "${_package}" "${_new_version}")
 				fi
 				if [ "${_version_compare}" == "<" ]; then
-					_new_version="$(_pkg ${_pkg_args} rquery -U %v ${_package} | /usr/bin/cut -f -5 -d.)"
+					_new_version="$(_pkg ${_pkg_args} rquery -U %v ${_package})"
 				fi
 			done
 		done
@@ -1893,7 +1921,7 @@ There are no new releases for the SG-1000."
 				;;
 		esac
 	else
-		for _package in ${_meta_pkg} ${_core_pkgs}; do
+		for _package in ${_core_pkgs} ${_meta_pkg}; do
 			_version_compare=$(compare_pkg_version ${_package})
 			case "${_version_compare}" in
 				!|=)
@@ -1906,7 +1934,7 @@ There are no new releases for the SG-1000."
 					;;
 			esac
 
-			_new_version="$(_pkg ${_pkg} rquery -U %v ${_package} | /usr/bin/cut -f -5 -d.)"
+			_new_version="$(_pkg ${_pkg} rquery -U %v ${_package})"
 			if [ -z "${_mute}" ]; then
 				_echo "${_new_version} version of ${product} is available"
 			fi

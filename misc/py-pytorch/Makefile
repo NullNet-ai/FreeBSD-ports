@@ -1,7 +1,7 @@
 PORTNAME=	pytorch
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.6.0
-PORTREVISION=	3
+DISTVERSION=	2.8.0
+PORTREVISION=	4
 CATEGORIES=	misc # machine-learning
 MASTER_SITES=	https://github.com/pytorch/pytorch/releases/download/v${DISTVERSION}/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -10,7 +10,8 @@ DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	PyTorch: Tensors and dynamic neural networks in Python
-WWW=		https://pytorch.org/
+WWW=		https://pytorch.org/ \
+		https://github.com/pytorch/pytorch
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
@@ -43,11 +44,13 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}filelock>0:sysutils/py-filelock@${PY_FLAVOR}
 		${PYTHON_PKGNAMEPREFIX}typing-extensions>=4.10.0:devel/py-typing-extensions@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pyyaml>0:devel/py-pyyaml@${PY_FLAVOR}
 RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}astunparse>0:devel/py-astunparse@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}dill>0:devel/py-dill@${PY_FLAVOR} # optional dependency
-TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}expecttest>=0.2.1:devel/py-expecttest@${PY_FLAVOR}
+		${PYTHON_PKGNAMEPREFIX}dill>0:devel/py-dill@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}networkx>0:math/py-networkx@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}protobuf>0:devel/py-protobuf@${PY_FLAVOR} # optional dependencies
 
 USES=		compiler:c++17-lang localbase:ldflags python
 USE_PYTHON=	distutils autoplist
+USE_LDCONFIG=	${PYTHON_SITELIBDIR}/torch/lib
 
 USE_GITHUB=	nodefault
 GH_TUPLE=	pytorch:cpuinfo:1e83a2f:cpuinfo/cpuinfo-with-freebsd-support # https://github.com/pytorch/cpuinfo/pull/230/commits
@@ -58,12 +61,24 @@ MAKE_ENV+=	USE_MKLDNN=0 # disable MKLDNN that doesn't exist, see https://github.
 MAKE_ENV+=	USE_CUDNN=0
 MAKE_ENV+=	USE_LAPACK=1 # needed on FreeBSD to run w/out GPU
 MAKE_ENV+=	USE_QNNPACK=0
+MAKE_ENV+=	USE_DISTRIBUTED=1
 LDFLAGS+=	-lexecinfo
 LDFLAGS_powerpc64le=	-pthread
 
 BINARY_ALIAS=	make=${GMAKE}
 
 POST_PLIST=	fix-plist
+
+TEST_ENV=	${MAKE_ENV} PYTHONPATH=${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}
+TEST_WRKSRC=	${WRKSRC}/test
+
+OPTIONS_DEFINE=		VULKAN
+OPTIONS_DEFAULT=	VULKAN # VULKAN is experimental in PyTorch and only simple computations work
+
+VULKAN_MAKE_ENV=	USE_VULKAN=1 USE_VULKAN_SHADERC_RUNTIME=1 USE_VULKAN_WRAPPER=0 # see https://docs.pytorch.org/tutorials/unstable/vulkan_workflow.html
+VULKAN_BUILD_DEPENDS=	glslc:graphics/shaderc \
+			vulkan-headers>0:graphics/vulkan-headers
+VULKAN_LIB_DEPENDS=	libvulkan.so:graphics/vulkan-loader
 
 .include <bsd.port.options.mk>
 
@@ -73,18 +88,21 @@ USES+=	llvm:max=15
 
 post-patch:
 	@cd ${WRKSRC} && \
-		${RM} -r third_party/cpuinfo third_party/fbgemm/third_party/cpuinfo && \
+		${RM} -r third_party/cpuinfo third_party/fbgemm/external/cpuinfo && \
 		${CP} -r cpuinfo-with-freebsd-support third_party/cpuinfo && \
-		${CP} -r cpuinfo-with-freebsd-support third_party/fbgemm/third_party/cpuinfo
+		${CP} -r cpuinfo-with-freebsd-support third_party/fbgemm/external/cpuinfo
 
 post-install: # strip binaries
 	@${STRIP_CMD} \
 		${STAGEDIR}${PYTHON_SITELIBDIR}/torch/bin/torch_shm_manager \
-		${STAGEDIR}${PYTHON_SITELIBDIR}/torch/_C${PYTHON_EXT_SUFFIX}.so \
-		${STAGEDIR}${PYTHON_SITELIBDIR}/functorch/_C${PYTHON_EXT_SUFFIX}.so \
+		${STAGEDIR}${PYTHON_SITELIBDIR}/torch/_C${PYTHON_TAG}.so \
+		${STAGEDIR}${PYTHON_SITELIBDIR}/functorch/_C${PYTHON_TAG}.so \
 		${STAGEDIR}${PYTHON_SITELIBDIR}/torch/lib/lib*.so
 
 fix-plist: # remove the stray %%PYTHON_SITELIBDIR%%/caffe2 file
 	@${REINPLACE_CMD} -e "s|.*/caffe2$$||" ${TMPPLIST}
+
+do-test:
+	cd ${TEST_WRKSRC} && ${SETENV} ${TEST_ENV} ${PYTHON_CMD} run_test.py
 
 .include <bsd.port.mk>

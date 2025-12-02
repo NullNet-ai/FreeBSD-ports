@@ -1,8 +1,9 @@
 PORTNAME=	exult
-DISTVERSION?=	1.10.1
-PORTREVISION?=	1
+DISTVERSION=	1.12.0
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	games
+MASTER_SITES=	SF/exult/exult-all-versions/${DISTVERSION:R}/
 
 MAINTAINER=	eduardo@FreeBSD.org
 COMMENT=	Engine for Ultima VII (BG, FOV, SI, SS)
@@ -11,10 +12,10 @@ WWW=		http://exult.info
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BUILD_DEPENDS=	autoconf-archive>=0:devel/autoconf-archive
 LIB_DEPENDS=	libogg.so:audio/libogg \
 		libpng16.so:graphics/png \
 		libvorbis.so:audio/libvorbis
-BUILD_DEPENDS=	autoconf-archive>=0:devel/autoconf-archive
 
 USES=		autoreconf compiler:c++17-lang gmake libtool localbase \
 		pkgconfig sdl xorg
@@ -27,16 +28,8 @@ CONFIGURE_ARGS=	--disable-static \
 		--enable-shared \
 		--with-icondir=${PREFIX}/share/pixmaps
 
-CONFLICTS_INSTALL=	exult-devel
-SUB_FILES=		pkg-message
-PLIST?=			${.CURDIR}/pkg-plist
+SUB_FILES=	pkg-message
 PORTDOCS=	*
-
-.if !defined(MASTERDIR)
-MASTER_SITES=	http://prdownloads.sourceforge.net/exult/
-.else
-USE_GITHUB=	yes
-.endif
 
 OPTIONS_DEFINE=		ALSA DEBUG DOCS FLUIDSYNTH GIMP STUDIO
 OPTIONS_DEFAULT=	STUDIO
@@ -56,15 +49,14 @@ FLUIDSYNTH_LIB_DEPENDS=		libfluidsynth.so:audio/fluidsynth
 FLUIDSYNTH_CONFIGURE_ENABLE=	fluidsynth
 
 GIMP_LIB_DEPENDS=	libbabl-0.1.so:x11/babl \
-			libfontconfig.so:x11-fonts/fontconfig \
-			libfreetype.so:print/freetype2 \
 			libgegl-0.4.so:graphics/gegl \
 			libgegl-npd-0.4.so:graphics/gegl \
-			libgimp-2.0.so:graphics/gimp-app \
+			libgexiv2.so:graphics/gexiv2 \
+			libgimp-3.0.so:graphics/gimp3-app \
 			libharfbuzz.so:print/harfbuzz \
 			libjson-glib-1.0.so:devel/json-glib
 GIMP_USES=		gnome
-GIMP_USE=		GNOME=gtk20,pango
+GIMP_USE=		GNOME=gtk30,pango
 
 GIMP_CONFIGURE_ENABLE=	gimp-plugin
 

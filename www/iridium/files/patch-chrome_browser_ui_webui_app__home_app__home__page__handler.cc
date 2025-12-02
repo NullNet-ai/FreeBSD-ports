@@ -1,4 +1,4 @@
---- chrome/browser/ui/webui/app_home/app_home_page_handler.cc.orig	2024-11-04 08:56:03 UTC
+--- chrome/browser/ui/webui/app_home/app_home_page_handler.cc.orig	2025-09-11 13:19:19 UTC
 +++ chrome/browser/ui/webui/app_home/app_home_page_handler.cc
 @@ -62,7 +62,7 @@
  #include "ui/base/window_open_disposition_utils.h"

@@ -16,17 +16,16 @@ ONLY_FOR_ARCHS_REASON=Bundled JNI only support some architectures
 RUN_DEPENDS=	bash>=0:shells/bash \
 		puppet8>=8.0:sysutils/puppet8 \
 		rubygem-puppetserver-ca>=1:sysutils/rubygem-puppetserver-ca \
-		rubygem-semantic_puppet>=1:devel/rubygem-semantic_puppet \
-		sudo>=1:security/sudo
+		rubygem-semantic_puppet>=1:devel/rubygem-semantic_puppet
 
-USES=		ruby java shebangfix
+USES=		ruby java shebangfix sudo
 JAVA_VERSION=	11+
 USE_RC_SUBR=	puppetserver
 
 NO_ARCH=	yes
 NO_BUILD=	yes
 
-CONFLICTS_INSTALL=	puppetserver[0-9]
+CONFLICTS_INSTALL=	openvox-server[0-9] puppetserver[0-9]
 
 SHEBANG_FILES=	ext/bin/puppetserver
 

@@ -1,12 +1,12 @@
 PORTNAME=	solidity
-PORTVERSION=	0.8.27
+DISTVERSION=	0.8.31-pre.1
 CATEGORIES=	lang
-MASTER_SITES=	https://github.com/ethereum/solidity/releases/download/v${PORTVERSION}/
-DISTNAME=	${PORTNAME}_${PORTVERSION}
+MASTER_SITES=	https://github.com/argotorg/solidity/releases/download/v${DISTVERSION}/
+DISTNAME=	${PORTNAME}_${DISTVERSION}
 
 MAINTAINER=	ale@FreeBSD.org
 COMMENT=	Solidity Contract-Oriented Programming Language
-WWW=		https://github.com/ethereum/solidity
+WWW=		https://github.com/argotorg/solidity
 
 LICENSE=	GPLv3
 
@@ -23,18 +23,13 @@ CPE_VENDOR=	${PORTNAME}lang
 
 OPTIONS_DEFINE=	Z3 CVC5
 OPTIONS_DEFAULT=Z3
-OPTIONS_EXCLUDE_i386=	Z3
 Z3_DESC=	SMT Checker via Z3
 CVC5_DESC=	SMT Checker via CVC5
-Z3_LIB_DEPENDS=		libz3.so:math/z3
+Z3_RUN_DEPENDS=		z3:math/z3
 CVC5_RUN_DEPENDS=	cvc5:math/cvc5
-Z3_CMAKE_OFF=	USE_Z3
 
-CMAKE_ARGS+=	-DUSE_LD_GOLD=OFF -DTESTS=OFF \
-		-DIGNORE_VENDORED_DEPENDENCIES=ON \
-		-DRANGE_V3_INCLUDE_DIR="${LOCALBASE}/include" \
-		-DSTRICT_NLOHMANN_JSON_VERSION=OFF \
-		-DSTRICT_Z3_VERSION=OFF
+CMAKE_ARGS+=	-DTESTS=OFF \
+		-DIGNORE_VENDORED_DEPENDENCIES=ON
 
 PLIST_FILES=	bin/solc \
 		bin/yul-phaser

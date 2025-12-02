@@ -71,11 +71,7 @@ link('/usr/local/bin/php', '/usr/local/bin/php_pfb');
 // clog is not required for pfSense 2.5 and above
 unlink_if_exists('/usr/local/sbin/clog_pfb');
 unlink_if_exists('/usr/bin/tail_pfb');
-if (substr(trim(file_get_contents('/etc/version')), 0, 3) < '2.5' && file_exists('/usr/local/sbin/clog')) {
-	link('/usr/local/sbin/clog', '/usr/local/sbin/clog_pfb');
-} else {
-	link('/usr/bin/tail', '/usr/bin/tail_pfb');
-}
+link('/usr/bin/tail', '/usr/bin/tail_pfb');
 
 // Remove cache databases
 unlink_if_exists("{$pfb['asn_cache']}");
@@ -389,9 +385,10 @@ if (file_exists('/var/db/pfblockerng/dnsbl_info') &&
 	$db_handle = pfb_open_sqlite(1, 'Convert dnsbl_info');
 	if ($db_handle) {
 
-		$dnsbl_info = array_map('str_getcsv', @file('/var/db/pfblockerng/dnsbl_info'));
+		$dnsbl_info = @file('/var/db/pfblockerng/dnsbl_info');
 		if (!empty($dnsbl_info)) {
 			foreach ($dnsbl_info as $group) {
+				$group = str_getcsv($group, ',', '"', "\\");
 				if (substr($group[0], 0, 1) != '#') {
 					$db_update = "INSERT INTO dnsbl ( groupname, timestamp, entries, counter )"
 							. " VALUES ( :group0, :group1, :group2, :group3 );\n";

@@ -1,10 +1,10 @@
 PORTNAME=	delta
 DISTVERSION=	0.18.2
-PORTREVISION=	4
+PORTREVISION=	11
 CATEGORIES=	devel
 PKGNAMEPREFIX=	git-
 
-MAINTAINER=	DtxdF@disroot.org
+MAINTAINER=	dtxdf@FreeBSD.org
 COMMENT=	Syntax-highlighting pager for git/diff
 WWW=		https://dandavison.github.io/delta/
 
@@ -12,7 +12,6 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libonig.so:devel/oniguruma
-RUN_DEPENDS=	git:devel/git
 
 USES=		cargo cpe
 CPE_VENDOR=	${PORTNAME}_project

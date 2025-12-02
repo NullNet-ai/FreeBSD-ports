@@ -1,8 +1,7 @@
 PORTNAME=	victoria-logs
-PORTVERSION=	1.6.1
+PORTVERSION=	1.37.2
 DISTVERSIONPREFIX=	v
-DISTVERSIONSUFFIX=-victorialogs
-PORTREVISION=	4
+PORTREVISION=	1
 CATEGORIES=	net-mgmt
 
 MAINTAINER=	samm@FreeBSD.org
@@ -12,9 +11,9 @@ WWW=		https://victoriametrics.com/products/victorialogs/
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		gmake go:modules,1.23,no_targets
+USES=		gmake go:modules,1.25,no_targets
 
-GO_MODULE=	github.com/VictoriaMetrics/VictoriaMetrics
+GO_MODULE=	github.com/VictoriaMetrics/VictoriaLogs
 USE_RC_SUBR?=	${PORTNAME}
 
 MAKE_ENV=	PKG_TAG=v${PORTVERSION} GOOS=${OPSYS:tl} \
@@ -45,7 +44,7 @@ do-install:
 
 do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${MV} ${INSTALL_WRKSRC}/docs/VictoriaLogs/* ${STAGEDIR}${DOCSDIR}
+	${MV} ${INSTALL_WRKSRC}/docs/victorialogs/* ${STAGEDIR}${DOCSDIR}
 .endif
 
 .include <bsd.port.mk>

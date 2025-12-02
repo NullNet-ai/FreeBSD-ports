@@ -1,6 +1,6 @@
 PORTNAME=	rustworkx
-DISTVERSION=	0.15.1
-PORTREVISION=	7
+DISTVERSION=	0.17.1
+PORTREVISION=	3
 CATEGORIES=	math python
 #MASTER_SITES=	PYPI
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -15,8 +15,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}setuptools-rust>0:devel/py-setuptools-rust@${PY_FLAVOR}
 RUN_DEPENDS=	${PYNUMPY}
 TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}matplotlib>=3.0:math/py-matplotlib@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}pillow>=5.4:graphics/py-pillow@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}tox>0:devel/py-tox@${PY_FLAVOR}
+		${PYTHON_PKGNAMEPREFIX}pillow>=5.4:graphics/py-pillow@${PY_FLAVOR}
+		#${PYTHON_PKGNAMEPREFIX}tox>0:devel/py-tox@${PY_FLAVOR}
 
 USES=		cargo python
 USE_PYTHON=	autoplist distutils pytest
@@ -24,95 +24,102 @@ USE_PYTHON=	autoplist distutils pytest
 USE_GITHUB=	yes
 GH_ACCOUNT=	Qiskit
 
-CARGO_CRATES=	ahash-0.8.11 \
-		alga-0.9.3 \
-		allocator-api2-0.2.18 \
-		approx-0.3.2 \
-		autocfg-1.3.0 \
-		bitflags-2.6.0 \
+CARGO_CRATES=	adler2-2.0.0 \
+		aho-corasick-1.1.3 \
+		allocator-api2-0.2.21 \
+		arbitrary-1.4.1 \
+		autocfg-1.4.0 \
+		bitflags-2.9.0 \
+		cc-1.2.18 \
 		cfg-if-1.0.0 \
-		crossbeam-deque-0.8.5 \
+		crc32fast-1.4.2 \
+		crossbeam-deque-0.8.6 \
 		crossbeam-epoch-0.9.18 \
-		crossbeam-utils-0.8.20 \
-		either-1.13.0 \
-		equivalent-1.0.1 \
-		fixedbitset-0.4.2 \
+		crossbeam-utils-0.8.21 \
+		derive_arbitrary-1.4.1 \
+		either-1.15.0 \
+		env_logger-0.8.4 \
+		equivalent-1.0.2 \
+		fixedbitset-0.5.7 \
+		flate2-1.1.1 \
+		foldhash-0.1.5 \
 		getrandom-0.2.15 \
-		hashbrown-0.12.3 \
-		hashbrown-0.14.5 \
-		heck-0.4.1 \
+		getrandom-0.3.2 \
+		hashbrown-0.15.2 \
+		heck-0.5.0 \
 		hermit-abi-0.3.9 \
-		indexmap-1.9.3 \
-		indexmap-2.2.6 \
-		indoc-2.0.5 \
-		itertools-0.10.5 \
-		itertools-0.11.0 \
-		itoa-1.0.11 \
-		libc-0.2.155 \
-		libm-0.2.8 \
-		lock_api-0.4.12 \
-		matrixmultiply-0.3.8 \
+		indexmap-2.9.0 \
+		indoc-2.0.6 \
+		itertools-0.13.0 \
+		itertools-0.14.0 \
+		itoa-1.0.15 \
+		jobserver-0.1.33 \
+		libc-0.2.171 \
+		libfuzzer-sys-0.4.9 \
+		libm-0.2.15 \
+		log-0.4.27 \
+		matrixmultiply-0.3.9 \
 		memchr-2.7.4 \
 		memoffset-0.9.1 \
-		ndarray-0.15.6 \
-		ndarray-stats-0.5.1 \
+		miniz_oxide-0.8.7 \
+		ndarray-0.16.1 \
+		ndarray-stats-0.6.0 \
 		noisy_float-0.2.0 \
 		num-bigint-0.4.6 \
-		num-complex-0.2.4 \
 		num-complex-0.4.6 \
 		num-integer-0.1.46 \
 		num-traits-0.2.19 \
 		num_cpus-1.16.0 \
-		numpy-0.21.0 \
-		once_cell-1.19.0 \
-		parking_lot-0.12.3 \
-		parking_lot_core-0.9.10 \
-		petgraph-0.6.5 \
-		portable-atomic-1.6.0 \
-		ppv-lite86-0.2.17 \
-		priority-queue-2.0.3 \
-		proc-macro2-1.0.86 \
-		pyo3-0.21.2 \
-		pyo3-build-config-0.21.2 \
-		pyo3-ffi-0.21.2 \
-		pyo3-macros-0.21.2 \
-		pyo3-macros-backend-0.21.2 \
-		quick-xml-0.34.0 \
-		quote-1.0.36 \
+		numpy-0.24.0 \
+		once_cell-1.21.3 \
+		petgraph-0.8.1 \
+		portable-atomic-1.11.0 \
+		portable-atomic-util-0.2.4 \
+		ppv-lite86-0.2.21 \
+		priority-queue-2.3.1 \
+		proc-macro2-1.0.94 \
+		pyo3-0.24.1 \
+		pyo3-build-config-0.24.1 \
+		pyo3-ffi-0.24.1 \
+		pyo3-macros-0.24.1 \
+		pyo3-macros-backend-0.24.1 \
+		quick-xml-0.37.4 \
+		quickcheck-1.0.3 \
+		quickcheck_macros-1.1.0 \
+		quote-1.0.40 \
+		r-efi-5.2.0 \
 		rand-0.8.5 \
+		rand-0.9.1 \
 		rand_chacha-0.3.1 \
+		rand_chacha-0.9.0 \
 		rand_core-0.6.4 \
-		rand_pcg-0.3.1 \
+		rand_core-0.9.3 \
+		rand_distr-0.5.1 \
+		rand_pcg-0.9.0 \
 		rawpointer-0.2.1 \
 		rayon-1.10.0 \
-		rayon-cond-0.3.0 \
+		rayon-cond-0.4.0 \
 		rayon-core-1.12.1 \
-		redox_syscall-0.5.2 \
-		rustc-hash-1.1.0 \
-		ryu-1.0.18 \
-		scopeguard-1.2.0 \
-		serde-1.0.203 \
-		serde_derive-1.0.203 \
-		serde_json-1.0.118 \
-		smallvec-1.13.2 \
-		sprs-0.11.1 \
-		syn-2.0.68 \
-		target-lexicon-0.12.14 \
-		unicode-ident-1.0.12 \
-		unindent-0.2.3 \
-		version_check-0.9.4 \
+		regex-1.11.1 \
+		regex-automata-0.4.9 \
+		regex-syntax-0.8.5 \
+		rustc-hash-2.1.1 \
+		ryu-1.0.20 \
+		serde-1.0.219 \
+		serde_derive-1.0.219 \
+		serde_json-1.0.140 \
+		shlex-1.3.0 \
+		smallvec-1.15.0 \
+		sprs-0.11.3 \
+		syn-2.0.100 \
+		target-lexicon-0.13.2 \
+		unicode-ident-1.0.18 \
+		unindent-0.2.4 \
 		wasi-0.11.0+wasi-snapshot-preview1 \
-		windows-targets-0.52.5 \
-		windows_aarch64_gnullvm-0.52.5 \
-		windows_aarch64_msvc-0.52.5 \
-		windows_i686_gnu-0.52.5 \
-		windows_i686_gnullvm-0.52.5 \
-		windows_i686_msvc-0.52.5 \
-		windows_x86_64_gnu-0.52.5 \
-		windows_x86_64_gnullvm-0.52.5 \
-		windows_x86_64_msvc-0.52.5 \
-		zerocopy-0.7.34 \
-		zerocopy-derive-0.7.34
+		wasi-0.14.2+wasi-0.2.4 \
+		wit-bindgen-rt-0.39.0 \
+		zerocopy-0.8.24 \
+		zerocopy-derive-0.8.24
 
 CARGO_BUILD=	no
 CARGO_INSTALL=	no
@@ -123,7 +130,7 @@ MAKE_ENV=	${CARGO_ENV}
 TEST_ENV=	${MAKE_ENV} PYTHONPATH=${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}
 TEST_WRKSRC=	${BUILD_WRKDIR}
 
-PLIST_FILES=	${PYTHON_SITELIBDIR}/rustworkx/rustworkx${PYTHON_EXT_SUFFIX}.so # workaround for https://github.com/Qiskit/rustworkx/issues/654
+PLIST_FILES=	${PYTHON_SITELIBDIR}/rustworkx/rustworkx${PYTHON_TAG}.so # workaround for https://github.com/Qiskit/rustworkx/issues/654
 
 BINARY_ALIAS=	python3=${PYTHON_CMD}
 

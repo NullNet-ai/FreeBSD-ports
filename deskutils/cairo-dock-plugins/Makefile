@@ -1,27 +1,29 @@
 PORTNAME=	cairo-dock-plugins
-DISTVERSION=	3.5.1
-PORTREVISION=	1
+DISTVERSION=	3.6.1
 CATEGORIES=	deskutils
 
-MAINTAINER=	nxjoseph@protonmail.com
+MAINTAINER=	laurent.chardon@gmail.com
 COMMENT=	Cairo-Dock-Plugins for Cairo-Dock
-WWW=		https://www.glx-dock.org/
+WWW=		https://github.com/Cairo-Dock/cairo-dock-core/wiki/
 
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-LIB_DEPENDS=	libcurl.so:ftp/curl \
+LIB_DEPENDS=	libayatana-ido3-0.4.so:devel/ayatana-ido \
+		libayatana-indicator3.so:devel/libayatana-indicator \
+		libcurl.so:ftp/curl \
 		libdbus-1.so:devel/dbus \
 		libdbus-glib-1.so:devel/dbus-glib \
 		libdbusmenu-glib.so:devel/libdbusmenu \
 		libdbusmenu-gtk3.so:devel/libdbusmenu \
+		libgio-2.0.so:devel/glib20 \
 		libgldi.so:deskutils/cairo-dock \
 		libharfbuzz.so:print/harfbuzz \
-		libvte-2.91.so:x11-toolkits/vte3 \
+		libjson-c.so:devel/json-c \
 		libwayland-client.so:graphics/wayland
 RUN_DEPENDS=	wget:ftp/wget
 
-USES=		cmake gettext gl gnome localbase:ldflags pkgconfig python ssl \
+USES=		cmake gettext-tools gl gnome localbase:ldflags pkgconfig python \
 		xorg
 USE_GITHUB=	yes
 GH_ACCOUNT=	Cairo-Dock

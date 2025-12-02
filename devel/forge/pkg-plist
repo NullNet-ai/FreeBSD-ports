@@ -1,12 +1,16 @@
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-autoloads.el
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-bitbucket.el
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-bitbucket.elc
+%%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-client.el
+%%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-client.elc
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-commands.el
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-commands.elc
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-core.el
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-core.elc
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-db.el
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-db.elc
+%%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-discussion.el
+%%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-discussion.elc
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-forgejo.el
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-forgejo.elc
 %%EMACS_VERSION_SITE_LISPDIR%%/forge/forge-gitea.el

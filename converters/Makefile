@@ -135,7 +135,6 @@
     SUBDIR += p5-XML-WBXML
     SUBDIR += p5-bsdconv
     SUBDIR += p5-plutil
-    SUBDIR += pdf2djvu
     SUBDIR += pear-Services_JSON
     SUBDIR += pecl-igbinary
     SUBDIR += php-bsdconv
@@ -147,6 +146,8 @@
     SUBDIR += php83-mbstring
     SUBDIR += php84-iconv
     SUBDIR += php84-mbstring
+    SUBDIR += php85-iconv
+    SUBDIR += php85-mbstring
     SUBDIR += psiconv
     SUBDIR += py-bencode.py
     SUBDIR += py-bencoder
@@ -167,6 +168,7 @@
     SUBDIR += recode
     SUBDIR += rubygem-base32
     SUBDIR += rubygem-base64
+    SUBDIR += rubygem-base6402
     SUBDIR += rubygem-iconv
     SUBDIR += rubygem-json-ld
     SUBDIR += rubygem-json-ld-preloaded
@@ -182,7 +184,6 @@
     SUBDIR += unix2dos
     SUBDIR += uudeview
     SUBDIR += uulib
-    SUBDIR += wkhtmltopdf
     SUBDIR += xdeview
     SUBDIR += xml2c
     SUBDIR += yj

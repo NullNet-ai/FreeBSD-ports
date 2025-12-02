@@ -1,5 +1,6 @@
 PORTNAME=	coverband
-PORTVERSION=	6.1.4
+PORTVERSION=	6.1.5
+PORTREVISION=	1
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
@@ -10,7 +11,8 @@ WWW=		https://github.com/danmayer/coverband
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-redis>=3.0:databases/rubygem-redis
+RUN_DEPENDS=	rubygem-base64>=0:converters/rubygem-base64 \
+		rubygem-redis-gitlab>=3.0:databases/rubygem-redis-gitlab
 
 USES=		gem shebangfix
 

@@ -52,12 +52,12 @@ class acme_sh_domain {
 	
 class acme_sh {
 
+	private $acmeconf;
 	private $accountconfig;
 	private $path_account;
 	private $name;
 	private $debug = true;
 	public $dnssleep;
-	public $ocspstaple;
 	public $preferredchain;
 	
 	private function execacmesh($command, $envvariables = null) {
@@ -118,9 +118,8 @@ class acme_sh {
 	function init($ca, $name, $email) {
 		$conf = "ACME_DIRECTORY='{$ca}'\nACCOUNT_EMAIL='{$email}'\n";
 		$cadir = parse_url($ca, PHP_URL_HOST) . parse_url($ca, PHP_URL_PATH);
-		$acmeconf = "/tmp/acme/{$name}/";
-		$this->acmeconf = $acmeconf;
-		$this->path_account = "{$acmeconf}/ca/{$cadir}";
+		$this->acmeconf = "/tmp/acme/{$name}/";
+		$this->path_account = "{$this->acmeconf}/ca/{$cadir}";
 		safe_mkdir($this->path_account);
 		$this->accountconfig = "{$this->acmeconf}accountconf.conf";
 		file_put_contents("{$this->accountconfig}", $conf);
@@ -179,9 +178,6 @@ class acme_sh {
 		$cmdparameters = "";
 		if (is_numericint($this->dnssleep)) {
 			$cmdparameters .= " --dnssleep " . escapeshellarg($this->dnssleep);
-		}
-		if ($this->ocspstaple == "yes") {
-			$cmdparameters .= " --ocsp-must-staple ";
 		}
 		if (!empty($this->preferredchain)) {
 			$cmdparameters .= " --preferred-chain " . escapeshellarg($this->preferredchain);
@@ -269,7 +265,7 @@ EOF;
 				}
 
 				$acmechalengedom = (substr($nsupdatedomain, 0, 2) === "*.") ? substr($nsupdatedomain, 2) : $nsupdatedomain;
-				file_put_contents("{$nsupdatefileprefix}_acme-challenge.{$acmechalengedom}.server", $domain->NSUPDATE_SERVER);
+				file_put_contents("{$nsupdatefileprefix}" . ($domain->challengedomain != "yes" ? "_acme-challenge." : "") . "{$acmechalengedom}.server", $domain->NSUPDATE_SERVER);
 				$nsupdatekey = base64_decode($domain->NSUPDATE_KEY);
 
 				/* Set a default key algo of HMAC-MD5 if the key type is invalid. */
@@ -283,7 +279,7 @@ key "{$key_name}." {
 	secret "{$nsupdatekey}";
 };
 EOD;
-				file_put_contents("{$nsupdatefileprefix}_acme-challenge.{$acmechalengedom}.key", $keydata);
+				file_put_contents("{$nsupdatefileprefix}" . ($domain->challengedomain != "yes" ? "_acme-challenge." : "") . "{$acmechalengedom}.key", $keydata);
 			}
 		}
 

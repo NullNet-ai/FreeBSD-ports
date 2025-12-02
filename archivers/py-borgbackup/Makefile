@@ -1,8 +1,8 @@
 PORTNAME=	borgbackup
-DISTVERSION=	1.4.0
-PORTREVISION=	2
+DISTVERSION=	1.4.2
 CATEGORIES=	archivers python
-MASTER_SITES=	PYPI
+MASTER_SITES=	https://github.com/borgbackup/borg/releases/download/${DISTVERSION}/ \
+		PYPI
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	mandree@FreeBSD.org
@@ -13,9 +13,9 @@ LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 # note that borgbackup pins the msgpack version range per patchlevel version!
-_BB_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack>=1.0.3<1.1.1:devel/py-msgpack@${PY_FLAVOR}
+_BB_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack>=1.0.3<1.1.3:devel/py-msgpack@${PY_FLAVOR}
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pkgconfig>=0:devel/py-pkgconfig@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}setuptools-scm>=1.7:devel/py-setuptools-scm@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}setuptools-scm>=8:devel/py-setuptools-scm@${PY_FLAVOR} \
 		${_BB_DEPENDS}
 LIB_DEPENDS=	liblz4.so:archivers/liblz4 \
 		libzstd.so:archivers/zstd \
@@ -23,12 +23,13 @@ LIB_DEPENDS=	liblz4.so:archivers/liblz4 \
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}packaging>=19.0:devel/py-packaging@${PY_FLAVOR} \
 		${_BB_DEPENDS}
 TEST_DEPENDS=	${RUN_DEPENDS} \
-		${PYTHON_PKGNAMEPREFIX}tox>3.2:devel/py-tox@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}tox>=4.19:devel/py-tox@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}virtualenv>=0:devel/py-virtualenv@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}wheel>=0:devel/py-wheel@${PY_FLAVOR} \
 		fakeroot:security/fakeroot
-USES=		pkgconfig python:3.9+ ssl
-USE_PYTHON=	autoplist distutils
+
+USES=		pkgconfig python ssl
+USE_PYTHON=	autoplist cython3 distutils
 MAKE_ENV=	BORG_OPENSSL_PREFIX=${OPENSSLBASE}
 
 OPTIONS_DEFINE=		FUSE
@@ -50,7 +51,6 @@ EXTRA_PATCHES	+= ${FILESDIR}/extrapatch-setup.py
 post-patch:
 	${CP} ${FILESDIR}/acl_extended_file_np.c ${WRKSRC}/src/borg/platform/
 .endif
-
 
 _BORGHOME=${WRKDIR}/testhome
 _BORGENV=-i BORG_PASSPHRASE=secret123 PYTHONPATH=${STAGEDIR}${PYTHON_SITELIBDIR} HOME=${_BORGHOME}
@@ -82,6 +82,9 @@ post-install:
 	${SETENV} ${_BORGENV} ${STAGEDIR}${PREFIX}/bin/borg info ${WRKDIR}/borgrepo
 
 do-test:
-	cd ${WRKSRC} && ${SETENV} ${_BORGENV} ${TEST_ENV} tox-${PYTHON_VER} -e ${PY_FLAVOR} -vv
+# work around https://github.com/tox-dev/tox/issues/3602
+	${RM} ${WRKSRC}/setup.cfg
+# the PATH dance works around a strange "pkg-config" file not found error.
+	cd ${WRKSRC} && ${SETENV} ${_BORGENV} PATH=${PATH}:${LOCALBASE}/bin tox-${PYTHON_VER} -e ${PY_FLAVOR} -vv
 
 .include <bsd.port.post.mk>

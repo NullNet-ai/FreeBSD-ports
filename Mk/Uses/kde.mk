@@ -85,17 +85,13 @@ KDE_APPLICATIONS_BRANCH?=	${KDE_APPLICATIONS6_BRANCH}
 KDE_APPLICATIONS_VERSION?=	${KDE_APPLICATIONS6_VERSION}
 KDE_APPLICATIONS_SHLIB_VER?=	${KDE_APPLICATIONS6_SHLIB_VER}
 KDE_APPLICATIONS_SHLIB_G_VER?=	${KDE_APPLICATIONS6_SHLIB_G_VER}
-# Some projects despite being a part of Gear distribution continue to use
-# their own versioning with mangled KDE_APPLICATIONS_VERSION as a patchlevel.
-# Provide more variables to ease their maintenance.
-KDE_APPS_BASED_PATCHLEVEL?=	${KDE_APPLICATIONS_VERSION:R:S/.//}0${KDE_APPLICATIONS_VERSION:E}
 
 # Legacy KDE Plasma.
 KDE_PLASMA5_VERSION?=		5.27.12
 KDE_PLASMA5_BRANCH?=		stable
 
 # Current KDE Plasma desktop.
-KDE_PLASMA6_VERSION?=		6.3.3
+KDE_PLASMA6_VERSION?=		6.5.2
 KDE_PLASMA6_BRANCH?=		stable
 
 # Legacy KDE frameworks (Qt5 based).
@@ -103,16 +99,28 @@ KDE_FRAMEWORKS5_VERSION?=	5.116.0
 KDE_FRAMEWORKS5_BRANCH?=	stable
 
 # Current KDE Frameworks (Qt6 based).
-KDE_FRAMEWORKS6_VERSION?=	6.12.0
+KDE_FRAMEWORKS6_VERSION?=	6.19.0
 KDE_FRAMEWORKS6_BRANCH?=	stable
 
 # Current KDE applications. Update _${PORTNAME}_PROJECT_VERSION for the following ports:
 # devel/kdevelop, games/libkdegames, games/libkmahjongg, graphics/kgraphviewer
-KDE_APPLICATIONS6_VERSION?=	24.12.3
-KDE_APPLICATIONS6_SHLIB_VER?=	6.3.3
+KDE_APPLICATIONS6_VERSION?=	25.08.3
+KDE_APPLICATIONS6_SHLIB_VER?=	6.5.3
 # G as in KDE Gear, and as in "don't make the variable name longer than required".
 KDE_APPLICATIONS6_SHLIB_G_VER?=	${KDE_APPLICATIONS6_VERSION}
 KDE_APPLICATIONS6_BRANCH?=	stable
+
+# Some projects despite being a part of Gear distribution continue to use
+# their own versioning with mangled KDE_APPLICATIONS_VERSION as a patchlevel.
+# Provide more variables to ease their maintenance.
+KDE_APPS_MAJOR=		${KDE_APPLICATIONS_VERSION:R:R}
+KDE_APPS_MINOR=		${KDE_APPLICATIONS_VERSION:R:E}
+.    if ${KDE_APPLICATIONS_BRANCH:Mstable}
+KDE_APPS_MICRO=			0${KDE_APPLICATIONS_VERSION:E}
+.    else
+KDE_APPS_MICRO=			${KDE_APPLICATIONS_VERSION:E}
+.    endif
+KDE_APPS_BASED_PATCHLEVEL?=	${KDE_APPS_MAJOR}${KDE_APPS_MINOR}${KDE_APPS_MICRO}
 
 # ==============================================================================
 
@@ -195,6 +203,7 @@ PORTVERSION?=		${KDE_PLASMA_VERSION}
 PKGNAMEPREFIX?=		plasma${_KDE_VERSION}-
 MASTER_SITES?=		KDE/${KDE_PLASMA_BRANCH}/plasma/${KDE_PLASMA_VERSION}
 DIST_SUBDIR?=		KDE/plasma/${KDE_PLASMA_VERSION}
+WWW?=			https://kde.org/plasma-desktop/
 .        if ${_KDE_VERSION:M6}
 DESCR=			${.CURDIR:H:H}/x11/plasma6-plasma/pkg-descr
 .        endif
@@ -215,6 +224,7 @@ MASTER_SITES?=		KDE/${KDE_FRAMEWORKS_BRANCH}/frameworks/${KDE_FRAMEWORKS_VERSION
 .        endif
 DIST_SUBDIR?=		KDE/frameworks/${KDE_FRAMEWORKS_VERSION}
 .        if ${_KDE_VERSION:M6}
+DIST_SUBDIR=		KDE/frameworks/${KDE_FRAMEWORKS_VERSION:R}
 DESCR=			${.CURDIR:H:H}/x11/kf6-frameworks/pkg-descr
 .        endif
 .      else
@@ -265,7 +275,7 @@ PLIST_SUB+=		KDE_APPLICATIONS_VERSION="${KDE_APPLICATIONS_VERSION}" \
 _USE_PORTINGAIDS_ALL=	js jsembed kdelibs4support khtml mediaplayer kross
 
 # List of components of the KDE Frameworks distribution.
-# Not ported to FreeBSD: bluez-qt modemmanagerqt networkmanagerqt
+# Not ported to FreeBSD: bluez-qt modemmanagerqt
 _USE_FRAMEWORKS5_ALL=	activities activities-stats apidox archive attica \
 			auth baloo bookmarks breeze-icons calendarcore \
 			codecs completion config configwidgets contacts \
@@ -291,8 +301,8 @@ _USE_FRAMEWORKS6_ALL=	apidox archive attica auth baloo bookmarks \
 			i18n iconthemes idletime itemmodels itemviews \
 			jobwidgets kcmutils kdav kdeclarative kded kdesu \
 			kimageformats kio kirigami2 kquickcharts newstuff \
-			notifications notifyconfig package parts people \
-			plasma-wayland-protocols plotting prison pty purpose \
+			networkmanagerqt notifications notifyconfig package parts \
+			people plasma-wayland-protocols plotting prison pty purpose \
 			qqc2-desktop-style runner service solid sonnet \
 			statusnotifieritem svg syndication \
 			syntaxhighlighting texteditor texttemplate \
@@ -304,11 +314,12 @@ _USE_FRAMEWORKS_ALL=	${_USE_FRAMEWORKS${_KDE_VERSION}_ALL}
 _USE_PLASMA5_ALL=	libksysguard oxygen-sounds
 
 _USE_PLASMA6_ALL=	activities activities-stats activitymanagerd \
-			breeze breeze-gtk decoration discover drkonqi \
+			aurorae breeze breeze-gtk decoration discover \
 			globalacceld infocenter kde-cli-tools \
 			kde-gtk-config kdeplasma-addons kgamma kmenuedit \
+			knighttime \
 			kpipewire kscreen kscreenlocker ksshaskpass \
-			ksystemstats kwallet-pam kwin kwrited \
+			ksystemstats kwallet-pam kwin kwin-x11 kwrited \
 			layer-shell-qt libkscreen libksysguard libplasma \
 			milou ocean-sound-theme oxygen oxygen-sounds \
 			plasma-browser-integration plasma-desktop \
@@ -321,8 +332,8 @@ _USE_PLASMA6_ALL=	activities activities-stats activitymanagerd \
 _USE_PLASMA_ALL=	${_USE_PLASMA${_KDE_VERSION}_ALL}
 
 # List of frequently used components of the KDE Gears distribution.
-_USE_GEAR5_ALL=		libkdcraw libkexiv2
-_USE_GEAR6_ALL=		baloo-widgets kate kosm kpublictransport \
+_USE_GEAR5_ALL=		libkdcraw
+_USE_GEAR6_ALL=		baloo-widgets kosm kpublictransport \
 			libkcddb libkcompactdisc libkdcraw \
 			libkdegames libkeduvocdocument libkexiv2 \
 			libksane marble okular
@@ -527,6 +538,9 @@ kde-layer-shell-qt_LIB=		libLayerShellQtInterface.so
 kde-mediaplayer_PORT=		multimedia/kf${_KDE_VERSION}-kmediaplayer
 kde-mediaplayer_LIB=		libKF${_KDE_VERSION}MediaPlayer.so.5
 
+kde-networkmanagerqt_PORT=	net-mgmt/kf${_KDE_VERSION}-networkmanager-qt
+kde-networkmanagerqt_LIB=	libKF${_KDE_VERSION}NetworkManagerQt.so
+
 kde-newstuff_PORT=		devel/kf${_KDE_VERSION}-knewstuff
 kde-newstuff_LIB=		libKF${_KDE_VERSION}NewStuffCore.so
 
@@ -658,6 +672,9 @@ kde-kpipewire_LIB=		libKPipeWire.so
 kde-activitymanagerd_PORT=	x11/plasma${_KDE_VERSION}-kactivitymanagerd
 kde-activitymanagerd_LIB=	libkactivitymanagerd_plugin.so
 
+kde-aurorae_PORT=		x11-themes/plasma${_KDE_VERSION}-aurorae
+kde-aurorae_PATH=		${KDE_PREFIX}/lib/libexec/plasma-apply-aurorae
+
 kde-breeze_PORT=		x11-themes/plasma${_KDE_VERSION}-breeze
 kde-breeze_PATH=		${KDE_PREFIX}/share/QtCurve/Breeze.qtcurve
 
@@ -669,9 +686,6 @@ kde-decoration_LIB=		libkdecorations3.so
 
 kde-discover_PORT=		sysutils/plasma${_KDE_VERSION}-discover
 kde-discover_PATH=		${KDE_PREFIX}/bin/plasma-discover
-
-kde-drkonqi_PORT=		sysutils/plasma${_KDE_VERSION}-drkonqi
-kde-drkonqi_PATH=		${KDE_PREFIX}/lib/libexec/drkonqi
 
 kde-infocenter_PORT=		sysutils/plasma${_KDE_VERSION}-kinfocenter
 kde-infocenter_PATH=		${KDE_PREFIX}/bin/kinfocenter
@@ -691,6 +705,9 @@ kde-kgamma_PATH=		${QT_PLUGINDIR}/plasma/kcms/systemsettings_qwidgets/kcm_kgamma
 kde-kmenuedit_PORT=		sysutils/plasma${_KDE_VERSION}-kmenuedit
 kde-kmenuedit_PATH=		${KDE_PREFIX}/bin/kmenuedit
 
+kde-knighttime_PORT=		sysutils/plasma${_KDE_VERSION}-knighttime
+kde-knighttime_LIB=		libKNightTime.so
+
 kde-kscreen_PORT=		x11/plasma${_KDE_VERSION}-kscreen
 kde-kscreen_PATH=		${KDE_PREFIX}/bin/kscreen-console
 
@@ -707,7 +724,10 @@ kde-kwallet-pam_PORT=		security/plasma${_KDE_VERSION}-kwallet-pam
 kde-kwallet-pam_PATH=		${KDE_PREFIX}/lib/pam_kwallet5.so
 
 kde-kwin_PORT=			x11-wm/plasma${_KDE_VERSION}-kwin
-kde-kwin_PATH=			${KDE_PREFIX}/bin/kwin_x11
+kde-kwin_PATH=			${KDE_PREFIX}/bin/kwin_wayland
+
+kde-kwin-x11_PORT=		x11-wm/plasma${_KDE_VERSION}-kwin-x11
+kde-kwin-x11_PATH=		${KDE_PREFIX}/bin/kwin_x11
 
 kde-kwrited_PORT=		devel/plasma${_KDE_VERSION}-kwrited
 kde-kwrited_PATH=		${QT_PLUGINDIR}/kf${_KDE_VERSION}/kded/kwrited.so
@@ -721,7 +741,7 @@ kde-libksysguard_LIB6=		libKSysGuardSystemStats.so
 kde-libksysguard_LIB=		${kde-libksysguard_LIB${_KDE_VERSION}}
 
 kde-milou_PORT=			deskutils/plasma${_KDE_VERSION}-milou
-kde-milou_PATH=		${QT_QMLDIR}/org/kde/milou/libmilouqmlplugin.so
+kde-milou_PATH=		${QT_QMLDIR}/org/kde/milou/libmilou.so
 
 kde-ocean-sound-theme_PORT=	audio/plasma${_KDE_VERSION}-ocean-sound-theme
 kde-ocean-sound-theme_PATH=	${KDE_PREFIX}/share/sounds/ocean/index.theme
@@ -761,7 +781,7 @@ kde-powerdevil_PORT=		sysutils/plasma${_KDE_VERSION}-powerdevil
 kde-powerdevil_LIB=		libpowerdevilcore.so
 
 kde-print-manager_PORT=		print/plasma${_KDE_VERSION}-print-manager
-kde-print-manager_PATH=		${KDE_PREFIX}/bin/kde-add-printer
+kde-print-manager_PATH=		${KDE_PREFIX}/bin/kde-print-queue
 kde-print-manager_TYPE=		run
 
 kde-spectacle_PORT=		graphics/plasma${_KDE_VERSION}-spectacle
@@ -946,9 +966,6 @@ kde-akonadi_LIB=		libKPim${_KDE_VERSION}AkonadiPrivate.so
 kde-baloo-widgets_PORT=		sysutils/baloo-widgets
 kde-baloo-widgets_LIB=		libKF${_KDE_VERSION}BalooWidgets.so
 
-kde-kate_PORT=			editors/kate
-kde-kate_PATH=			${QT_PLUGINDIR}/ktexteditor/katebacktracebrowserplugin.so
-
 kde-libkcddb_PORT=		audio/libkcddb
 kde-libkcddb_LIB=		libKCddb${_KDE_VERSION}.so
 
@@ -966,10 +983,8 @@ kde-libkdegames_LIB=		libKDEGames${_KDE_VERSION}.so
 kde-libkeduvocdocument_PORT=	misc/libkeduvocdocument
 kde-libkeduvocdocument_LIB=	libKEduVocDocument.so
 
-kde-libkexiv2_PORT=		graphics/libkexiv2@qt${_KDE_VERSION}
-kde-libkexiv2_LIB5=		libKF${_KDE_VERSION}KExiv2.so
-kde-libkexiv2_LIB6=		libKExiv2Qt${_KDE_VERSION}.so
-kde-libkexiv2_LIB=		${kde-libkexiv2_LIB${_KDE_VERSION}}
+kde-libkexiv2_PORT=		graphics/libkexiv2
+kde-libkexiv2_LIB=		libKExiv2Qt6.so
 
 kde-libksane_PORT=		graphics/libksane
 kde-libksane_LIB=		libKSaneWidgets${_KDE_VERSION}.so

@@ -1,9 +1,8 @@
 PORTNAME=	ringrtc
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.50.2
+DISTVERSION=	2.59.4
 CATEGORIES=	multimedia
-MASTER_SITES=	LOCAL/mikael/ringrtc/:base \
-		LOCAL/mikael/ringrtc/:boringssl \
+MASTER_SITES=	LOCAL/mikael/ringrtc/:boringssl \
 		LOCAL/mikael/ringrtc/:build \
 		LOCAL/mikael/ringrtc/:buildtools \
 		LOCAL/mikael/ringrtc/:catapult \
@@ -20,8 +19,7 @@ MASTER_SITES=	LOCAL/mikael/ringrtc/:base \
 		LOCAL/mikael/ringrtc/:testing \
 		LOCAL/mikael/ringrtc/:third_party \
 		LOCAL/mikael/ringrtc/:tools
-DISTFILES=	base-${BASE_REV}.tar.gz:base \
-		boringssl-${BORINGSSL_REV}.tar.gz:boringssl \
+DISTFILES=	boringssl-${BORINGSSL_REV}.tar.gz:boringssl \
 		build-${BUILD_REV}.tar.gz:build \
 		buildtools-${BUILDTOOLS_REV}.tar.gz:buildtools \
 		catapult-${CATAPULT_REV}.tar.gz:catapult \
@@ -64,32 +62,31 @@ GH_TUPLE=	signalapp:ringrtc:${DISTVERSIONPREFIX}${DISTVERSION} \
 		signalapp:webrtc:${WEBRTC_REV}:webrtc
 
 # sh net-im/signal-desktop/get_deps.sh
-WEBRTC_REV=	6834f
+WEBRTC_REV=	7339d
 
 # modify webrtc_fetch.sh, then sh webrtc_fetch.sh
-BASE_REV=		69f3676cdbd05660c136a6cc3b23383cbabe53d8
-BORINGSSL_REV=		0fa9014d861f024e28fb491ed7b1cfd44103dee7
-BUILD_REV=		05874e6c9429039f1747034af61de1fe2ea1ed06
-BUILDTOOLS_REV=		db0eae9640184fb132061f248f6108771a6ea2d4
-CATAPULT_REV=		44791916611acec1cd74c492c7453e46d9b0dbd2
-ICU_REV=		4239b1559d11d4fa66c100543eda4161e060311e
-LIBCUBEB_VER=		0.22.0
-LIBJPEG_TURBO_REV=	927aabfcd26897abb9776ecf2a6c38ea5bb52ab6
-LIBSRTP_REV=		000edd791434c8738455f10e0dd6b268a4852c0b
-LIBVPX_REV=		906334ac1de2b0afa666472dce5545b82c1251fb
-LIBYUV_REV=		a8e59d207483f75b87dd5fc670e937672cdf5776
-NASM_REV=		f477acb1049f5e043904b87b825c5915084a9a29
-OPUS_REV=		0e30966b198ad28943799eaf5b3b08100b6f70c3
-PERFETTO_REV=		e57316a6ae4e85e9bc8ba82a6c6a93eb5d9a72aa
-PROTOBUFJS_REV=		e34549db516f8712f678fcd4bc411613b5cc5295
-RE2_REV=		6dcd83d60f7944926bfd308cc13979fc53dd69ca
-TESTING_REV=		eac4c18f749488d7232af275405e0e1b67d84cb3
-THIRD_PARTY_REV=	9d80a193fbfe8e2f2a29be2efeee93de9a826dcb
-TOOLS_REV=		c809c4133185094fbd75508202221ff14fc92f7c
+BORINGSSL_REV=		ddb2ca4b48fca9a1c468d83dc513b837331843ac
+BUILD_REV=		66d076c7ab192991f67891b062b35404f3cb0739
+BUILDTOOLS_REV=		0c4bbb0f8a874de0a2a15d196031c7303d04fbb3
+CATAPULT_REV=		0fd1415f0cf3219ba097d37336141897fab7c5e9
+ICU_REV=		1b2e3e8a421efae36141a7b932b41e315b089af8
+LIBCUBEB_VER=		0.33.0
+LIBJPEG_TURBO_REV=	e14cbfaa85529d47f9f55b0f104a579c1061f9ad
+LIBSRTP_REV=		a52756acb1c5e133089c798736dd171567df11f5
+LIBVPX_REV=		a985e5e847a2fe69bef3e547cf25088132194e39
+LIBYUV_REV=		cdd3bae84818e78466fec1ce954eead8f403d10c
+NASM_REV=		e2c93c34982b286b27ce8b56dd7159e0b90869a2
+OPUS_REV=		55513e81d8f606bd75d0ff773d2144e5f2a732f5
+PERFETTO_REV=		0c893ed6bf6b42e3fee58daf3380d301c72550ed
+PROTOBUFJS_REV=		28bf5df73ef2f345a936d9cc95d64ba8ed426a53
+RE2_REV=		8451125897dd7816a5c118925e8e42309d598ecc
+TESTING_REV=		305de9533d3ee2840af0b3f2c8ed0b32802b0a5d
+THIRD_PARTY_REV=	e30091e8987ee0bb0cd30bc467250a96a7614762
+TOOLS_REV=		ec8f1c6113753a31c55b6d6bddfbe198046029a8
 
 BINARY_ALIAS=	vpython3=${PYTHON_CMD}
 
-# Keep in sync with https://github.com/signalapp/ringrtc/blob/v${DISTVERSION}/bin/build-electron#L119
+# Keep in sync with https://github.com/signalapp/ringrtc/blob/v2.53.0/bin/build-desktop#L130
 # Run "gn args out/release --list" for all variables.
 # Some parts don't have use_system_* flag, and can be turned on/off by using
 # replace_gn_files.py script, some parts just turned on/off for target host
@@ -110,6 +107,7 @@ GN_ARGS+=	rtc_build_examples=false \
 		use_custom_libcxx=false \
 		use_custom_libunwind=true \
 		use_lld=true \
+		use_llvm_libatomic=false \
 		use_sysroot=false \
 		use_system_freetype=false \
 		use_system_harfbuzz=true \
@@ -127,14 +125,20 @@ CARGO_INSTALL=		no
 
 USE_LDCONFIG=	yes
 
-MAKE_ENV=	OUTPUT_DIR=${WEBRTCDIR}/out
+MAKE_ENV+=	OUTPUT_DIR=${WEBRTCDIR}/out
 
 PLIST_FILES=	lib/libringrtc.so
+
+RUSTC_VERSION!= rustc -V 2>/dev/null || true
+MAKE_ENV+=	RUSTC_BOOTSTRAP=1
+
+GN_ARGS+=	enable_rust=true \
+		rust_sysroot_absolute="${LOCALBASE}" \
+		rustc_version="${RUSTC_VERSION}"
 
 post-extract:
 	${MKDIR} ${WRKDIR}/${PORTNAME}-${DISTVERSION}/src/webrtc
 	${MV} ${WRKDIR}/webrtc-${WEBRTC_REV} ${WEBRTCDIR}
-	${MV} ${WRKDIR}/base ${WEBRTCDIR}
 	${MV} ${WRKDIR}/build ${WEBRTCDIR}
 	${MV} ${WRKDIR}/buildtools ${WEBRTCDIR}
 	${MV} ${WRKDIR}/testing ${WEBRTCDIR}

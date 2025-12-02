@@ -36,7 +36,6 @@ $pconfig['syncinterfaces']	= $pfb['sconfig']['syncinterfaces']	?: '';
 
 // Select field options
 $options_varsynconchanges	= [ 'disabled' => 'Do not sync this package configuration', 'auto' => 'Sync to configured system backup server', 'manual' => 'Sync to host(s) defined below' ];
-$options_varsynctimeout		= range(0, 5000, 50);
 
 // Validate input fields and save
 if ($_POST) {
@@ -46,9 +45,11 @@ if ($_POST) {
 			unset($input_errors);
 		}
 
+		// Validate varsynctimeout. Default 150 and max at 5000
+		$_POST['varsynctimeout'] = min(5000, pfb_filter($_POST['varsynctimeout'], PFB_FILTER_NUM, 'Sync', 150));
+
 		// Validate Select field options
-		$select_options = array(	'varsynconchanges'	=> '',
-						'varsynctimeout'	=> '',
+		$select_options = array(	'varsynconchanges'	=> ''
 						);
 
 		foreach ($select_options as $s_option => $s_default) {
@@ -92,6 +93,9 @@ if ($_POST) {
 						break;
 					case 'varsyncipaddress':
 						// Validate IP Address/Hostname
+						if (($_POST['varsynconchanges'] == 'auto') && (mb_strlen(strval($value)) < 1)) {
+							continue;
+						}
 						$value = pfb_filter($value, PFB_FILTER_HOSTNAME, 'Sync');
 						if (empty($value)) {
 							$input_errors[] = gettext('The Target IP Address is invalid.');

@@ -1,10 +1,7 @@
 PORTNAME=	acpica
-PORTVERSION=	20241212
+PORTVERSION=	20250807
 CATEGORIES=	sysutils devel
-MASTER_SITES=	https://github.com/user-attachments/files/18117992/ \
-		LOCAL/jkim
 PKGNAMESUFFIX=	-tools
-DISTNAME=	${PORTNAME}-unix-${PORTVERSION}
 
 MAINTAINER=	jkim@FreeBSD.org
 COMMENT=	Tools from the ACPI Component Architecture (ACPICA) project
@@ -14,6 +11,7 @@ LICENSE=	BSD3CLAUSE GPLv2
 LICENSE_COMB=	dual
 
 USES=		gmake
+USE_GITHUB=	yes
 
 BUILD_WRKSRC=	${WRKSRC}/generate/unix
 

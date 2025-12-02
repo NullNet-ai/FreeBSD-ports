@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	pfSense-pkg-Status_Traffic_Totals
-PORTVERSION=	2.3.2
-PORTREVISION=	7
+PORTVERSION=	2.3.4
 CATEGORIES=	net
 MASTER_SITES=	# empty
 DISTFILES=	# empty

@@ -1,9 +1,10 @@
 PORTNAME=	miniserve
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.29.0
+DISTVERSION=	0.32.0
+PORTREVISION=	2
 CATEGORIES=	www
 
-MAINTAINER=	mikael@FreeBSD.org
+MAINTAINER=	bofh@FreeBSD.org
 COMMENT=	Ad-hoc HTTP server for file sharing
 WWW=		https://github.com/svenstaro/miniserve
 
@@ -14,8 +15,9 @@ LICENSE_FILE_MIT=	${WRKSRC}/LICENSE
 NOT_FOR_ARCHS=	i386
 NOT_FOR_ARCHS_REASON=	the ring crate requires SSE2 instruction on intel cpu
 
-BUILD_DEPENDS=	zstd>0:archivers/zstd
-LIB_DEPENDS=	libonig.so:devel/oniguruma
+#BUILD_DEPENDS=	zstd>0:archivers/zstd
+LIB_DEPENDS=	libonig.so:devel/oniguruma \
+		libzstd.so:archivers/zstd
 
 USES=		cargo ssl:build
 USE_GITHUB=	yes

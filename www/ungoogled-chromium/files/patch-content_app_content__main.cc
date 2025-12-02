@@ -1,6 +1,6 @@
---- content/app/content_main.cc.orig	2025-03-09 21:38:10 UTC
+--- content/app/content_main.cc.orig	2025-10-21 16:57:35 UTC
 +++ content/app/content_main.cc
-@@ -226,7 +226,7 @@ NO_STACK_PROTECTOR int RunContentProcess(
+@@ -217,7 +217,7 @@ NO_STACK_PROTECTOR int RunContentProcess(
      base::EnableTerminationOnOutOfMemory();
      logging::RegisterAbslAbortHook();
  
@@ -10,7 +10,7 @@
      // allows the dbus client library to connect directly to the bus. When this
      // variable is not set (test environments like xvfb-run), the dbus client
 @@ -311,7 +311,7 @@ NO_STACK_PROTECTOR int RunContentProcess(
-     command_line->AppendSwitch(switches::kUseMobileUserAgent);
+ #endif
  #endif
  
 -#if (BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_LINUX)) && !defined(COMPONENT_BUILD)

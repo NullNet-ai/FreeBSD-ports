@@ -144,6 +144,7 @@ share/kdevpythonsupport/documentation_files/unicodedata.py
 share/kdevpythonsupport/documentation_files/zipimport.py
 share/kdevpythonsupport/documentation_files/zlib.py
 share/kdevpythonsupport/scripts/introspect.py
+share/locale/ar/LC_MESSAGES/kdevpython.mo
 share/locale/bs/LC_MESSAGES/kdevpython.mo
 share/locale/ca/LC_MESSAGES/kdevpython.mo
 share/locale/ca@valencia/LC_MESSAGES/kdevpython.mo
@@ -160,6 +161,7 @@ share/locale/fr/LC_MESSAGES/kdevpython.mo
 share/locale/ga/LC_MESSAGES/kdevpython.mo
 share/locale/gl/LC_MESSAGES/kdevpython.mo
 share/locale/he/LC_MESSAGES/kdevpython.mo
+share/locale/hi/LC_MESSAGES/kdevpython.mo
 share/locale/hu/LC_MESSAGES/kdevpython.mo
 share/locale/ia/LC_MESSAGES/kdevpython.mo
 share/locale/it/LC_MESSAGES/kdevpython.mo
@@ -178,6 +180,7 @@ share/locale/pt/LC_MESSAGES/kdevpython.mo
 share/locale/pt_BR/LC_MESSAGES/kdevpython.mo
 share/locale/ro/LC_MESSAGES/kdevpython.mo
 share/locale/ru/LC_MESSAGES/kdevpython.mo
+share/locale/sa/LC_MESSAGES/kdevpython.mo
 share/locale/sk/LC_MESSAGES/kdevpython.mo
 share/locale/sl/LC_MESSAGES/kdevpython.mo
 share/locale/sv/LC_MESSAGES/kdevpython.mo

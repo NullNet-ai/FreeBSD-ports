@@ -1,8 +1,8 @@
---- components/viz/service/frame_sinks/root_compositor_frame_sink_impl.h.orig	2025-03-05 08:14:56 UTC
+--- components/viz/service/frame_sinks/root_compositor_frame_sink_impl.h.orig	2025-10-02 04:28:32 UTC
 +++ components/viz/service/frame_sinks/root_compositor_frame_sink_impl.h
-@@ -228,7 +228,7 @@ class VIZ_SERVICE_EXPORT RootCompositorFrameSinkImpl
-   // See comments on `EvictionHandler`.
-   EvictionHandler eviction_handler_;
+@@ -222,7 +222,7 @@ class VIZ_SERVICE_EXPORT RootCompositorFrameSinkImpl
+   base::TimeDelta display_frame_interval_ = BeginFrameArgs::DefaultInterval();
+   base::TimeDelta preferred_frame_interval_;
  
 -#if BUILDFLAG(IS_LINUX) && BUILDFLAG(IS_OZONE_X11)
 +#if (BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_BSD)) && BUILDFLAG(IS_OZONE_X11)

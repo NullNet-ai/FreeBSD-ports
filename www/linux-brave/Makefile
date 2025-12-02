@@ -14,7 +14,7 @@ RUN_DEPENDS=	update-mime-database:misc/shared-mime-info
 USES=		cpe desktop-file-utils gnome linux:rl9 shared-mime-info shebangfix
 USE_LINUX=	alsalib alsa-plugins-oss alsa-plugins-pulseaudio at-spi2-atk \
 		ca-certificates cairo cups-libs curl dbuslibs dri expat \
-		ffmpeg-libs gnupg gstreamer1-libav gtk3 libxkbcommon libunistring \
+		ffmpeg-libs gnupg gstreamer1-libav gtk3 libxkbcommon \
 		nspr nss p11-kit pango sqlite3 wget xorglibs
 ONLY_FOR_ARCHS=	aarch64 amd64
 
@@ -30,7 +30,7 @@ SRC_SUFX?=		.src${EXTRACT_SUFX}
 
 REINPLACE_ARGS=	-i ""
 
-BRAVE_VER?=	1.75.180
+BRAVE_VER?=	1.82.161
 BRAVE_BUILD?=	1
 
 DATADIR=	${PREFIX}/share/${PORTNAME}
@@ -42,7 +42,8 @@ SUB_FILES=	brave-browser
 
 post-extract:
 	@${REINPLACE_CMD} -e 's|/usr/bin/brave-browser-stable|${LOCALBASE}/bin/brave-browser|' \
-		${WRKSRC}/usr/share/applications/brave-browser.desktop
+		${WRKSRC}/usr/share/applications/brave-browser.desktop \
+		${WRKSRC}/usr/share/applications/com.brave.Browser.desktop
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/brave-browser ${STAGEDIR}${PREFIX}/bin

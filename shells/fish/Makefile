@@ -1,5 +1,5 @@
 PORTNAME=	fish
-DISTVERSION=	3.7.1
+DISTVERSION=	4.2.1
 CATEGORIES=	shells
 MASTER_SITES=	https://github.com/fish-shell/fish-shell/releases/download/${PORTVERSION}/
 
@@ -10,14 +10,19 @@ WWW=		https://fishshell.com/
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BUILD_DEPENDS=	${RUST_DEFAULT}>=1.70.0:lang/${RUST_DEFAULT}
 LIB_DEPENDS=	libpcre2-32.so:devel/pcre2
 
 # The python dependency is only needed by shebangfix.  At runtime python is
 # only needed by some optional scripts that aren't in PATH.
-USES=		cmake compiler:c++11-lang cpe localbase ncurses python:env \
-		shebangfix tar:xz
+USES=		cargo cmake cpe localbase ncurses python:env shebangfix tar:xz
+DISTFILES+=	${DISTNAME}${EXTRACT_SUFX}
 CPE_VENDOR=	fishshell
 SHEBANG_FILES=	share/tools/*.py share/tools/web_config/webconfig.py
+# We need USES=cargo for fetching crates.  But the actual build is done by
+# cmake.
+CARGO_BUILD=	no
+CARGO_INSTALL=	no
 
 CONFLICTS_INSTALL=	comms/mlan3
 

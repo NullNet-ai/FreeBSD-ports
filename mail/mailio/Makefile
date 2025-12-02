@@ -1,6 +1,6 @@
 PORTNAME=	mailio
-DISTVERSION=	0.24.1
-PORTREVISION=	1
+DISTVERSION=	0.25.1
+PORTREVISION=	2
 CATEGORIES=	mail devel
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -10,7 +10,7 @@ WWW=		https://github.com/karastojko/mailio
 LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-LIB_DEPENDS=	libboost_system.so:devel/boost-libs
+LIB_DEPENDS=	libboost_thread.so:devel/boost-libs
 
 USES=		cmake:testing compiler:c++17-lang ssl
 USE_LDCONFIG=	yes
@@ -25,5 +25,9 @@ CMAKE_TESTING_TARGET=	all
 
 post-test:
 	@cd ${WRKSRC}/test && ${BUILD_WRKSRC}/test/test_message
+
+# tests as of 0.25.1:
+# Running 139 test cases...
+# *** No errors detected
 
 .include <bsd.port.mk>

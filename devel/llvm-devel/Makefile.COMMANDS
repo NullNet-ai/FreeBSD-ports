@@ -30,17 +30,19 @@ LLVM_COMMANDS=	\
 		llvm-gsymutil \
 		llvm-ifs \
 		llvm-install-name-tool \
+		llvm-ir2vec \
 		llvm-jitlink \
 		llvm-libtool-darwin \
 		llvm-link \
 		llvm-lipo \
 		llvm-mc \
 		llvm-ml \
+		llvm-ml64 \
 		llvm-modextract \
-		llvm-mt \
 		llvm-nm \
 		llvm-objcopy \
 		llvm-objdump \
+		llvm-offload-wrapper \
 		llvm-opt-report \
 		llvm-otool \
 		llvm-pdbutil \
@@ -90,6 +92,7 @@ CLANG_COMMANDS=	\
 		hmaptool \
 		intercept-build \
 		nvptx-arch \
+		offload-arch \
 		scan-build \
 		scan-build-py \
 		scan-view
@@ -138,7 +141,10 @@ LLDB_COMMANDS=	\
 		lldb-argdumper \
 		lldb-dap \
 		lldb-instr \
-		lldb-server
+		lldb-mcp \
+		lldb-server \
+		lldb-tblgen \
+		yaml2macho-core
 
 MLIR_COMMANDS=	\
 		mlir-cat \

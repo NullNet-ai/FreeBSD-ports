@@ -1,8 +1,8 @@
 PORTNAME=	csfml
-DISTVERSION=	2.5.2
+DISTVERSION=	2.6.1
 CATEGORIES=	devel games graphics multimedia
 
-MAINTAINER=	agh@riseup.net
+MAINTAINER=	wen@FreeBSD.org
 COMMENT=	C bindings to the Simple and Fast Multimedia Library (SFML)
 WWW=		https://www.sfml-dev.org/download/csfml/
 

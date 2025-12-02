@@ -93,6 +93,7 @@ lib/libKOSMIndoorRouting.so.%%KDE_APPLICATIONS_VERSION%%
 %%QT_QMLDIR%%/org/kde/kosmindoormap/IndoorMap.qml
 %%QT_QMLDIR%%/org/kde/kosmindoormap/IndoorMapAttributionLabel.qml
 %%QT_QMLDIR%%/org/kde/kosmindoormap/IndoorMapScale.qml
+%%QT_QMLDIR%%/org/kde/kosmindoormap/IndoorMapView.qml
 %%QT_QMLDIR%%/org/kde/kosmindoormap/OSMElementInformationDialog.qml
 %%QT_QMLDIR%%/org/kde/kosmindoormap/OSMElementInformationDialogAddressDelegate.qml
 %%QT_QMLDIR%%/org/kde/kosmindoormap/OSMElementInformationDialogImageDelegate.qml
@@ -102,6 +103,7 @@ lib/libKOSMIndoorRouting.so.%%KDE_APPLICATIONS_VERSION%%
 %%QT_QMLDIR%%/org/kde/kosmindoormap/RoomSearchDialog.qml
 %%QT_QMLDIR%%/org/kde/kosmindoormap/kde-qmlmodule.version
 %%QT_QMLDIR%%/org/kde/kosmindoormap/kosmindoormapquickplugin.qmltypes
+%%QT_QMLDIR%%/org/kde/kosmindoormap/kpublictransport/PlatformDialog.qml
 %%QT_QMLDIR%%/org/kde/kosmindoormap/kpublictransport/kde-qmlmodule.version
 %%QT_QMLDIR%%/org/kde/kosmindoormap/kpublictransport/kosmindoormap_kpublictransport_integration_plugin.qmltypes
 %%QT_QMLDIR%%/org/kde/kosmindoormap/kpublictransport/libkosmindoormap_kpublictransport_integration_plugin.so
@@ -130,6 +132,7 @@ share/locale/fi/LC_MESSAGES/kosmindoormap.mo
 share/locale/fr/LC_MESSAGES/kosmindoormap.mo
 share/locale/gl/LC_MESSAGES/kosmindoormap.mo
 share/locale/he/LC_MESSAGES/kosmindoormap.mo
+share/locale/hi/LC_MESSAGES/kosmindoormap.mo
 share/locale/ia/LC_MESSAGES/kosmindoormap.mo
 share/locale/it/LC_MESSAGES/kosmindoormap.mo
 share/locale/ja/LC_MESSAGES/kosmindoormap.mo
@@ -141,6 +144,7 @@ share/locale/pl/LC_MESSAGES/kosmindoormap.mo
 share/locale/pt/LC_MESSAGES/kosmindoormap.mo
 share/locale/pt_BR/LC_MESSAGES/kosmindoormap.mo
 share/locale/ru/LC_MESSAGES/kosmindoormap.mo
+share/locale/sa/LC_MESSAGES/kosmindoormap.mo
 share/locale/sk/LC_MESSAGES/kosmindoormap.mo
 share/locale/sl/LC_MESSAGES/kosmindoormap.mo
 share/locale/sv/LC_MESSAGES/kosmindoormap.mo

@@ -1,5 +1,5 @@
-TIMESTAMP = 1733484016
-SHA256 (nzbgetcom-nzbget-v24.5_GH0.tar.gz) = d8a26fef9f92d63258251c69af01f39073a479e48c14114dc96d285470312c83
-SIZE (nzbgetcom-nzbget-v24.5_GH0.tar.gz) = 7283271
-SHA256 (nzbgetcom-par2cmdline-turbo-v1.1.1-nzbget-20241128_GH0.tar.gz) = 052c23d061baf12cd866dd115848d3671d20b4b659b67d70df28a200e5e0a8d4
-SIZE (nzbgetcom-par2cmdline-turbo-v1.1.1-nzbget-20241128_GH0.tar.gz) = 3960077
+TIMESTAMP = 1761289941
+SHA256 (nzbgetcom-nzbget-v25.4_GH0.tar.gz) = 2603116ffaef4992621cf7a82ce300f41a676a312de784f2bac5058abc1a2385
+SIZE (nzbgetcom-nzbget-v25.4_GH0.tar.gz) = 7333569
+SHA256 (nzbgetcom-par2cmdline-turbo-v1.3.0-20250808_GH0.tar.gz) = 3d25af25c4e8431f5afe280b64eee98f7587fde241804a021309274b6129968d
+SIZE (nzbgetcom-par2cmdline-turbo-v1.3.0-20250808_GH0.tar.gz) = 3970409

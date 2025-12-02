@@ -1,12 +1,12 @@
 PORTNAME=	drm-510-kmod
 PORTVERSION=	${DRM_KMOD_DISTVERSION}
-PORTREVISION=	11
+PORTREVISION=	13
 CATEGORIES=	graphics kld
 
 .include "Makefile.version"
 
 MAINTAINER=	x11@FreeBSD.org
-COMMENT=	DRM drivers modules
+COMMENT=	Direct Rendering Manager GPU drivers
 WWW=		https://github.com/freebsd/drm-kmod/
 
 LICENSE=	BSD2CLAUSE MIT GPLv2
@@ -34,7 +34,6 @@ SUB_LIST=	OPSYS=${OPSYS} OSREL=${OSREL}
 .if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1401501
 IGNORE=		not supported on FreeBSD 14.2 and higher
 .endif
-IGNORE_FreeBSD_15=	not supported anymore
 
 .if ${OPSYS} != FreeBSD
 IGNORE=		not supported on anything but FreeBSD (missing linuxkpi functionality)

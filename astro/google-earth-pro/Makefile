@@ -3,7 +3,7 @@
 # https://support.google.com/earth/answer/168344
 
 PORTNAME=	google-earth-pro
-DISTVERSION=	7.3.6.10201
+DISTVERSION=	7.3.6.10441
 DISTVERSIONSUFFIX=	-0
 CATEGORIES=	astro deskutils geography
 MASTER_SITES=	http://dl.google.com/linux/earth/rpm/stable/x86_64/
@@ -23,7 +23,7 @@ LICENSE_PERMS=	no-dist-mirror no-pkg-mirror auto-accept
 ONLY_FOR_ARCHS=	amd64
 
 USES=		desktop-file-utils linux:rl9
-USE_LINUX=	dbuslibs dri gstreamer1 libproxy libxml2 sqlite3 xorglibs
+USE_LINUX=	dbuslibs dri gstreamer1 libxml2 sqlite3 xorglibs
 
 NO_BUILD=	yes
 NO_WRKSUBDIR=	yes

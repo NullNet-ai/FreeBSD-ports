@@ -1,5 +1,5 @@
 PORTNAME=	tiledb
-PORTVERSION=	2.27.2
+PORTVERSION=	2.29.2
 CATEGORIES=	databases
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -26,13 +26,11 @@ RUN_DEPENDS=	capnproto1>=1.0.1:devel/capnproto1 \
 
 USES=		cmake compiler:c++17-lang localbase:ldflags pkgconfig ssl
 
-CFLAGS+=	-DSPDLOG_FMT_EXTERNAL=1
 CFLAGS_armv6=	-Wno-c++11-narrowing
 CFLAGS_armv7=	-Wno-c++11-narrowing
 CFLAGS_i386=	-Wno-c++11-narrowing
 CFLAGS_powerpc=	-Wno-c++11-narrowing
-CMAKE_ARGS=	-DTILEDB_CCACHE=${${CCACHE_ENABLED} == yes :?ON :OFF} \
-		-Dlibmagic_DICTIONARY=/usr/share/misc/magic.mgc
+CMAKE_ARGS=	-DTILEDB_CCACHE=${${CCACHE_ENABLED} == yes :?ON :OFF}
 CMAKE_OFF=	TILEDB_ALLOW_REGEX_CHAR_PATH \
 		TILEDB_ARROW_TESTS \
 		TILEDB_ASSERTIONS \
@@ -41,6 +39,7 @@ CMAKE_OFF=	TILEDB_ALLOW_REGEX_CHAR_PATH \
 		TILEDB_GCS \
 		TILEDB_HDFS \
 		TILEDB_REMOVE_DEPRECATIONS \
+		TILEDB_RUST \
 		TILEDB_S3 \
 		TILEDB_SANITIZER \
 		TILEDB_TESTS \

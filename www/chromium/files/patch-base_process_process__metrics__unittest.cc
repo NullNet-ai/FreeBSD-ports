@@ -1,9 +1,9 @@
---- base/process/process_metrics_unittest.cc.orig	2025-03-05 08:14:56 UTC
+--- base/process/process_metrics_unittest.cc.orig	2025-10-02 04:28:32 UTC
 +++ base/process/process_metrics_unittest.cc
-@@ -63,7 +63,8 @@
+@@ -62,7 +62,8 @@
+ #endif
  
- #if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS) ||      \
-     BUILDFLAG(IS_CHROMEOS_LACROS) || BUILDFLAG(IS_WIN) || \
+ #if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_WIN) || \
 -    BUILDFLAG(IS_ANDROID) || BUILDFLAG(IS_FUCHSIA) || BUILDFLAG(IS_APPLE)
 +    BUILDFLAG(IS_ANDROID) || BUILDFLAG(IS_FUCHSIA) || BUILDFLAG(IS_APPLE) || \
 +    BUILDFLAG(IS_BSD)

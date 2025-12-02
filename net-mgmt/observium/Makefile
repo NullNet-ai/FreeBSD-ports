@@ -20,11 +20,11 @@ RUN_DEPENDS=	rrdtool:databases/rrdtool \
 		mtr:net/mtr@nox11 \
 		${LOCALBASE}/share/pear/Net/IPv4.php:net/pear-Net_IPv4@${PHP_FLAVOR} \
 		${LOCALBASE}/share/pear/Net/IPv6.php:net/pear-Net_IPv6@${PHP_FLAVOR} \
-		snmpget:net-mgmt/net-snmp \
-		sudo:security/sudo
+		snmpget:net-mgmt/net-snmp
 
-USES=		cpe php:cli,flavors,mod python shebangfix
+USES=		cpe php:cli,flavors python shebangfix sudo
 USE_PHP=	ctype filter gd iconv mysqli posix session snmp tokenizer xml zlib
+IGNORE_WITH_PHP=	81
 SHEBANG_FILES=	\
 		poller-wrapper.py \
 		poller.php \
@@ -69,12 +69,12 @@ PORTEXAMPLES=	snmp.conf.example snmpd.conf.example
 
 .if ${PORT_OPTIONS:MAPACHEMOD}
 USES+=	apache:run
-.endif
 .if !defined(PACKAGE_BUILDING)
 USES+=	php:mod
 .else
 # Package builder doesn't create php8 with module
 USES+=	php:web
+.endif
 .endif
 
 .if ${PORT_OPTIONS:MMYSQLD}
@@ -89,8 +89,11 @@ pre-install:
 	${MKDIR} ${WRKSRC}/logs ${WRKSRC}/rrd
 
 do-install:
-	${MKDIR} ${STAGEDIR}/${WWWDIR} ${STAGEDIR}/${PREFIX}/${APACHEETCDIR}/Includes
+.if ${PORT_OPTIONS:MAPACHEMOD}
+	${MKDIR} ${STAGEDIR}/${PREFIX}/${APACHEETCDIR}/Includes
 	${INSTALL_DATA} ${WRKDIR}/observium.conf.sample ${STAGEDIR}/${PREFIX}/${APACHEETCDIR}/Includes
+.endif
+	${MKDIR} ${STAGEDIR}/${WWWDIR}
 .for dir in ${ROOT_DIRS}
 	${MKDIR} ${STAGEDIR}/${WWWDIR}/${dir}
 	(cd ${WRKSRC}/${dir} && ${COPYTREE_SHARE} . ${STAGEDIR}/${WWWDIR}/${dir})
@@ -117,7 +120,9 @@ do-install-EXAMPLES-on:
 .endfor
 
 post-install:
+.if ${PORT_OPTIONS:MAPACHEMOD}
 	@${ECHO_CMD}  "@sample ${APACHEETCDIR}/Includes/observium.conf.sample" >> ${TMPPLIST}
+.endif
 	@${FIND} -s ${STAGEDIR}${WWWDIR} -type f '(' -name '*.orig' -or -name '*.bak' ')' -delete
 	@${FIND} -s ${STAGEDIR}${WWWDIR} -not -type d | ${SORT} | \
 		${SED} -e 's#^${STAGEDIR}${PREFIX}/##' >> ${TMPPLIST}

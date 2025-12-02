@@ -28,6 +28,7 @@ share/locale/fr/LC_MESSAGES/lokalize.mo
 share/locale/ga/LC_MESSAGES/lokalize.mo
 share/locale/gl/LC_MESSAGES/lokalize.mo
 share/locale/he/LC_MESSAGES/lokalize.mo
+share/locale/hi/LC_MESSAGES/lokalize.mo
 share/locale/hr/LC_MESSAGES/lokalize.mo
 share/locale/hu/LC_MESSAGES/lokalize.mo
 share/locale/ia/LC_MESSAGES/lokalize.mo
@@ -37,6 +38,7 @@ share/locale/is/LC_MESSAGES/lokalize.mo
 share/locale/it/LC_MESSAGES/lokalize.mo
 share/locale/ja/LC_MESSAGES/lokalize.mo
 share/locale/ka/LC_MESSAGES/lokalize.mo
+share/locale/kab/LC_MESSAGES/lokalize.mo
 share/locale/kk/LC_MESSAGES/lokalize.mo
 share/locale/km/LC_MESSAGES/lokalize.mo
 share/locale/ko/LC_MESSAGES/lokalize.mo
@@ -57,6 +59,7 @@ share/locale/pt/LC_MESSAGES/lokalize.mo
 share/locale/pt_BR/LC_MESSAGES/lokalize.mo
 share/locale/ro/LC_MESSAGES/lokalize.mo
 share/locale/ru/LC_MESSAGES/lokalize.mo
+share/locale/sa/LC_MESSAGES/lokalize.mo
 share/locale/sk/LC_MESSAGES/lokalize.mo
 share/locale/sl/LC_MESSAGES/lokalize.mo
 share/locale/sq/LC_MESSAGES/lokalize.mo
@@ -190,12 +193,5 @@ share/locale/zh_TW/LC_MESSAGES/lokalize.mo
 %%DATADIR%%/icons/locolor/32x32/actions/prevuntranslated.png
 %%DATADIR%%/icons/locolor/32x32/actions/search2msgstr.png
 %%DATADIR%%/icons/locolor/32x32/actions/transsearch.png
-%%DATADIR%%/scripts/find-gui-text.sh
-%%DATADIR%%/scripts/msgmerge.py
-%%DATADIR%%/scripts/msgmerge.rc
-%%DATADIR%%/scripts/odf/xliff2odf-standalone.py
-%%DATADIR%%/scripts/odf/xliff2odf.py
-%%DATADIR%%/scripts/odf/xliff2odf.rc
-%%DATADIR%%/scripts/odf/xliffmerge.py
 share/metainfo/org.kde.lokalize.appdata.xml
 share/qlogging-categories6/lokalize.categories

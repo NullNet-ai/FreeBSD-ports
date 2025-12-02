@@ -1,6 +1,5 @@
 PORTNAME=	lxqt-notificationd
-PORTVERSION=	2.1.1
-PORTREVISION=	2
+PORTVERSION=	2.3.0
 CATEGORIES=	deskutils
 MASTER_SITES=	LXQT
 
@@ -10,7 +9,7 @@ WWW=		https://lxqt-project.org
 
 LICENSE=	LGPL21+
 
-USES=		cmake compiler:c++17-lang gettext kde:6 localbase:ldflags lxqt:2 qt:6 \
+USES=		cmake compiler:c++20-lang gettext kde:6 localbase:ldflags lxqt:2 qt:6 \
 		perl5 pkgconfig tar:xz gnome xorg
 USE_PERL5=	build
 USE_QT=		base:run tools:build svg

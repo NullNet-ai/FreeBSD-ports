@@ -1,3 +1,5 @@
-TIMESTAMP = 1731066215
-SHA256 (muon-0.3.1.tar.gz) = 14b175b29c4390a69c1d9b5758b4689f0456c749822476af67511f007be2e503
-SIZE (muon-0.3.1.tar.gz) = 446185
+TIMESTAMP = 1762283304
+SHA256 (muon/0.5.0/muon-v0.5.0.tar.gz) = 24aa4d29ed272893f6e6d355b1ec4ef20647438454e88161bdb9defd7c6faf77
+SIZE (muon/0.5.0/muon-v0.5.0.tar.gz) = 1262546
+SHA256 (muon/0.5.0/man.tar.gz) = 4e72fa1887c4d0ce3f4f3c5e03faf8fbf465c95fd48e022b796477926adf3ee5
+SIZE (muon/0.5.0/man.tar.gz) = 8172

@@ -1,9 +1,10 @@
 PORTNAME=	mepo
-DISTVERSION=	1.3.3
+DISTVERSION=	1.3.4
+PORTREVISION=	1
 CATEGORIES=	astro geography wayland
 MASTER_SITES=	https://git.sr.ht/~mil/${PORTNAME}/archive/${DISTVERSIONFULL}${EXTRACT_SUFX}?dummy=/
 
-MAINTAINER=	jbeich@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Fast, simple, and hackable OSM map viewer
 WWW=		https://sr.ht/~mil/Mepo/
 
@@ -11,7 +12,7 @@ LICENSE=	GPLv3+ OFL11
 LICENSE_COMB=	multi
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	zig>=0.13.0:lang/zig
+BUILD_DEPENDS=	zig>=0.14.0:lang/zig
 LIB_DEPENDS=	libcurl.so:ftp/curl
 RUN_DEPENDS=	jq:textproc/jq
 

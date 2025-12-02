@@ -1,6 +1,6 @@
 PORTNAME=	rustrover
-DISTVERSION=	2024.3.7
-CATEGORIES=	devel
+DISTVERSION=	2025.2.4
+CATEGORIES=	devel java
 MASTER_SITES=	https://download-cdn.jetbrains.com/rustrover/
 PKGNAMEPREFIX=	jetbrains-
 DISTNAME=	RustRover-${PORTVERSION}
@@ -25,10 +25,10 @@ RUN_DEPENDS=	cmake:devel/cmake-core \
 		jetbrains-sqlite>=241.15989.150:devel/jetbrains-sqlite \
 		lsof:sysutils/lsof
 
-USES=		cpe java python:run
+USES=		cpe java python:run desktop-file-utils
 
 CPE_VENDOR=	jetbrains
-JAVA_VERSION=	17+
+JAVA_VERSION=	21+
 
 DATADIR=	${PREFIX}/share/jetbrains/${PORTNAME}
 
@@ -90,5 +90,7 @@ do-install:
 # Use sqlite replacement provided by devel/jetbrains-sqlite
 	${MKDIR} ${STAGEDIR}${DATADIR}/lib/native/${_SQLITE_ARCH}
 	${LN} -sf ../../../../sqlite/${ARCH}/libsqliteij.so ${STAGEDIR}${DATADIR}/lib/native/${_SQLITE_ARCH}/libsqliteij.so
+# Disable automatic updates
+	${ECHO} "ide.no.platform.update=FreeBSD Ports" >> ${STAGEDIR}${DATADIR}/bin/idea.properties
 
 .include <bsd.port.mk>

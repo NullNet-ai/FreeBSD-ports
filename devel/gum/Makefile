@@ -1,7 +1,7 @@
 PORTNAME=	gum
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.16.0
-PORTREVISION=	1
+DISTVERSION=	0.17.0
+PORTREVISION=	3
 CATEGORIES=	devel
 
 MAINTAINER=	dave@bitboss.ca
@@ -11,7 +11,7 @@ WWW=		https://github.com/charmbracelet/gum
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		go:1.23,modules
+USES=		go:modules
 GO_MODULE=	github.com/charmbracelet/gum
 
 PLIST_FILES=	bin/gum \
@@ -27,13 +27,13 @@ post-build:
 .endfor
 
 post-install:
-	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/bash_completion.d
+	${MKDIR} ${STAGEDIR}${PREFIX}/etc/bash_completion.d \
+		 ${STAGEDIR}${PREFIX}/share/fish/completions \
+		 ${STAGEDIR}${PREFIX}/share/zsh/site-functions
 	${INSTALL_DATA} ${WRKSRC}/bash \
 		${STAGEDIR}${PREFIX}/etc/bash_completion.d/${PORTNAME}.bash
-	@${MKDIR} ${STAGEDIR}${PREFIX}/share/fish/completions
 	${INSTALL_DATA} ${WRKSRC}/fish \
 		${STAGEDIR}${PREFIX}/share/fish/completions/${PORTNAME}.fish
-	@${MKDIR} ${STAGEDIR}${PREFIX}/share/zsh/site-functions
 	${INSTALL_DATA} ${WRKSRC}/zsh \
 		${STAGEDIR}${PREFIX}/share/zsh/site-functions/_${PORTNAME}
 	${INSTALL_MAN} ${WRKSRC}/${PORTNAME}.1 ${STAGEDIR}${PREFIX}/share/man/man1

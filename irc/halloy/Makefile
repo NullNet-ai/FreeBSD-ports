@@ -1,10 +1,11 @@
 PORTNAME=	halloy
-DISTVERSION=	2025.3
+DISTVERSION=	2025.6
+PORTREVISION=	4
 CATEGORIES=	irc
 
 MAINTAINER=	pokeysquirrel@gmail.com
 COMMENT=	IRC client written in Rust, with the iced GUI library
-WWW=		https://halloy.squidowl.org
+WWW=		https://halloy.chat/
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
@@ -25,4 +26,11 @@ post-install:
 		$${f%org.squidowl.halloy.png}halloy.png; done && \
 		${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/share/icons/hicolor)
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${ARCH:Marmv?}
+LTO_UNSAFE=	yes
+CARGO_ENV+=	CARGO_PROFILE_RELEASE_LTO=false
+.endif
+
+.include <bsd.port.post.mk>

@@ -40,7 +40,6 @@ lib/libKF6ScreenDpms.so.8
 lib/libexec/kf6/kscreen_backend_launcher
 %%QT_PLUGINDIR%%/kf6/kscreen/KSC_Fake.so
 %%QT_PLUGINDIR%%/kf6/kscreen/KSC_KWayland.so
-%%QT_PLUGINDIR%%/kf6/kscreen/KSC_QScreen.so
 %%QT_PLUGINDIR%%/kf6/kscreen/KSC_XRandR.so
 @comment lib/systemd/user/plasma-kscreen.service
 libdata/pkgconfig/KF6Screen.pc
@@ -71,6 +70,7 @@ share/locale/ka/LC_MESSAGES/libkscreen6_qt.qm
 share/locale/ko/LC_MESSAGES/libkscreen6_qt.qm
 share/locale/lt/LC_MESSAGES/libkscreen6_qt.qm
 share/locale/lv/LC_MESSAGES/libkscreen6_qt.qm
+share/locale/nb/LC_MESSAGES/libkscreen6_qt.qm
 share/locale/nl/LC_MESSAGES/libkscreen6_qt.qm
 share/locale/nn/LC_MESSAGES/libkscreen6_qt.qm
 share/locale/pl/LC_MESSAGES/libkscreen6_qt.qm

@@ -1,6 +1,6 @@
---- remoting/host/crash/crash_file_uploader.cc.orig	2024-08-01 05:47:53 UTC
+--- remoting/host/crash/crash_file_uploader.cc.orig	2025-11-06 10:11:34 UTC
 +++ remoting/host/crash/crash_file_uploader.cc
-@@ -44,7 +44,7 @@ constexpr char kMinidumpFileName[] = "dump";
+@@ -45,7 +45,7 @@ constexpr char kMinidumpFileName[] = "dump";
  
  #if BUILDFLAG(IS_WIN)
  constexpr char kProductNameValue[] = "Chromoting";

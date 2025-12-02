@@ -1,6 +1,6 @@
---- components/password_manager/core/browser/password_form_manager.cc.orig	2025-02-19 07:43:18 UTC
+--- components/password_manager/core/browser/password_form_manager.cc.orig	2025-10-30 15:44:36 UTC
 +++ components/password_manager/core/browser/password_form_manager.cc
-@@ -63,7 +63,7 @@
+@@ -67,7 +67,7 @@
  #include "components/webauthn/android/webauthn_cred_man_delegate.h"
  #endif  // BUILDFLAG(IS_ANDROID)
  
@@ -18,7 +18,7 @@
  bool ShouldShowKeychainErrorBubble(
      std::optional<PasswordStoreBackendError> backend_error) {
    if (!backend_error.has_value()) {
-@@ -897,7 +897,7 @@ void PasswordFormManager::OnFetchCompleted() {
+@@ -940,7 +940,7 @@ void PasswordFormManager::OnFetchCompleted() {
          error.value().type);
    }
  

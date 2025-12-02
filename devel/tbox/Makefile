@@ -1,12 +1,11 @@
 PORTNAME=	tbox
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.7.6
-PORTREVISION=	1
+DISTVERSION=	1.7.8
 CATEGORIES=	devel
 
 MAINTAINER=	fuz@FreeBSD.org
 COMMENT=	Glib-like multi-platform c library
-WWW=		https://docs.tboox.org/
+WWW=		https://tboox.org/
 
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
@@ -28,6 +27,6 @@ CONFIGURE_ARGS=	--charset=y \
 		--small=no \
 		--toolchain=${CHOSEN_COMPILER_TYPE}
 
-MAKEFILE=	makefile
+PLIST_SUB=	DISTVERSION=${DISTVERSION}
 
 .include <bsd.port.mk>

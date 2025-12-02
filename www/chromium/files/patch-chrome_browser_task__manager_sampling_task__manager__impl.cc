@@ -1,4 +1,4 @@
---- chrome/browser/task_manager/sampling/task_manager_impl.cc.orig	2025-03-05 08:14:56 UTC
+--- chrome/browser/task_manager/sampling/task_manager_impl.cc.orig	2025-10-02 04:28:32 UTC
 +++ chrome/browser/task_manager/sampling/task_manager_impl.cc
 @@ -227,7 +227,7 @@ void TaskManagerImpl::GetUSERHandles(TaskId task_id,
  }

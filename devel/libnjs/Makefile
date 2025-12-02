@@ -1,9 +1,8 @@
 PORTNAME=	libnjs
-DISTVERSION=	0.8.9
-PORTREVISION=	1
+DISTVERSION=	0.9.4
 CATEGORIES=	devel www
 
-MAINTAINER=	osa@FreeBSD.org
+MAINTAINER=	joneum@FreeBSD.org
 COMMENT=	NGINX JavaScript static library
 WWW=		https://nginx.org/en/docs/njs/
 
@@ -27,7 +26,7 @@ CONFIGURE_ARGS=	--cc-opt="-I${LOCALBASE}/include/quickjs" \
 .include <bsd.port.pre.mk>
 
 # Fixes build failed for Clang 19.1.3+
-.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1500026 && ${CHOSEN_COMPILER_TYPE} == clang
+.if ${CHOSEN_COMPILER_TYPE} == clang && ${COMPILER_VERSION} >= 191
 CFLAGS+=	-Wno-error=cast-function-type-mismatch
 .endif
 

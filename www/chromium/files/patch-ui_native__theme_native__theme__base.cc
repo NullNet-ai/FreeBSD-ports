@@ -1,11 +1,11 @@
---- ui/native_theme/native_theme_base.cc.orig	2025-03-05 08:14:56 UTC
+--- ui/native_theme/native_theme_base.cc.orig	2025-10-30 15:44:36 UTC
 +++ ui/native_theme/native_theme_base.cc
-@@ -239,7 +239,7 @@ void NativeThemeBase::Paint(cc::PaintCanvas* canvas,
-                     absl::get<ButtonExtraParams>(extra), color_scheme,
-                     accent_color_opaque);
+@@ -168,7 +168,7 @@ void NativeThemeBase::PaintImpl(cc::PaintCanvas* canva
+                     std::get<ButtonExtraParams>(extra_params), dark_mode,
+                     contrast, accent_color);
        break;
 -#if BUILDFLAG(IS_LINUX)
 +#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_BSD)
      case kFrameTopArea:
        PaintFrameTopArea(canvas, state, rect,
-                         absl::get<FrameTopAreaExtraParams>(extra),
+                         std::get<FrameTopAreaExtraParams>(extra_params));

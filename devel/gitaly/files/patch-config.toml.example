@@ -1,4 +1,4 @@
---- config.toml.example.orig	2025-03-19 10:31:26 UTC
+--- config.toml.example.orig	2025-08-20 06:37:58 UTC
 +++ config.toml.example
 @@ -2,10 +2,10 @@
  # For Gitaly documentation, see https://docs.gitlab.com/administration/gitaly/.
@@ -13,19 +13,6 @@
  
  # # Optional. The directory where Gitaly can create all files required to
  # # properly operate at runtime. If not set, Gitaly will create a directory in
-@@ -40,9 +40,9 @@ bin_dir = "/home/git/gitaly/_build/bin"
- # key_path = '/home/git/key.pem'
- 
- # # Git settings
--# [git]
--# # Path to Git binary. If not set, is resolved using PATH.
--# bin_path = "/usr/bin/git"
-+[git]
-+# Path to Git binary. If not set, is resolved using PATH.
-+bin_path = "%%PREFIX%%/bin/git"
- # # Maximum number of cached 'cat-file' processes, which constitute a pair of 'git cat-file --batch' and
- # # 'git cat-file --batch-check' processes. Defaults to '100'.
- # catfile_cache_size = 100
 @@ -58,7 +58,7 @@ name = "default"
  # # The name of the storage
  name = "default"

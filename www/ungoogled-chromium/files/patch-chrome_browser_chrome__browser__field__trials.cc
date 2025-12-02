@@ -1,7 +1,7 @@
---- chrome/browser/chrome_browser_field_trials.cc.orig	2024-11-16 12:20:41 UTC
+--- chrome/browser/chrome_browser_field_trials.cc.orig	2025-11-01 06:40:37 UTC
 +++ chrome/browser/chrome_browser_field_trials.cc
-@@ -49,7 +49,7 @@
- #include "chrome/browser/ui/startup/default_browser_prompt/default_browser_prompt_trial.h"
+@@ -48,7 +48,7 @@
+ #include "chromeos/ash/services/multidevice_setup/public/cpp/first_run_field_trial.h"
  #endif
  
 -#if BUILDFLAG(IS_LINUX)
@@ -9,12 +9,12 @@
  #include "base/nix/xdg_util.h"
  #include "ui/base/ui_base_features.h"
  #endif  // BUILDFLAG(IS_LINUX)
-@@ -135,7 +135,7 @@ void ChromeBrowserFieldTrials::RegisterSyntheticTrials
- #endif
- }
+@@ -104,7 +104,7 @@ void ChromeBrowserFieldTrials::RegisterFeatureOverride
+     base::FeatureList* feature_list) {
+   variations::FeatureOverrides feature_overrides(*feature_list);
  
 -#if BUILDFLAG(IS_LINUX)
 +#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_BSD)
- // On Linux/Desktop platform variants, such as ozone/wayland, some features
- // might need to be disabled as per OzonePlatform's runtime properties.
- // OzonePlatform selection and initialization, in turn, depend on Chrome flags
+   // On Linux/Desktop platform variants, such as ozone/wayland, some features
+   // might need to be disabled as per OzonePlatform's runtime properties.
+   // OzonePlatform selection and initialization, in turn, depend on Chrome flags
